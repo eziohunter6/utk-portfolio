@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { Footer } from "@/components/Layout/Footer";
-import { Header } from "@/components/Layout/Header";
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
 import "./globals.css";
 
 const fonts = Inter({
@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${fonts.variable} antialiased bg-background text-primary`}
+        className={`${fonts.variable} antialiased bg-background font-sans font-medium text-primary px-6 max-w-7xl m-auto scroll-smooth overflow-x-hidden`}
       >
         <Header />
         {children}
