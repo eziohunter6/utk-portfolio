@@ -13,6 +13,7 @@ export type TContact = {
 };
 
 export type TWork = {
+  id: string;
   title: string;
   description: string;
   image: string;

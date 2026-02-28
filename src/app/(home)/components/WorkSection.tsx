@@ -1,6 +1,6 @@
 import Title from "@/components/Title";
+import WorkCard from "@/components/WorkCard";
 import { WORKS } from "@/constants/works";
-import WorkCard from "./WorkCard";
 
 const WorkSection = () => (
   <section id="work">

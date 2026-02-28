@@ -4,6 +4,7 @@
   --main: #ffffff;
   --brand: #001ec6;
   --muted: #f4f4f4;
+  --ai-gradient: linear-gradient(98.63deg, #e05cff 0%, #ff7967 100%);
 }
 
 @theme inline {
@@ -16,4 +17,14 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 100px;
+}
+
+@layer utilities {
+  .text-ai-gradient {
+    background: var(--ai-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+  }
 }
