@@ -21,7 +21,7 @@ const AboutSection = () => (
     </section>
 
     {/* Worked At */}
-    <section className="relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen bg-primary text-white/35 py-4">
+    <section className="relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen bg-brand text-white/35 py-4">
       <h3 className="text-[0.6rem] sm:text-xs font-semibold text-center">
         WORKED AT
       </h3>

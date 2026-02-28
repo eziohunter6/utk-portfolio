@@ -4,7 +4,7 @@ export const WORKS: TWork[] = [
   {
     title: "Buy Homepage - Transactional Users",
     description: "...",
-    image: "/images/buy-home.jpg",
+    image: "/images/work/buy-home.jpg",
     link: {
       href: "/work/buy-homepage",
     },
@@ -12,7 +12,7 @@ export const WORKS: TWork[] = [
   {
     title: "Car Comparison - Feature",
     description: "...",
-    image: "/images/car-comparison.jpg",
+    image: "/images/work/car-comparison.jpg",
     link: {
       href: "/work/car-comparison",
     },
@@ -20,7 +20,7 @@ export const WORKS: TWork[] = [
   {
     title: "Feature Discoverability - ET Prime",
     description: "...",
-    image: "/images/et-prime.jpg",
+    image: "/images/work/et-prime.jpg",
     link: {
       href: "https://www.etprime.in",
 
@@ -31,7 +31,7 @@ export const WORKS: TWork[] = [
   {
     title: "Payment Experience Revamp",
     description: "...",
-    image: "/images/et-prime.jpg",
+    image: "/images/work/et-prime.jpg",
     link: {
       href: "https://www.cleartrip.com",
       target: "_blank",

@@ -32,7 +32,7 @@ const InfoSection = () => (
       </div>
 
       {/* Info Image */}
-      <div className="relative w-full aspect-square bg-[#F4F4F4]">
+      <div className="relative w-full aspect-square bg-muted">
         <Image
           fill
           src="/images/info.png"

@@ -5,7 +5,7 @@ import Header from "@/components/Header";
 import "./globals.css";
 
 const fonts = Inter({
-  variable: "--font-primary",
+  variable: "--font-main",
   subsets: ["latin"],
 });
 
@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${fonts.variable} antialiased bg-background font-sans font-medium text-primary px-6 max-w-7xl m-auto scroll-smooth overflow-x-hidden`}
+        className={`${fonts.variable} antialiased bg-main font-sans font-medium text-brand px-6 max-w-7xl m-auto scroll-smooth overflow-x-hidden`}
       >
         <Header />
         {children}
