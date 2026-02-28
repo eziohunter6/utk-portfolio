@@ -8,13 +8,14 @@ const ReflectionsSection = () => (
       {/* Exploration & Tradeoffs */}
       <div className="flex flex-col gap-4">
         <p className="text-base font-normal">
-          This project reinforced that transactional users value progression
-          clarity over feature depth. Designing for committed intent required
-          structural restraint and contextual visibility rather than interface
-          novelty. Working within technical and organizational constraints
-          sharpened my approach to system design prioritizing clarity,
-          continuity, and measurable business impact over interaction
-          complexity.
+          By structuring evaluation around weighted decision variables rather
+          than flat information display, the system reduced cognitive friction
+          for high-intent users and improved downstream qualification.
+        </p>
+        <p className="text-base font-normal">
+          High-intent comparison behaviour was already present in the system.
+          The opportunity was not to create demand, but to support it with
+          decision architecture.
         </p>
       </div>
     </div>

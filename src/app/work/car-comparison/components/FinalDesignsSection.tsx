@@ -5,35 +5,29 @@ const FinalDesignsSection = () => (
   <section>
     <Title index={7}>Final Designs</Title>
 
-    <div className="w-full md:w-3/4 lg:w-3/5 flex flex-col gap-8 ml-auto">
-      {/* Exploration & Tradeoffs */}
-      <div className="flex flex-col gap-4">
-        <p className="text-base font-normal">
-          The redesigned homepage dynamically adapts based on the user’s
-          transaction stage. For users who have scheduled a test drive, the
-          interface prominently surfaces visit details and next actions. For
-          users who have completed booking, the homepage shifts focus toward
-          delivery tracking and reassurance.
-        </p>
-        <p className="text-base font-normal">
-          A new status tag component was introduced to standardize stage
-          visibility. Content prioritization became intent-driven rather than
-          generic. Redundant modules were reduced to prevent distraction from
-          high-intent actions.
-        </p>
-        <h3 className="text-lg">
-          The homepage now distinguishes between exploratory and committed
-          behaviors.
-        </h3>
-      </div>
+    <div className="w-full md:w-3/4 lg:w-3/5 flex flex-col gap-4 ml-auto">
+      <h3 className="text-lg">
+        The experience was triggered dynamically for users exhibiting the A → B
+        → A pattern.
+      </h3>
+      <p className="text-base font-normal">
+        No explicit “Compare” CTA was introduced to avoid artificial adoption
+        bias.
+      </p>
+
+      <ol className="text-sm font-light list-decimal list-inside space-y-2">
+        <li>Retaining specifications in working memory</li>
+        <li>Switching between PDP’s repeatedly</li>
+        <li>Comparing non-prioritized attributes</li>
+      </ol>
     </div>
 
     {/* Image */}
     <div className="bg-muted rounded-2xl mt-8">
       <div className="relative w-full aspect-29/15 rounded-lg overflow-hidden">
         <Image
-          src="/images/buy-home/final-designs.png"
-          alt="Exploration & Tradeoffs Image"
+          src="/images/car-comparison/final-designs.png"
+          alt="Final Designs Image"
           fill
           className="object-contain object-top"
         />

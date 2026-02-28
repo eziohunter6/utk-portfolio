@@ -26,8 +26,8 @@ const DesignExplorationSection = () => (
     <div className="bg-muted rounded-2xl mt-8">
       <div className="relative w-full aspect-29/15 rounded-lg overflow-hidden">
         <Image
-          src="/images/buy-home/exploration-tradeoffs.png"
-          alt="Exploration & Tradeoffs Image"
+          src="/images/car-comparison/design-explore.png"
+          alt="Design explorations Image"
           fill
           className="object-contain object-top"
         />

@@ -8,16 +8,10 @@ const ProblemSection = () => (
     <div className="w-full md:w-3/4 lg:w-3/5 flex flex-col gap-6 ml-auto">
       <h3 className="text-lg">High-intent users were:</h3>
 
-      <ol className="text-sm font-light">
-        <li className="list-decimal list-inside">
-          Retaining specifications in working memory
-        </li>
-        <li className="list-decimal list-inside">
-          Switching between PDP’s repeatedly
-        </li>
-        <li className="list-decimal list-inside">
-          Comparing non-prioritized attributes
-        </li>
+      <ol className="text-sm font-light list-decimal list-inside space-y-2">
+        <li>Retaining specifications in working memory</li>
+        <li>Switching between PDP’s repeatedly</li>
+        <li>Comparing non-prioritized attributes</li>
       </ol>
 
       <h3 className="text-lg">
