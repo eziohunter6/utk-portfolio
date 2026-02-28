@@ -1,31 +1,46 @@
-export const WORKS = [
+import type { TWork, TWorkedAt } from "@/lib/types";
+
+export const WORKS: TWork[] = [
   {
     title: "Buy Homepage - Transactional Users",
     description: "...",
     image: "/images/buy-home.jpg",
-    link: "/work/buy-homepage",
+    link: {
+      href: "/work/buy-homepage",
+    },
   },
   {
     title: "Car Comparison - Feature",
     description: "...",
     image: "/images/car-comparison.jpg",
-    link: "/work/car-comparison",
+    link: {
+      href: "/work/car-comparison",
+    },
   },
   {
     title: "Feature Discoverability - ET Prime",
     description: "...",
     image: "/images/et-prime.jpg",
-    link: "/work/et-prime-discoverability",
+    link: {
+      href: "https://www.etprime.in",
+
+      target: "_blank",
+      rel: "noopener noreferrer",
+    },
   },
   {
     title: "Payment Experience Revamp",
     description: "...",
     image: "/images/et-prime.jpg",
-    link: "/work/payment-revamp",
+    link: {
+      href: "https://www.cleartrip.com",
+      target: "_blank",
+      rel: "noopener noreferrer",
+    },
   },
 ] as const;
 
-export const WORKED_AT = [
+export const WORKED_AT: TWorkedAt[] = [
   {
     name: "Spinny",
     icon: "spinny",

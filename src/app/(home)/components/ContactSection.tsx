@@ -1,6 +1,6 @@
 import Title from "@/components/Title";
 import { CONTACTS } from "@/constants/contacts";
-import CopyButton from "./CopyButton";
+import ContactLink from "./ContactLink";
 
 const ContactSection = () => (
   <section id="contact">
@@ -12,8 +12,8 @@ const ContactSection = () => (
         message.
       </p>
 
-      {CONTACTS.map(({ name, value, type }) => (
-        <CopyButton key={name} name={name} value={value} type={type} />
+      {CONTACTS.map((contact) => (
+        <ContactLink key={contact.name} {...contact} />
       ))}
     </div>
   </section>

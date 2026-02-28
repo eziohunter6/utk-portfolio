@@ -1,8 +1,5 @@
 const HeroSection = () => (
-  <section
-    id="#"
-    className="w-full pt-52 flex flex-col justify-center gap-8 mb-16"
-  >
+  <section id="#" className="flex flex-col justify-center gap-8 mb-16">
     <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-[10rem]/45 font-semibold">
       Utkarsh Raj
     </h1>

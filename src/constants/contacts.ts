@@ -1,17 +1,19 @@
-export const CONTACTS = [
+import type { TContact } from "@/lib/types";
+
+export const CONTACTS: TContact[] = [
   {
     name: "utkarshraj***0@gmail.com",
-    value: "utkarshraj***0@gmail.com",
+    href: "mailto:utkarshraj***0@gmail.com",
     type: "copy",
   },
   {
     name: "Linkedin",
-    value: "https://www.linkedin.com/in/utkarsh-raj-0000000000/",
+    href: "https://www.linkedin.com/in/utkarsh-raj-0000000000/",
     type: "link",
   },
   {
     name: "Send coffee",
-    value: "",
+    href: "https://www.buymeacoffee.com/utkarshraj",
     type: "link",
   },
 ] as const;

@@ -1,18 +1,20 @@
-export const NAVLINKS = [
+import type { TNavLink } from "@/lib/types";
+
+export const NAVLINKS: TNavLink[] = [
   {
     title: "Work",
-    link: "#work",
+    href: "#work",
   },
   {
     title: "AI Practices",
-    link: "/",
+    href: "/",
   },
   {
     title: "Info",
-    link: "#info",
+    href: "#info",
   },
   {
     title: "Contact",
-    link: "#contact",
+    href: "#contact",
   },
 ] as const;

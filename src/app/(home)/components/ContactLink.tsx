@@ -1,25 +1,21 @@
 "use client";
 
 import { ArrowUpRightIcon } from "lucide-react";
+import Link from "next/link";
 import { useState } from "react";
+import type { TContact } from "@/lib/types";
 
-type Props = {
-  name: string;
-  value: string;
-  type: "copy" | "link";
-};
-
-const CopyButton = ({ name, value, type }: Props) => {
+const ContactLink = ({ name, href, type }: TContact) => {
   const [isCopied, setIsCopied] = useState(false);
   const handleCopy = () => {
-    navigator.clipboard.writeText(value);
+    navigator.clipboard.writeText(href);
     setIsCopied(true);
     setTimeout(() => setIsCopied(false), 2000);
   };
 
   return (
-    <a
-      href={value}
+    <Link
+      href={href}
       target="_blank"
       onClick={type === "copy" ? handleCopy : undefined}
       rel="noopener noreferrer"
@@ -33,8 +29,8 @@ const CopyButton = ({ name, value, type }: Props) => {
           {isCopied ? "copied" : "click to copy"}
         </span>
       )}
-    </a>
+    </Link>
   );
 };
 
-export default CopyButton;
+export default ContactLink;

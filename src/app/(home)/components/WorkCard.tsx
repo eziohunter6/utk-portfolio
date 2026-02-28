@@ -1,17 +1,11 @@
 import { ArrowUpRightIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import type { TWork } from "@/lib/types";
 
-type Props = {
-  title: string;
-  description: string;
-  image: string;
-  link: string;
-};
-
-const WorkCard = ({ title, image, link }: Props) => {
+const WorkCard = ({ title, image, link }: TWork) => {
   return (
-    <Link href={link} className="group flex flex-col gap-2">
+    <Link {...link} className="group flex flex-col gap-2">
       <figure className="relative overflow-hidden w-full aspect-8/5 rounded-2xl">
         <Image
           src={image}
