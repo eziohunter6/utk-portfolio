@@ -1,4 +1,4 @@
-import MoreWorkSection from "@/components/MoreWorkSection";
+import MoreWorkSection from "@/components/works/MoreWorks";
 import { WORKS } from "@/constants/works";
 import AnalysisSection from "./components/AnalysisSection";
 import ExplorationTradeoffsSection from "./components/ExplorationTradeoffsSection";

@@ -1,27 +1,7 @@
-import type Link from "next/link";
-import type { ComponentProps } from "react";
+import type { Contact, Navlink, Work } from "@/payload-types";
 
-export type TNavLink = {
-  title: string;
-  href: string;
-};
+export type TNavLink = NonNullable<Navlink["navLinks"]>[number];
 
-export type TContact = {
-  name: string;
-  href: string;
-  type: "copy" | "link";
-};
+export type TContact = NonNullable<Contact["contacts"]>[number];
 
-export type TWork = {
-  id: string;
-  title: string;
-  description: string;
-  image: string;
-  link: ComponentProps<typeof Link>;
-};
-
-export type TWorkedAt = {
-  name: string;
-  icon: string;
-  link: string;
-};
+export type TWork = Work;

@@ -1,35 +1,32 @@
 import Link from "next/link";
-import type { Navlink } from "@/payload-types";
+import { getNavlinks } from "@/lib/services";
+import CollapsibleNav from "./CollapsibleNav";
 
-type HeaderProps = {
-  navLinks?: Navlink["navLinks"];
-};
-
-const Header = ({ navLinks }: HeaderProps) => {
-  const links = (navLinks ?? []).map((link) => ({
-    title: link.title,
-    href: link.href,
-  }));
+const Header = async () => {
+  const links = await getNavlinks();
 
   return (
-    <header className="fixed top-0 inset-x-0 z-50 py-6 bg-background/50 backdrop-blur-sm border-b border-current/10">
+    <header className="fixed top-0 inset-x-0 z-20 py-5 md:py-6 bg-main/50 backdrop-blur-sm md:shadow-xs">
       <div className="px-6 max-w-7xl m-auto flex items-center justify-between">
         {/* Home */}
         <Link href="/" className="w-0 text-4xl relative">
           utk.
         </Link>
 
-        {/* Nav Links */}
+        {/* Desktop Nav */}
         <nav
           aria-label="Main navigation"
-          className="grow flex justify-center items-center gap-10"
+          className="hidden md:flex grow justify-center items-center gap-10"
         >
-          {links.map(({ href, title }) => (
-            <Link key={title} href={href} className="text-base">
+          {links.map(({ href, title, id }) => (
+            <Link key={id ?? href} href={href} className="text-base">
               {title}
             </Link>
           ))}
         </nav>
+
+        {/* Mobile Nav */}
+        <CollapsibleNav links={links} />
       </div>
     </header>
   );

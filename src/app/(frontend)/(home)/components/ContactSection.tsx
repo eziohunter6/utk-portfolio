@@ -1,6 +1,6 @@
-import Title from "@/components/Title";
+import Title from "@/components/ui/Title";
 import { CONTACTS } from "@/constants/contacts";
-import ContactLink from "./ContactLink";
+import ContactLink from "../../../../components/ui/ContactLink";
 
 const ContactSection = ({ index }: { index?: number }) => (
   <section id="contact">

@@ -1,5 +1,5 @@
-import Title from "@/components/Title";
-import WorkCard from "@/components/WorkCard";
+import Title from "@/components/ui/Title";
+import WorkCard from "@/components/works/Card";
 import type { TWork } from "@/lib/types";
 
 type Props = {

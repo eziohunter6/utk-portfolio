@@ -54,14 +54,9 @@ export default buildConfig({
       token: process.env.BLOB_READ_WRITE_TOKEN,
     }),
     seoPlugin({
-      globals: [
-        Home,
-        Navlinks,
-        Contacts,
-        AiPractices,
-        BuyHomepage,
-        CarComparison,
-      ].map((global) => global.slug),
+      globals: [Home, AiPractices, BuyHomepage, CarComparison].map(
+        (global) => global.slug,
+      ),
       uploadsCollection: "media",
     }),
   ],
