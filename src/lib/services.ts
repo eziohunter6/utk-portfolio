@@ -1,3 +1,4 @@
+import { defaultRichTextValue } from "@payloadcms/richtext-lexical";
 import { getPayload } from "@/lib/payload";
 
 export const getNavlinks = async () => {
@@ -13,7 +14,7 @@ export const getNavlinks = async () => {
 export const getContacts = async () => {
   const payload = await getPayload();
 
-  const { contacts } = await payload.findGlobal({ slug: "contacts" });
+  const { contacts, content } = await payload.findGlobal({ slug: "contacts" });
 
-  return contacts ?? [];
+  return { contacts: contacts ?? [], content: content ?? defaultRichTextValue };
 };

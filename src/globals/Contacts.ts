@@ -11,7 +11,7 @@ export const Contacts: GlobalConfig = {
   },
   fields: [
     {
-      name: "contactIntro",
+      name: "content",
       type: "richText",
       required: true,
       editor: lexicalEditor(),
