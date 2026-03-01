@@ -8,17 +8,39 @@ const DesignExplorationSection = () => (
     <div className="w-full md:w-3/4 lg:w-3/5 flex flex-col gap-8 ml-auto">
       {/* Exploration & Tradeoffs */}
       <div className="flex flex-col gap-4">
-        <p className="text-base font-normal">
-          We explored three approaches: enhancing banners within the existing
-          layout, introducing a dedicated transactional dashboard, and adapting
-          the homepage contextually by lifecycle state. Banner enhancements were
-          low effort but insufficient for stage clarity, while a separate
-          dashboard risked fragmentation and ownership conflict. We selected a
-          state-aware homepage to preserve continuity while improving
-          visibility. A snappable swipe interaction was explored but
-          deprioritized due to performance limits and cognitive overhead,
-          prioritizing clarity over novelty.
-        </p>
+        <h3 className="text-lg">Structural Variants Explored</h3>
+
+        <ol className="text-base list-decimal list-inside space-y-4">
+          <li>
+            Flat Spec Grid
+            <ul className="text-base font-light list-disc list-inside pl-4">
+              <li>Equal-weight parameters.</li>
+              <li>
+                Rejected due to cognitive overload and low scan efficiency.
+              </li>
+            </ul>
+          </li>
+          <li>
+            Card-Based Comparison
+            <ul className="text-base font-light list-disc list-inside pl-4">
+              <li>
+                Visually simplified but reduced cross-attribute scannability
+              </li>
+            </ul>
+          </li>
+          <li>
+            Hierarchical Comparison Model (Selected)
+            <ul className="text-base font-light list-disc list-inside pl-4">
+              <li>
+                Primary attributes surfaced first (Price, EMI, Ownership,
+                Mileage)
+              </li>
+              <li>Secondary specifications grouped logically</li>
+              <li>Differences highlighted conditionally</li>
+              <li>Density preserved while introducing hierarchy</li>
+            </ul>
+          </li>
+        </ol>
       </div>
     </div>
 

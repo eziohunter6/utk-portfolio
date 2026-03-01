@@ -28,8 +28,8 @@ const ProblemSection = () => (
     <div className="bg-muted rounded-2xl px-8 pt-8 mt-8">
       <div className="relative w-11/12 aspect-video rounded-lg overflow-hidden mx-auto">
         <Image
-          src="/images/buy-home/analysis.png"
-          alt="Analysis Image"
+          src="/images/buy-home/problem.png"
+          alt="Problem Image"
           fill
           className="object-contain object-top"
         />

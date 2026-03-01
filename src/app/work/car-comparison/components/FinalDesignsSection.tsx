@@ -6,19 +6,19 @@ const FinalDesignsSection = () => (
     <Title index={7}>Final Designs</Title>
 
     <div className="w-full md:w-3/4 lg:w-3/5 flex flex-col gap-4 ml-auto">
-      <h3 className="text-lg">
+      <p className="text-base">
         The experience was triggered dynamically for users exhibiting the A → B
         → A pattern.
-      </h3>
-      <p className="text-base font-normal">
+      </p>
+      <h3 className="text-lg">
         No explicit “Compare” CTA was introduced to avoid artificial adoption
         bias.
-      </p>
+      </h3>
 
       <ol className="text-sm font-light list-decimal list-inside space-y-2">
-        <li>Retaining specifications in working memory</li>
-        <li>Switching between PDP’s repeatedly</li>
-        <li>Comparing non-prioritized attributes</li>
+        <li>Randomized A/B test</li>
+        <li>~238K eligible users</li>
+        <li>Metrics measured at user</li>
       </ol>
     </div>
 
