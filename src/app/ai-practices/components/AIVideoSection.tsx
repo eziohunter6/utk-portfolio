@@ -3,15 +3,15 @@ import Title from "@/components/Title";
 
 const Videos = [
   {
-    src: "/images/ai-practices/ai-prototype-1.png",
+    src: "/Thar.mp4",
     alt: "AI Prototype 1",
   },
   {
-    src: "/images/ai-practices/ai-prototype-2.png",
+    src: "/Thar.mp4",
     alt: "AI Prototype 2",
   },
   {
-    src: "/images/ai-practices/ai-prototype-3.png",
+    src: "/Thar.mp4",
     alt: "AI Prototype 3",
   },
 ];
@@ -32,13 +32,16 @@ const AIVideoSection = () => (
 
     {/* Videos */}
     <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
-      {Videos.map((image) => (
-        <div key={image.alt} className="relative w-full aspect-9/16 bg-muted">
-          <Image
-            src={image.src}
-            alt={image.alt}
-            fill
-            className="object-cover"
+      {Videos.map((video) => (
+        <div key={video.alt} className="relative w-full aspect-video bg-muted">
+          <video
+            src={`${process.env.BLOB_BASE_URL}${video.src}`}
+            className="w-full h-full object-contain"
+            playsInline
+            controls
+            preload="none"
+            muted
+            loop
           />
         </div>
       ))}
