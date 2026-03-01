@@ -10,7 +10,10 @@ const Header = () => (
       </Link>
 
       {/* Nav Links */}
-      <nav className="grow flex justify-center items-center gap-10">
+      <nav
+        aria-label="Main navigation"
+        className="grow flex justify-center items-center gap-10"
+      >
         {NAVLINKS.map(({ href: link, title }) => (
           <Link key={title} href={link} className="text-base">
             {title}

@@ -47,7 +47,7 @@ const HeroSection = () => (
       {/* Comfort model */}
       <div className="group p-4 bg-muted rounded-2xl flex flex-col justify-between gap-4 min-w-0 overflow-hidden">
         <hgroup className="text-ai-gradient text-center text-sm lg:text-base">
-          <h4 className="text-semibold">Not just similarities.</h4>
+          <h4 className="font-semibold">Not just similarities.</h4>
           <p className="text-[0.55em]">
             We understand comparison is just not similarities but differences.
           </p>
@@ -66,7 +66,7 @@ const HeroSection = () => (
       {/* Quality model */}
       <div className="group p-4 bg-muted rounded-2xl flex flex-col justify-between gap-4 min-w-0 overflow-hidden">
         <hgroup className="text-ai-gradient text-center text-sm lg:text-base">
-          <h4 className="text-semibold">Read less scan more.</h4>
+          <h4 className="font-semibold">Read less scan more.</h4>
           <p className="text-[0.55em]">
             Internally trained model that summarises two cars swifty and
             immediately aids to the decision velocity
@@ -84,8 +84,8 @@ const HeroSection = () => (
       </div>
 
       {/* Compare model */}
-      <div className="group p-4 md:col-span-2 bg-muted rounded-2xl flex flex-row justify-between gap-8 min-w-0 overflow-hidden">
-        <div className="relative w-2/5 aspect3/4 -mt-4 shrink-0">
+      <div className="group p-4 md:col-span-2 bg-muted rounded-2xl flex flex-col md:flex-row justify-between items-center md:items-start gap-4 min-w-0 overflow-hidden">
+        <div className="relative w-4/5 md:w-2/5 aspect-5/6 -mt-4 shrink-0">
           <Image
             src="/images/car-comparison/compare.png"
             alt="Compare model"
@@ -94,8 +94,8 @@ const HeroSection = () => (
           />
         </div>
 
-        <hgroup className="text-ai-gradient text-right text-base lg:text-xl mt-auto">
-          <h4 className="text-semibold mb-2">No explicit entry.</h4>
+        <hgroup className="text-ai-gradient text-center md:text-right text text-base lg:text-xl mt-auto">
+          <h4 className="font-semibold mb-2">No explicit entry.</h4>
           <p className="text-[0.55em]">
             Inbuilt model intelligently understands the discovery pattern and
             smart shortlists car for comparison.

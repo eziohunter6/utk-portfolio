@@ -1,4 +1,4 @@
-import MoreWordSection from "@/components/MoreWorkSection";
+import MoreWorkSection from "@/components/MoreWorkSection";
 import { WORKS } from "@/constants/works";
 import AnalysisSection from "./components/AnalysisSection";
 import ExplorationTradeoffsSection from "./components/ExplorationTradeoffsSection";
@@ -19,7 +19,7 @@ const BuyHomepagePage = () => (
     <FinalDesignsSection />
     <OutcomeSection />
     <ReflectionsSection />
-    <MoreWordSection
+    <MoreWorkSection
       index={9}
       works={WORKS.filter((work) => work.id !== "buy-homepage").slice(0, 2)}
     />

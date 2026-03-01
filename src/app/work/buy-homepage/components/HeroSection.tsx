@@ -48,7 +48,7 @@ const HeroSection = () => (
       </div>
 
       {/* KAM V1 */}
-      <div className="group p-4 bg-muted rounded-2xl flex flex-col justify-between gap-4 min-w-0 overflow-hidden">
+      <div className="group p-4 bg-muted rounded-2xl flex flex-col-reverse md:flex-col justify-between items-center md:items-start gap-4 min-w-0 overflow-hidden">
         <div className="relative overflow-hidden w-full aspect-29/20">
           <Image
             src="/images/buy-home/kam-v1.png"
@@ -59,7 +59,7 @@ const HeroSection = () => (
         </div>
 
         <hgroup className="text-center text-sm lg:text-base">
-          <h4 className="text-semibold">Trust by Transparency.</h4>
+          <h4 className="font-semibold">Trust by Transparency.</h4>
           <p className="text-[0.55em]">
             Know everything about who is calling you
           </p>
@@ -69,7 +69,7 @@ const HeroSection = () => (
       {/* KAM V2 */}
       <div className="group p-4 bg-muted rounded-2xl flex flex-col justify-between gap-4 min-w-0 overflow-hidden">
         <hgroup className="text-center text-sm lg:text-base">
-          <h4 className="text-semibold">Alerts so it doesn’t feel spam.</h4>
+          <h4 className="font-semibold">Alerts so it doesn’t feel spam.</h4>
           <p className="text-[0.55em]">
             Every call now has a context and it becomes informational
           </p>
@@ -86,8 +86,8 @@ const HeroSection = () => (
       </div>
 
       {/* Activity Card */}
-      <div className="group p-4 md:col-span-2 bg-muted rounded-2xl flex flex-row justify-between gap-4 min-w-0 overflow-hidden">
-        <div className="relative w-2/5 aspect-5/6 -mb-4 shrink-0">
+      <div className="group p-4 md:col-span-2 bg-muted rounded-2xl flex flex-col-reverse md:flex-row justify-between items-center md:items-start gap-4 min-w-0 overflow-hidden">
+        <div className="relative w-4/5 md:w-2/5 aspect-5/6 -mb-4 shrink-0">
           <Image
             src="/images/buy-home/activity-card.png"
             alt="Activity Card"
@@ -96,8 +96,8 @@ const HeroSection = () => (
           />
         </div>
 
-        <hgroup className="text-right text-base lg:text-xl mt-auto">
-          <h4 className="text-semibold mb-2">State adaptive components.</h4>
+        <hgroup className="text-center md:text-right text-base lg:text-xl mt-auto">
+          <h4 className="font-semibold mb-2">State adaptive components.</h4>
 
           <ul className="text-[0.55em] flex flex-row justify-end flex-wrap gap-2">
             <li className="bg-[#E8E8E8] rounded-full px-2 py-1">Informative</li>

@@ -6,7 +6,7 @@ import WorkSection from "./components/WorkSection";
 
 export default function Home() {
   return (
-    <main className="w-full pt-52">
+    <main className="w-full pt-32 sm:pt-40 md:pt-48 lg:pt-52">
       <HeroSection />
       <AboutSection />
       <WorkSection />

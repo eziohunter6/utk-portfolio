@@ -7,7 +7,7 @@ const InfoSection = () => (
 
     <div className="w-full md:w-3/4 lg:w-3/5 flex flex-col gap-8 ml-auto">
       {/* Info Content */}
-      <div className="flex flex-row gap-4">
+      <div className="flex flex-col md:flex-row gap-4">
         {/* Content 1 */}
         <div className="flex flex-col gap-4">
           <h3 className="text-xl">I help teams move fast.</h3>
