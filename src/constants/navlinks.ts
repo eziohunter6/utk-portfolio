@@ -3,18 +3,18 @@ import type { TNavLink } from "@/lib/types";
 export const NAVLINKS: TNavLink[] = [
   {
     title: "Work",
-    href: "#work",
+    href: "/#work",
   },
   {
     title: "AI Practices",
-    href: "/",
+    href: "/ai-practices",
   },
   {
     title: "Info",
-    href: "#info",
+    href: "/#info",
   },
   {
     title: "Contact",
-    href: "#contact",
+    href: "/#contact",
   },
 ] as const;
