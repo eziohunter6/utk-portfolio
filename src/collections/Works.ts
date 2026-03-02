@@ -1,10 +1,11 @@
+import { lexicalEditor } from "@payloadcms/richtext-lexical";
 import type { CollectionConfig } from "payload";
 
 export const Works: CollectionConfig = {
   slug: "works",
   admin: {
     useAsTitle: "title",
-    defaultColumns: ["title", "slug"],
+    defaultColumns: ["title", "type", "slug"],
   },
   access: {
     read: () => true,
@@ -26,8 +27,21 @@ export const Works: CollectionConfig = {
       required: true,
     },
     {
+      name: "type",
+      type: "select",
+      required: true,
+      options: [
+        { label: "Extended Cases", value: "extended-cases" },
+        { label: "Mini Cases", value: "mini-cases" },
+      ],
+      admin: {
+        description: "Category of the work",
+      },
+    },
+    {
       name: "description",
-      type: "textarea",
+      type: "richText",
+      editor: lexicalEditor(),
     },
     {
       name: "image",
@@ -54,12 +68,20 @@ export const Works: CollectionConfig = {
           ],
           defaultValue: "_self",
         },
+      ],
+    },
+    {
+      name: "tags",
+      type: "array",
+      label: "Tags",
+      admin: {
+        description: "Tags to show under the image",
+      },
+      fields: [
         {
-          name: "rel",
+          name: "keyword",
           type: "text",
-          admin: {
-            description: "e.g. noopener noreferrer for external links",
-          },
+          required: true,
         },
       ],
     },

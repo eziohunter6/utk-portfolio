@@ -29,17 +29,8 @@ export const Home: GlobalConfig = {
           required: true,
           defaultValue: "Senior Product Designer",
         },
-      ],
-    },
-    {
-      type: "collapsible",
-      label: "About",
-      admin: {
-        initCollapsed: false,
-      },
-      fields: [
         {
-          name: "aboutContent",
+          name: "heroContent",
           type: "richText",
           required: true,
           editor: lexicalEditor(),
@@ -58,9 +49,6 @@ export const Home: GlobalConfig = {
               name: "link",
               type: "text",
               required: true,
-              admin: {
-                description: "Company website URL",
-              },
             },
             {
               name: "logo",
@@ -108,7 +96,13 @@ export const Home: GlobalConfig = {
       },
       fields: [
         {
-          name: "infoContent",
+          name: "leftInfoContent",
+          type: "richText",
+          required: true,
+          editor: lexicalEditor(),
+        },
+        {
+          name: "rightInfoContent",
           type: "richText",
           required: true,
           editor: lexicalEditor(),
