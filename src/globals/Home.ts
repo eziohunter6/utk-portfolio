@@ -37,29 +37,13 @@ export const Home: GlobalConfig = {
         },
         {
           name: "workedAt",
-          type: "array",
+          type: "upload",
+          relationTo: "media",
+          hasMany: true,
           label: "Worked At",
-          fields: [
-            {
-              name: "name",
-              type: "text",
-              required: true,
-            },
-            {
-              name: "link",
-              type: "text",
-              required: true,
-            },
-            {
-              name: "logo",
-              type: "upload",
-              relationTo: "media",
-              required: true,
-              filterOptions: {
-                mimeType: { contains: "image" },
-              },
-            },
-          ],
+          filterOptions: {
+            mimeType: { contains: "image" },
+          },
         },
       ],
     },
@@ -72,19 +56,13 @@ export const Home: GlobalConfig = {
       fields: [
         {
           name: "featuredWorks",
-          type: "array",
+          type: "relationship",
           label: "Featured Works",
+          relationTo: "works",
+          hasMany: true,
           admin: {
             description: "Select and order work cards for the homepage",
           },
-          fields: [
-            {
-              name: "work",
-              type: "relationship",
-              relationTo: "works",
-              required: true,
-            },
-          ],
         },
       ],
     },

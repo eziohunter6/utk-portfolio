@@ -118,22 +118,6 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL
   );
   
-  CREATE TABLE "home_worked_at" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"name" varchar NOT NULL,
-  	"link" varchar NOT NULL,
-  	"logo_id" integer NOT NULL
-  );
-  
-  CREATE TABLE "home_featured_works" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"work_id" integer NOT NULL
-  );
-  
   CREATE TABLE "home" (
   	"id" serial PRIMARY KEY NOT NULL,
   	"hero_title" varchar DEFAULT 'Utkarsh Raj' NOT NULL,
@@ -147,6 +131,15 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"meta_image_id" integer,
   	"updated_at" timestamp(3) with time zone,
   	"created_at" timestamp(3) with time zone
+  );
+  
+  CREATE TABLE "home_rels" (
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"order" integer,
+  	"parent_id" integer NOT NULL,
+  	"path" varchar NOT NULL,
+  	"media_id" integer,
+  	"works_id" integer
   );
   
   CREATE TABLE "navlinks_nav_links" (
@@ -440,12 +433,11 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   ALTER TABLE "payload_locked_documents_rels" ADD CONSTRAINT "payload_locked_documents_rels_works_fk" FOREIGN KEY ("works_id") REFERENCES "public"."works"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "payload_preferences_rels" ADD CONSTRAINT "payload_preferences_rels_parent_fk" FOREIGN KEY ("parent_id") REFERENCES "public"."payload_preferences"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "payload_preferences_rels" ADD CONSTRAINT "payload_preferences_rels_users_fk" FOREIGN KEY ("users_id") REFERENCES "public"."users"("id") ON DELETE cascade ON UPDATE no action;
-  ALTER TABLE "home_worked_at" ADD CONSTRAINT "home_worked_at_logo_id_media_id_fk" FOREIGN KEY ("logo_id") REFERENCES "public"."media"("id") ON DELETE set null ON UPDATE no action;
-  ALTER TABLE "home_worked_at" ADD CONSTRAINT "home_worked_at_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."home"("id") ON DELETE cascade ON UPDATE no action;
-  ALTER TABLE "home_featured_works" ADD CONSTRAINT "home_featured_works_work_id_works_id_fk" FOREIGN KEY ("work_id") REFERENCES "public"."works"("id") ON DELETE set null ON UPDATE no action;
-  ALTER TABLE "home_featured_works" ADD CONSTRAINT "home_featured_works_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."home"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "home" ADD CONSTRAINT "home_info_image_id_media_id_fk" FOREIGN KEY ("info_image_id") REFERENCES "public"."media"("id") ON DELETE set null ON UPDATE no action;
   ALTER TABLE "home" ADD CONSTRAINT "home_meta_image_id_media_id_fk" FOREIGN KEY ("meta_image_id") REFERENCES "public"."media"("id") ON DELETE set null ON UPDATE no action;
+  ALTER TABLE "home_rels" ADD CONSTRAINT "home_rels_parent_fk" FOREIGN KEY ("parent_id") REFERENCES "public"."home"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "home_rels" ADD CONSTRAINT "home_rels_media_fk" FOREIGN KEY ("media_id") REFERENCES "public"."media"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "home_rels" ADD CONSTRAINT "home_rels_works_fk" FOREIGN KEY ("works_id") REFERENCES "public"."works"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "navlinks_nav_links" ADD CONSTRAINT "navlinks_nav_links_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."navlinks"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "contacts_contacts" ADD CONSTRAINT "contacts_contacts_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."contacts"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "ai_practices_content_section_images" ADD CONSTRAINT "ai_practices_content_section_images_image_id_media_id_fk" FOREIGN KEY ("image_id") REFERENCES "public"."media"("id") ON DELETE set null ON UPDATE no action;
@@ -525,14 +517,13 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "payload_preferences_rels_users_id_idx" ON "payload_preferences_rels" USING btree ("users_id");
   CREATE INDEX "payload_migrations_updated_at_idx" ON "payload_migrations" USING btree ("updated_at");
   CREATE INDEX "payload_migrations_created_at_idx" ON "payload_migrations" USING btree ("created_at");
-  CREATE INDEX "home_worked_at_order_idx" ON "home_worked_at" USING btree ("_order");
-  CREATE INDEX "home_worked_at_parent_id_idx" ON "home_worked_at" USING btree ("_parent_id");
-  CREATE INDEX "home_worked_at_logo_idx" ON "home_worked_at" USING btree ("logo_id");
-  CREATE INDEX "home_featured_works_order_idx" ON "home_featured_works" USING btree ("_order");
-  CREATE INDEX "home_featured_works_parent_id_idx" ON "home_featured_works" USING btree ("_parent_id");
-  CREATE INDEX "home_featured_works_work_idx" ON "home_featured_works" USING btree ("work_id");
   CREATE INDEX "home_info_image_idx" ON "home" USING btree ("info_image_id");
   CREATE INDEX "home_meta_meta_image_idx" ON "home" USING btree ("meta_image_id");
+  CREATE INDEX "home_rels_order_idx" ON "home_rels" USING btree ("order");
+  CREATE INDEX "home_rels_parent_idx" ON "home_rels" USING btree ("parent_id");
+  CREATE INDEX "home_rels_path_idx" ON "home_rels" USING btree ("path");
+  CREATE INDEX "home_rels_media_id_idx" ON "home_rels" USING btree ("media_id");
+  CREATE INDEX "home_rels_works_id_idx" ON "home_rels" USING btree ("works_id");
   CREATE INDEX "navlinks_nav_links_order_idx" ON "navlinks_nav_links" USING btree ("_order");
   CREATE INDEX "navlinks_nav_links_parent_id_idx" ON "navlinks_nav_links" USING btree ("_parent_id");
   CREATE INDEX "contacts_contacts_order_idx" ON "contacts_contacts" USING btree ("_order");
@@ -618,9 +609,8 @@ export async function down({ db, payload, req }: MigrateDownArgs): Promise<void>
   DROP TABLE "payload_preferences" CASCADE;
   DROP TABLE "payload_preferences_rels" CASCADE;
   DROP TABLE "payload_migrations" CASCADE;
-  DROP TABLE "home_worked_at" CASCADE;
-  DROP TABLE "home_featured_works" CASCADE;
   DROP TABLE "home" CASCADE;
+  DROP TABLE "home_rels" CASCADE;
   DROP TABLE "navlinks_nav_links" CASCADE;
   DROP TABLE "navlinks" CASCADE;
   DROP TABLE "contacts_contacts" CASCADE;

@@ -5,6 +5,7 @@
   --main: #ffffff;
   --brand: #001ec6;
   --muted: #f4f4f4;
+  --tag-bg: #e8e8e8;
   --ai-gradient: linear-gradient(98.63deg, #e05cff 0%, #ff7967 100%);
 }
 
@@ -12,6 +13,7 @@
   --color-main: var(--main);
   --color-brand: var(--brand);
   --color-muted: var(--muted);
+  --color-tag-bg: var(--tag-bg);
   --font-sans: var(--font-main);
 }
 

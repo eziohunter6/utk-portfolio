@@ -23,7 +23,7 @@ export default buildConfig({
   sharp,
   secret: process.env.PAYLOAD_SECRET || "",
   collections: [Media, Users, Works],
-  globals: [Home, Navlinks, Contacts, AiPractices, BuyHomepage, CarComparison],
+  globals: [Navlinks, Contacts, Home, BuyHomepage, CarComparison, AiPractices],
   editor: lexicalEditor(),
   db: vercelPostgresAdapter({
     pool: {
