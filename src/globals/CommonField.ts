@@ -1,4 +1,7 @@
-import { lexicalEditor } from "@payloadcms/richtext-lexical";
+import {
+  defaultRichTextValue,
+  lexicalEditor,
+} from "@payloadcms/richtext-lexical";
 import type { Field } from "payload";
 
 export const CommonSection: Field[] = [
@@ -6,12 +9,14 @@ export const CommonSection: Field[] = [
     name: "title",
     type: "text",
     required: true,
+    defaultValue: "",
   },
   {
     name: "content",
     type: "richText",
     required: true,
     editor: lexicalEditor(),
+    defaultValue: defaultRichTextValue,
   },
 ];
 
@@ -21,6 +26,7 @@ export const SectionWithIFrame: Field[] = [
     name: "iframe",
     type: "text",
     required: true,
+    defaultValue: "",
     admin: {
       description: "Iframe Embed code source",
     },
@@ -45,18 +51,20 @@ export const SectionWithImages: Field[] = [
     hasMany: true,
     relationTo: "media",
     filterOptions: { mimeType: { contains: "image" } },
+    defaultValue: [],
   },
 ];
 
 export const MoreWorkSection: Field[] = [
   {
-    name: "moreWorks",
+    name: "works",
     type: "relationship",
     relationTo: "works",
     hasMany: true,
     admin: {
       description: "Select and order work cards for the more work section",
     },
+    defaultValue: [],
   },
 ];
 
@@ -69,4 +77,5 @@ export const VideosField: Field = {
   admin: {
     description: "Select and order video files",
   },
+  defaultValue: [],
 };

@@ -1,37 +1,19 @@
+import { RichText } from "@payloadcms/richtext-lexical/react";
 import Image from "next/image";
+import LeftSection from "@/components/ui/LeftSection";
+import StickySection from "@/components/ui/StickySection";
 import Title from "@/components/ui/Title";
+import type { BuyHome } from "@/payload-types";
 
-const HeroSection = () => (
-  <section>
-    <Title as="h1" className="mb-8" index={1}>
-      Buy Homepage
+type Props = NonNullable<BuyHome["hero"]> & {
+  index: number;
+};
+
+const HeroSection = ({ title, content, index }: Props) => (
+  <StickySection id="hero">
+    <Title as="h1" className="mb-8" index={index}>
+      {title}
     </Title>
-
-    <div className="w-full md:w-3/4 lg:w-3/5 flex flex-col gap-6 ml-auto">
-      {/* Hero Content */}
-      <ul className="flex flex-col gap-1 text-base">
-        <li>Spinny</li>
-        <li>Lead Designer</li>
-        <li>4 Weeks</li>
-        <li>Mobile + Web</li>
-      </ul>
-
-      <h2 className="text-2xl mt-6">
-        Spinny operates a full stack used-car marketplace. The Buy Homepage acts
-        as a central surface for both discovery and transaction management.
-      </h2>
-
-      <p className="text-base">
-        Transactional users are those who had already scheduled a test drive or
-        progressed toward booking, were returning to a homepage that did not
-        reflect their stage in the journey.
-      </p>
-
-      <p className="text-base">
-        The system treated committed users the same as exploratory users and
-        this created ambiguity at a revenue sensitive stage of the funnel.
-      </p>
-    </div>
 
     {/* Bento Grid */}
     <div className="mt-8 grid lg:max-h-[600px] grid-cols-1 md:grid-cols-[1.8fr_1fr_1.3fr] md:grid-rows-[1fr_1fr] lg:grid-rows-[0.8fr_1fr] gap-4">
@@ -114,7 +96,11 @@ const HeroSection = () => (
         </hgroup>
       </div>
     </div>
-  </section>
+
+    <LeftSection className="flex flex-col gap-8">
+      <RichText data={content} className="prose" />
+    </LeftSection>
+  </StickySection>
 );
 
 export default HeroSection;

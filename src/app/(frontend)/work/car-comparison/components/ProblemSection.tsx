@@ -1,28 +1,23 @@
+import { RichText } from "@payloadcms/richtext-lexical/react";
 import Image from "next/image";
+import LeftSection from "@/components/ui/LeftSection";
+import StickySection from "@/components/ui/StickySection";
 import Title from "@/components/ui/Title";
+import type { CarComparison } from "@/payload-types";
 
-const ProblemSection = () => (
-  <section>
-    <Title index={3}>Problem</Title>
+type Props = NonNullable<CarComparison["problem"]> & {
+  index: number;
+};
 
-    <div className="w-full md:w-3/4 lg:w-3/5 flex flex-col gap-6 ml-auto">
-      <h3 className="text-lg">High-intent users were:</h3>
+// TODO: Add iframe
 
-      <ol className="text-sm font-light list-decimal list-inside space-y-2">
-        <li>Retaining specifications in working memory</li>
-        <li>Switching between PDP’s repeatedly</li>
-        <li>Comparing non-prioritized attributes</li>
-      </ol>
+const ProblemSection = ({ title, content, index }: Props) => (
+  <StickySection id="problem">
+    <Title index={index}>{title}</Title>
 
-      <h3 className="text-lg">
-        There was no structured hierarchy to guide tradeoffs between key
-        variables like price, EMI, mileage, or ownership.
-      </h3>
-
-      <p className="text-base font-normal">
-        The system provided information. It did not support decision-making.
-      </p>
-    </div>
+    <LeftSection className="flex flex-col gap-8">
+      <RichText data={content} className="prose" />
+    </LeftSection>
 
     {/* Image */}
     <div className="bg-muted rounded-2xl px-8 pt-8 mt-8">
@@ -35,7 +30,7 @@ const ProblemSection = () => (
         />
       </div>
     </div>
-  </section>
+  </StickySection>
 );
 
 export default ProblemSection;

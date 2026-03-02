@@ -1,27 +1,47 @@
 import MoreWorkSection from "@/components/works/MoreWorks";
-import DesignExplorationSection from "./components/DesignExplorationSection";
-import FinalDesignsSection from "./components/FinalDesignsSection";
-import FloorTestingSection from "./components/FloorTestingSection";
-import HeroSection from "./components/HeroSection";
-import HypothesisSection from "./components/HypothesisSection";
-import OpportunitySection from "./components/OpportunitySection";
-import OutcomeSection from "./components/OutcomeSection";
-import ProblemSection from "./components/ProblemSection";
-import ReflectionsSection from "./components/ReflectionsSection";
+import { getCarComparisonContent } from "@/lib/services";
+import { filterPopulated } from "@/lib/utils";
+import {
+  DesignExplorationSection,
+  FinalDesignsSection,
+  FloorTestingSection,
+  HeroSection,
+  HypothesisSection,
+  OpportunitySection,
+  OutcomeSection,
+  ProblemSection,
+  ReflectionsSection,
+} from "./components";
 
-const CarComparisonPage = () => (
-  <main id="car-comparison">
-    <HeroSection />
-    <OpportunitySection />
-    <ProblemSection />
-    <HypothesisSection />
-    <DesignExplorationSection />
-    <FloorTestingSection />
-    <FinalDesignsSection />
-    <OutcomeSection />
-    <ReflectionsSection />
-    <MoreWorkSection index={10} works={[]} />
-  </main>
-);
+export default async function CarComparisonPage() {
+  const {
+    hero,
+    opportunity,
+    problem,
+    hypothesis,
+    exploration,
+    floorTesting,
+    finalDesigns,
+    outcome,
+    reflections,
+    moreWork,
+  } = await getCarComparisonContent();
 
-export default CarComparisonPage;
+  return (
+    <main id="car-comparison">
+      <HeroSection {...hero} index={1} />
+      <OpportunitySection {...opportunity} index={2} />
+      <ProblemSection {...problem} index={3} />
+      <HypothesisSection {...hypothesis} index={4} />
+      <DesignExplorationSection {...exploration} index={5} />
+      <FloorTestingSection {...floorTesting} index={6} />
+      <FinalDesignsSection {...finalDesigns} index={7} />
+      <OutcomeSection {...outcome} index={8} />
+      <ReflectionsSection {...reflections} index={9} />
+      <MoreWorkSection
+        works={filterPopulated(moreWork?.works ?? [])}
+        index={10}
+      />
+    </main>
+  );
+}

@@ -1,29 +1,44 @@
 import MoreWorkSection from "@/components/works/MoreWorks";
 import { getBuyHomeContent } from "@/lib/services";
-import AnalysisSection from "./components/AnalysisSection";
-import ExplorationTradeoffsSection from "./components/ExplorationTradeoffsSection";
-import FinalDesignsSection from "./components/FinalDesignsSection";
-import HeroSection from "./components/HeroSection";
-import OutcomeSection from "./components/OutcomeSection";
-import ProcessSection from "./components/ProcessSection";
-import ReflectionsSection from "./components/ReflectionsSection";
-import StrategyLimitationsSection from "./components/StrategyLimitationsSection";
+import { filterPopulated } from "@/lib/utils";
+import {
+  AnalysisSection,
+  ExplorationTradeoffsSection,
+  FinalDesignsSection,
+  HeroSection,
+  OutcomeSection,
+  ProcessSection,
+  ReflectionsSection,
+  StrategyLimitationsSection,
+} from "./components";
 
 export default async function BuyHomePage() {
-  const content = await getBuyHomeContent();
-  console.log("[BuyHomePage] content", content);
+  const {
+    hero,
+    process,
+    analysis,
+    strategy,
+    exploration,
+    finalDesigns,
+    outcome,
+    reflections,
+    moreWork,
+  } = await getBuyHomeContent();
 
   return (
     <main id="buy-homepage">
-      <HeroSection />
-      <ProcessSection />
-      <AnalysisSection />
-      <StrategyLimitationsSection />
-      <ExplorationTradeoffsSection />
-      <FinalDesignsSection />
-      <OutcomeSection />
-      <ReflectionsSection />
-      <MoreWorkSection index={9} works={[]} />
+      <HeroSection {...hero} index={1} />
+      <ProcessSection {...process} index={2} />
+      <AnalysisSection {...analysis} index={3} />
+      <StrategyLimitationsSection {...strategy} index={4} />
+      <ExplorationTradeoffsSection {...exploration} index={5} />
+      <FinalDesignsSection {...finalDesigns} index={6} />
+      <OutcomeSection {...outcome} index={7} />
+      <ReflectionsSection {...reflections} index={8} />
+      <MoreWorkSection
+        works={filterPopulated(moreWork?.works ?? [])}
+        index={9}
+      />
     </main>
   );
 }

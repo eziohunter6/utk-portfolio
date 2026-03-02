@@ -1,10 +1,10 @@
 import Title from "@/components/ui/Title";
 import WorkCard from "@/components/works/Card";
-import type { TWork } from "@/lib/types";
+import type { Work } from "@/payload-types";
 
 type Props = {
   index: number;
-  works: TWork[];
+  works: Work[];
 };
 
 const MoreWorkSection = ({ index, works }: Props) => (

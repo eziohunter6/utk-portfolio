@@ -1,26 +1,23 @@
+import { RichText } from "@payloadcms/richtext-lexical/react";
 import Image from "next/image";
+import LeftSection from "@/components/ui/LeftSection";
+import StickySection from "@/components/ui/StickySection";
 import Title from "@/components/ui/Title";
+import type { CarComparison } from "@/payload-types";
 
-const FinalDesignsSection = () => (
-  <section>
-    <Title index={7}>Final Designs</Title>
+type Props = NonNullable<CarComparison["finalDesigns"]> & {
+  index: number;
+};
 
-    <div className="w-full md:w-3/4 lg:w-3/5 flex flex-col gap-4 ml-auto">
-      <p className="text-base">
-        The experience was triggered dynamically for users exhibiting the A → B
-        → A pattern.
-      </p>
-      <h3 className="text-lg">
-        No explicit “Compare” CTA was introduced to avoid artificial adoption
-        bias.
-      </h3>
+// TODO: Add iframe
 
-      <ol className="text-sm font-light list-decimal list-inside space-y-2">
-        <li>Randomized A/B test</li>
-        <li>~238K eligible users</li>
-        <li>Metrics measured at user</li>
-      </ol>
-    </div>
+const FinalDesignsSection = ({ title, content, index }: Props) => (
+  <StickySection id="finalDesigns">
+    <Title index={index}>{title}</Title>
+
+    <LeftSection className="flex flex-col gap-8">
+      <RichText data={content} className="prose" />
+    </LeftSection>
 
     {/* Image */}
     <div className="bg-muted rounded-2xl mt-8">
@@ -33,7 +30,7 @@ const FinalDesignsSection = () => (
         />
       </div>
     </div>
-  </section>
+  </StickySection>
 );
 
 export default FinalDesignsSection;

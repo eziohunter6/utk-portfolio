@@ -1,40 +1,23 @@
+import { RichText } from "@payloadcms/richtext-lexical/react";
 import Image from "next/image";
+import LeftSection from "@/components/ui/LeftSection";
+import StickySection from "@/components/ui/StickySection";
 import Title from "@/components/ui/Title";
+import type { BuyHome } from "@/payload-types";
 
-const StrategyLimitationsSection = () => (
-  <section>
-    <Title index={4}>Strategy & Limitations</Title>
+type Props = NonNullable<BuyHome["strategy"]> & {
+  index: number;
+};
 
-    <div className="w-full md:w-3/4 lg:w-3/5 flex flex-col gap-8 ml-auto">
-      {/* Hypothesis */}
-      <div className="flex flex-col gap-4">
-        <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
-          Hypothesis
-        </h3>
-        <p className="text-base font-normal">
-          I hypothesized that if the homepage dynamically reflected a user’s
-          transaction state and surfaced the most relevant next action, we could
-          reduce cognitive load, shorten the time between scheduling and visit,
-          and improve downstream delivery conversion.
-        </p>
-      </div>
+// TODO: Add iframe
 
-      {/* Constraints */}
-      <div className="flex flex-col gap-4">
-        <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
-          Constraints
-        </h3>
-        <p className="text-base font-normal">
-          The solution needed to operate within ReactJS performance limitations,
-          which restricted complex interaction patterns. A dedicated transaction
-          dashboard already existed under the Profile section and was owned by
-          the Platform team, limiting structural reorganization. Leadership
-          expressed concern about temporary conversion drops due to major
-          interface changes. The redesign had to be delivered within a four-week
-          window.
-        </p>
-      </div>
-    </div>
+const StrategyLimitationsSection = ({ title, content, index }: Props) => (
+  <StickySection id="strategy">
+    <Title index={index}>{title}</Title>
+
+    <LeftSection className="flex flex-col gap-8">
+      <RichText data={content} className="prose" />
+    </LeftSection>
 
     {/* Image */}
     <div className="bg-muted flex flex-col md:flex-row gap-4 rounded-2xl p-4 mt-8">
@@ -55,7 +38,7 @@ const StrategyLimitationsSection = () => (
         />
       </div>
     </div>
-  </section>
+  </StickySection>
 );
 
 export default StrategyLimitationsSection;

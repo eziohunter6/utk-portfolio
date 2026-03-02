@@ -4,6 +4,7 @@ import {
   MoreWorkSection,
   SectionWithIFrame,
   SectionWithImage,
+  SectionWithImages,
 } from "./CommonField";
 
 export const BuyHome: GlobalConfig = {
@@ -18,46 +19,55 @@ export const BuyHome: GlobalConfig = {
     {
       type: "group",
       name: "hero",
+      defaultValue: {},
       fields: CommonSection,
     },
     {
       type: "group",
       name: "process",
+      defaultValue: {},
       fields: SectionWithIFrame,
     },
     {
       type: "group",
       name: "analysis",
+      defaultValue: {},
       fields: SectionWithIFrame,
     },
     {
       type: "group",
       name: "strategy",
+      defaultValue: {},
       fields: SectionWithIFrame,
     },
     {
       type: "group",
       name: "exploration",
+      defaultValue: {},
       fields: SectionWithImage,
     },
     {
       type: "group",
       name: "finalDesigns",
-      fields: SectionWithImage,
+      defaultValue: {},
+      fields: SectionWithImages,
     },
     {
       type: "group",
       name: "outcome",
+      defaultValue: {},
       fields: CommonSection,
     },
     {
       type: "group",
       name: "reflections",
+      defaultValue: {},
       fields: CommonSection,
     },
     {
       type: "group",
       name: "moreWork",
+      defaultValue: {},
       fields: MoreWorkSection,
     },
   ],

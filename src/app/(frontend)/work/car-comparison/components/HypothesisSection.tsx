@@ -1,22 +1,21 @@
+import { RichText } from "@payloadcms/richtext-lexical/react";
+import LeftSection from "@/components/ui/LeftSection";
+import StickySection from "@/components/ui/StickySection";
 import Title from "@/components/ui/Title";
+import type { CarComparison } from "@/payload-types";
 
-const HypothesisSection = () => (
-  <section>
-    <Title index={4}>Hypothesis</Title>
+type Props = NonNullable<CarComparison["hypothesis"]> & {
+  index: number;
+};
 
-    <div className="w-full md:w-3/4 lg:w-3/5 flex flex-col gap-6 ml-auto">
-      <h3 className="text-lg">
-        Introducing a structured comparison layer for behaviourally identified
-        evaluators would:
-      </h3>
+const HypothesisSection = ({ title, content, index }: Props) => (
+  <StickySection id="hypothesis">
+    <Title index={index}>{title}</Title>
 
-      <ol className="text-base font-light list-decimal list-inside space-y-2">
-        <li>Reduce cognitive strain</li>
-        <li>Improve interpretation clarity</li>
-        <li>Increase downstream progression quality</li>
-      </ol>
-    </div>
-  </section>
+    <LeftSection className="flex flex-col gap-8">
+      <RichText data={content} className="prose" />
+    </LeftSection>
+  </StickySection>
 );
 
 export default HypothesisSection;

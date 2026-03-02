@@ -1,8 +1,10 @@
 import { getHomeContent } from "@/lib/services";
-import ContactSection from "./components/ContactSection";
-import HeroSection from "./components/HeroSection";
-import InfoSection from "./components/InfoSection";
-import WorkSection from "./components/WorkSection";
+import {
+  ContactSection,
+  HeroSection,
+  InfoSection,
+  WorkSection,
+} from "./components";
 
 export default async function Home() {
   const { hero, works, info } = await getHomeContent();

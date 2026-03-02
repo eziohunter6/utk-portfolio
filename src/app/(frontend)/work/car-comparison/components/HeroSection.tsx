@@ -1,34 +1,19 @@
+import { RichText } from "@payloadcms/richtext-lexical/react";
 import Image from "next/image";
+import LeftSection from "@/components/ui/LeftSection";
+import StickySection from "@/components/ui/StickySection";
 import Title from "@/components/ui/Title";
+import type { CarComparison } from "@/payload-types";
 
-const HeroSection = () => (
-  <section>
-    <Title as="h1" className="mb-8" index={1}>
-      Car Comparison
+type Props = NonNullable<CarComparison["hero"]> & {
+  index: number;
+};
+
+const HeroSection = ({ title, content, index }: Props) => (
+  <StickySection id="hero">
+    <Title as="h1" className="mb-8" index={index}>
+      {title}
     </Title>
-
-    <div className="w-full md:w-3/4 lg:w-3/5 flex flex-col gap-6 ml-auto">
-      {/* Hero Content */}
-      <ul className="flex flex-col gap-1 text-base">
-        <li>Spinny</li>
-        <li>Lead Designer</li>
-        <li>4 Weeks</li>
-        <li>Mobile + Web</li>
-      </ul>
-
-      <h2 className="text-2xl mt-6">
-        Spinny did not have a comparison experience. Users evaluating multiple
-        cars manually navigated between detail pages to assess differences.
-      </h2>
-
-      <p className="text-base">
-        After identifying a recurring high intent evaluation behaviour, I led
-        the design and rollout of the platform’s first structured comparison
-        system. The solution was validated through floor testing and a
-        large-scale A/B experiment (~238K users), improving progression across
-        test drive, token, and delivery.
-      </p>
-    </div>
 
     {/* Bento Grid */}
     <div className="mt-8 grid lg:max-h-[600px] grid-cols-1 md:grid-cols-[1.8fr_1fr_1.3fr] md:grid-rows-[1fr_1fr] lg:grid-rows-[0.8fr_1fr] gap-4">
@@ -103,7 +88,11 @@ const HeroSection = () => (
         </hgroup>
       </div>
     </div>
-  </section>
+
+    <LeftSection className="flex flex-col gap-8">
+      <RichText data={content} className="prose" />
+    </LeftSection>
+  </StickySection>
 );
 
 export default HeroSection;
