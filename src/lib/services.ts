@@ -56,3 +56,25 @@ export const getHomeContent = async () => {
     },
   };
 };
+
+export const getBuyHomeContent = async () => {
+  const payload = await getPayload();
+
+  const result = await payload.findGlobal({
+    slug: "buy-homepage",
+    depth: 1,
+  });
+
+  return result;
+};
+
+export const getCarComparisonContent = async () => {
+  const payload = await getPayload();
+
+  const result = await payload.findGlobal({
+    slug: "car-comparison",
+    depth: 1,
+  });
+
+  return result;
+};

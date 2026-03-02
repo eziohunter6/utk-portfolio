@@ -4,11 +4,10 @@ import {
   MoreWorkSection,
   SectionWithIFrame,
   SectionWithImage,
-  SectionWithImages,
 } from "./CommonField";
 
-export const CarComparison: GlobalConfig = {
-  slug: "car-comparison",
+export const BuyHome: GlobalConfig = {
+  slug: "buy-homepage",
   admin: {
     group: "Pages",
   },
@@ -23,33 +22,28 @@ export const CarComparison: GlobalConfig = {
     },
     {
       type: "group",
-      name: "opportunity",
+      name: "process",
       fields: SectionWithIFrame,
     },
     {
       type: "group",
-      name: "problem",
+      name: "analysis",
       fields: SectionWithIFrame,
     },
     {
       type: "group",
-      name: "hypothesis",
-      fields: CommonSection,
+      name: "strategy",
+      fields: SectionWithIFrame,
     },
     {
       type: "group",
       name: "exploration",
-      fields: SectionWithIFrame,
-    },
-    {
-      type: "group",
-      name: "floorTesting",
       fields: SectionWithImage,
     },
     {
       type: "group",
       name: "finalDesigns",
-      fields: SectionWithImages,
+      fields: SectionWithImage,
     },
     {
       type: "group",

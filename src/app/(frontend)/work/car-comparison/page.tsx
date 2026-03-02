@@ -1,5 +1,4 @@
 import MoreWorkSection from "@/components/works/MoreWorks";
-import { WORKS } from "@/constants/works";
 import DesignExplorationSection from "./components/DesignExplorationSection";
 import FinalDesignsSection from "./components/FinalDesignsSection";
 import FloorTestingSection from "./components/FloorTestingSection";
@@ -21,10 +20,7 @@ const CarComparisonPage = () => (
     <FinalDesignsSection />
     <OutcomeSection />
     <ReflectionsSection />
-    <MoreWorkSection
-      index={10}
-      works={WORKS.filter((work) => work.slug !== "car-comparison").slice(0, 2)}
-    />
+    <MoreWorkSection index={10} works={[]} />
   </main>
 );
 

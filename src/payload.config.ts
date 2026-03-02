@@ -10,7 +10,7 @@ import { Media } from "@/collections/Media";
 import { Users } from "@/collections/Users";
 import { Works } from "@/collections/Works";
 import { AiPractices } from "@/globals/AiPractices";
-import { BuyHomepage } from "@/globals/BuyHomepage";
+import { BuyHome } from "@/globals/BuyHome";
 import { CarComparison } from "@/globals/CarComparison";
 import { Contacts } from "@/globals/Contacts";
 import { Home } from "@/globals/Home";
@@ -23,7 +23,7 @@ export default buildConfig({
   sharp,
   secret: process.env.PAYLOAD_SECRET || "",
   collections: [Media, Users, Works],
-  globals: [Navlinks, Contacts, Home, BuyHomepage, CarComparison, AiPractices],
+  globals: [Navlinks, Contacts, Home, BuyHome, CarComparison, AiPractices],
   editor: lexicalEditor(),
   db: vercelPostgresAdapter({
     pool: {
@@ -56,7 +56,7 @@ export default buildConfig({
       token: process.env.BLOB_READ_WRITE_TOKEN,
     }),
     seoPlugin({
-      globals: [Home, AiPractices, BuyHomepage, CarComparison].map(
+      globals: [Home, AiPractices, BuyHome, CarComparison].map(
         (global) => global.slug,
       ),
       uploadsCollection: "media",

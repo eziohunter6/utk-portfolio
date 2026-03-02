@@ -11,26 +11,23 @@ export const Home: GlobalConfig = {
   },
   fields: [
     {
-      type: "collapsible",
-      label: "Hero",
-      admin: {
-        initCollapsed: false,
-      },
+      type: "group",
+      name: "hero",
       fields: [
         {
-          name: "heroTitle",
+          name: "title",
           type: "text",
           required: true,
           defaultValue: "Utkarsh Raj",
         },
         {
-          name: "heroSubtitle",
+          name: "subtitle",
           type: "text",
           required: true,
           defaultValue: "Senior Product Designer",
         },
         {
-          name: "heroContent",
+          name: "content",
           type: "richText",
           required: true,
           editor: lexicalEditor(),
@@ -41,6 +38,7 @@ export const Home: GlobalConfig = {
           relationTo: "media",
           hasMany: true,
           label: "Worked At",
+          required: true,
           filterOptions: {
             mimeType: { contains: "image" },
           },
@@ -48,51 +46,45 @@ export const Home: GlobalConfig = {
       ],
     },
     {
-      type: "collapsible",
-      label: "Works",
-      admin: {
-        initCollapsed: false,
-      },
+      type: "group",
+      name: "works",
       fields: [
         {
-          name: "featuredWorks",
+          name: "extendedCases",
           type: "relationship",
-          label: "Featured Works",
           relationTo: "works",
           hasMany: true,
-          admin: {
-            description: "Select and order work cards for the homepage",
-          },
+        },
+        {
+          name: "miniCases",
+          type: "relationship",
+          relationTo: "works",
+          hasMany: true,
         },
       ],
     },
     {
-      type: "collapsible",
-      label: "Info",
-      admin: {
-        initCollapsed: false,
-      },
+      type: "group",
+      name: "info",
       fields: [
         {
-          name: "leftInfoContent",
+          name: "leftContent",
           type: "richText",
           required: true,
           editor: lexicalEditor(),
         },
         {
-          name: "rightInfoContent",
+          name: "rightContent",
           type: "richText",
           required: true,
           editor: lexicalEditor(),
         },
         {
-          name: "infoImage",
+          name: "image",
           type: "upload",
           relationTo: "media",
           required: true,
-          filterOptions: {
-            mimeType: { contains: "image" },
-          },
+          filterOptions: { mimeType: { contains: "image" } },
         },
       ],
     },

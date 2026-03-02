@@ -18,25 +18,13 @@ export const Works: CollectionConfig = {
       unique: true,
       admin: {
         description:
-          "e.g. buy-homepage, car-comparison - must match work page slug",
+          "e.g. buy-home, car-comparison - must match work page slug",
       },
     },
     {
       name: "title",
       type: "text",
       required: true,
-    },
-    {
-      name: "type",
-      type: "select",
-      required: true,
-      options: [
-        { label: "Extended Cases", value: "extended-cases" },
-        { label: "Mini Cases", value: "mini-cases" },
-      ],
-      admin: {
-        description: "Category of the work",
-      },
     },
     {
       name: "description",
