@@ -2,7 +2,7 @@ import type { TWork, TWorkedAt } from "@/lib/types";
 
 export const WORKS: TWork[] = [
   {
-    id: "buy-homepage",
+    slug: "buy-homepage",
     title: "Buy Homepage - Transactional Users",
     description: "...",
     image: "/images/work/buy-home.jpg",
@@ -11,7 +11,7 @@ export const WORKS: TWork[] = [
     },
   },
   {
-    id: "car-comparison",
+    slug: "car-comparison",
     title: "Car Comparison - Feature",
     description: "...",
     image: "/images/work/car-comparison.jpg",
@@ -20,7 +20,7 @@ export const WORKS: TWork[] = [
     },
   },
   {
-    id: "et-prime",
+    slug: "et-prime",
     title: "Feature Discoverability - ET Prime",
     description: "...",
     image: "/images/work/et-prime.jpg",
@@ -32,7 +32,7 @@ export const WORKS: TWork[] = [
     },
   },
   {
-    id: "cleartrip",
+    slug: "cleartrip",
     title: "Payment Experience Revamp",
     description: "...",
     image: "/images/work/payment-experience.jpg",

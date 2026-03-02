@@ -23,7 +23,7 @@ const CarComparisonPage = () => (
     <ReflectionsSection />
     <MoreWorkSection
       index={10}
-      works={WORKS.filter((work) => work.id !== "car-comparison").slice(0, 2)}
+      works={WORKS.filter((work) => work.slug !== "car-comparison").slice(0, 2)}
     />
   </main>
 );

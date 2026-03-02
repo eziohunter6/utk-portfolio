@@ -21,7 +21,7 @@ const BuyHomepagePage = () => (
     <ReflectionsSection />
     <MoreWorkSection
       index={9}
-      works={WORKS.filter((work) => work.id !== "buy-homepage").slice(0, 2)}
+      works={WORKS.filter((work) => work.slug !== "buy-homepage").slice(0, 2)}
     />
   </main>
 );
