@@ -1,16 +1,17 @@
 import { RichText } from "@payloadcms/richtext-lexical/react";
 import Image from "next/image";
+import StickySection from "@/components/ui/StickySection";
 import Title from "@/components/ui/Title";
-import type { getHomeContent } from "@/lib/services";
 import { getMediaURL } from "@/lib/utils";
+import type { Home } from "@/payload-types";
 
-type Props = Awaited<ReturnType<typeof getHomeContent>>["info"];
+type Props = NonNullable<Home["info"]>;
 
 const InfoSection = ({ leftContent, rightContent, image }: Props) => {
   const imageData = getMediaURL(image);
 
   return (
-    <section id="info">
+    <StickySection id="info">
       <Title index={2}>Info</Title>
 
       <div className="w-full md:w-3/4 lg:w-3/5 flex flex-col gap-8 ml-auto">
@@ -39,7 +40,7 @@ const InfoSection = ({ leftContent, rightContent, image }: Props) => {
           </div>
         )}
       </div>
-    </section>
+    </StickySection>
   );
 };
 

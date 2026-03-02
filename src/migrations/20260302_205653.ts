@@ -150,9 +150,9 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"id" serial PRIMARY KEY NOT NULL,
   	"hero_title" varchar DEFAULT 'Utkarsh Raj' NOT NULL,
   	"hero_subtitle" varchar DEFAULT 'Senior Product Designer' NOT NULL,
-  	"hero_content" jsonb NOT NULL,
-  	"info_left_content" jsonb NOT NULL,
-  	"info_right_content" jsonb NOT NULL,
+  	"hero_content" jsonb DEFAULT '{"root":{"type":"root","children":[{"type":"paragraph","children":[{"type":"text","detail":0,"format":0,"mode":"normal","style":"","text":"","version":1}],"direction":null,"format":"","indent":0,"textFormat":0,"textStyle":"","version":1}],"direction":null,"format":"","indent":0,"version":1}}'::jsonb NOT NULL,
+  	"info_left_content" jsonb DEFAULT '{"root":{"type":"root","children":[{"type":"paragraph","children":[{"type":"text","detail":0,"format":0,"mode":"normal","style":"","text":"","version":1}],"direction":null,"format":"","indent":0,"textFormat":0,"textStyle":"","version":1}],"direction":null,"format":"","indent":0,"version":1}}'::jsonb NOT NULL,
+  	"info_right_content" jsonb DEFAULT '{"root":{"type":"root","children":[{"type":"paragraph","children":[{"type":"text","detail":0,"format":0,"mode":"normal","style":"","text":"","version":1}],"direction":null,"format":"","indent":0,"textFormat":0,"textStyle":"","version":1}],"direction":null,"format":"","indent":0,"version":1}}'::jsonb NOT NULL,
   	"info_image_id" integer NOT NULL,
   	"meta_title" varchar,
   	"meta_description" varchar,
@@ -170,7 +170,7 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"works_id" integer
   );
   
-  CREATE TABLE "buy_homepage" (
+  CREATE TABLE "buy_home" (
   	"id" serial PRIMARY KEY NOT NULL,
   	"hero_title" varchar NOT NULL,
   	"hero_content" jsonb NOT NULL,
@@ -200,7 +200,7 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"created_at" timestamp(3) with time zone
   );
   
-  CREATE TABLE "buy_homepage_rels" (
+  CREATE TABLE "buy_home_rels" (
   	"id" serial PRIMARY KEY NOT NULL,
   	"order" integer,
   	"parent_id" integer NOT NULL,
@@ -291,11 +291,11 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   ALTER TABLE "home_rels" ADD CONSTRAINT "home_rels_parent_fk" FOREIGN KEY ("parent_id") REFERENCES "public"."home"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "home_rels" ADD CONSTRAINT "home_rels_media_fk" FOREIGN KEY ("media_id") REFERENCES "public"."media"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "home_rels" ADD CONSTRAINT "home_rels_works_fk" FOREIGN KEY ("works_id") REFERENCES "public"."works"("id") ON DELETE cascade ON UPDATE no action;
-  ALTER TABLE "buy_homepage" ADD CONSTRAINT "buy_homepage_exploration_image_id_media_id_fk" FOREIGN KEY ("exploration_image_id") REFERENCES "public"."media"("id") ON DELETE set null ON UPDATE no action;
-  ALTER TABLE "buy_homepage" ADD CONSTRAINT "buy_homepage_final_designs_image_id_media_id_fk" FOREIGN KEY ("final_designs_image_id") REFERENCES "public"."media"("id") ON DELETE set null ON UPDATE no action;
-  ALTER TABLE "buy_homepage" ADD CONSTRAINT "buy_homepage_meta_image_id_media_id_fk" FOREIGN KEY ("meta_image_id") REFERENCES "public"."media"("id") ON DELETE set null ON UPDATE no action;
-  ALTER TABLE "buy_homepage_rels" ADD CONSTRAINT "buy_homepage_rels_parent_fk" FOREIGN KEY ("parent_id") REFERENCES "public"."buy_homepage"("id") ON DELETE cascade ON UPDATE no action;
-  ALTER TABLE "buy_homepage_rels" ADD CONSTRAINT "buy_homepage_rels_works_fk" FOREIGN KEY ("works_id") REFERENCES "public"."works"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "buy_home" ADD CONSTRAINT "buy_home_exploration_image_id_media_id_fk" FOREIGN KEY ("exploration_image_id") REFERENCES "public"."media"("id") ON DELETE set null ON UPDATE no action;
+  ALTER TABLE "buy_home" ADD CONSTRAINT "buy_home_final_designs_image_id_media_id_fk" FOREIGN KEY ("final_designs_image_id") REFERENCES "public"."media"("id") ON DELETE set null ON UPDATE no action;
+  ALTER TABLE "buy_home" ADD CONSTRAINT "buy_home_meta_image_id_media_id_fk" FOREIGN KEY ("meta_image_id") REFERENCES "public"."media"("id") ON DELETE set null ON UPDATE no action;
+  ALTER TABLE "buy_home_rels" ADD CONSTRAINT "buy_home_rels_parent_fk" FOREIGN KEY ("parent_id") REFERENCES "public"."buy_home"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "buy_home_rels" ADD CONSTRAINT "buy_home_rels_works_fk" FOREIGN KEY ("works_id") REFERENCES "public"."works"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "car_comparison" ADD CONSTRAINT "car_comparison_floor_testing_image_id_media_id_fk" FOREIGN KEY ("floor_testing_image_id") REFERENCES "public"."media"("id") ON DELETE set null ON UPDATE no action;
   ALTER TABLE "car_comparison" ADD CONSTRAINT "car_comparison_meta_image_id_media_id_fk" FOREIGN KEY ("meta_image_id") REFERENCES "public"."media"("id") ON DELETE set null ON UPDATE no action;
   ALTER TABLE "car_comparison_rels" ADD CONSTRAINT "car_comparison_rels_parent_fk" FOREIGN KEY ("parent_id") REFERENCES "public"."car_comparison"("id") ON DELETE cascade ON UPDATE no action;
@@ -351,13 +351,13 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "home_rels_path_idx" ON "home_rels" USING btree ("path");
   CREATE INDEX "home_rels_media_id_idx" ON "home_rels" USING btree ("media_id");
   CREATE INDEX "home_rels_works_id_idx" ON "home_rels" USING btree ("works_id");
-  CREATE INDEX "buy_homepage_exploration_exploration_image_idx" ON "buy_homepage" USING btree ("exploration_image_id");
-  CREATE INDEX "buy_homepage_final_designs_final_designs_image_idx" ON "buy_homepage" USING btree ("final_designs_image_id");
-  CREATE INDEX "buy_homepage_meta_meta_image_idx" ON "buy_homepage" USING btree ("meta_image_id");
-  CREATE INDEX "buy_homepage_rels_order_idx" ON "buy_homepage_rels" USING btree ("order");
-  CREATE INDEX "buy_homepage_rels_parent_idx" ON "buy_homepage_rels" USING btree ("parent_id");
-  CREATE INDEX "buy_homepage_rels_path_idx" ON "buy_homepage_rels" USING btree ("path");
-  CREATE INDEX "buy_homepage_rels_works_id_idx" ON "buy_homepage_rels" USING btree ("works_id");
+  CREATE INDEX "buy_home_exploration_exploration_image_idx" ON "buy_home" USING btree ("exploration_image_id");
+  CREATE INDEX "buy_home_final_designs_final_designs_image_idx" ON "buy_home" USING btree ("final_designs_image_id");
+  CREATE INDEX "buy_home_meta_meta_image_idx" ON "buy_home" USING btree ("meta_image_id");
+  CREATE INDEX "buy_home_rels_order_idx" ON "buy_home_rels" USING btree ("order");
+  CREATE INDEX "buy_home_rels_parent_idx" ON "buy_home_rels" USING btree ("parent_id");
+  CREATE INDEX "buy_home_rels_path_idx" ON "buy_home_rels" USING btree ("path");
+  CREATE INDEX "buy_home_rels_works_id_idx" ON "buy_home_rels" USING btree ("works_id");
   CREATE INDEX "car_comparison_floor_testing_floor_testing_image_idx" ON "car_comparison" USING btree ("floor_testing_image_id");
   CREATE INDEX "car_comparison_meta_meta_image_idx" ON "car_comparison" USING btree ("meta_image_id");
   CREATE INDEX "car_comparison_rels_order_idx" ON "car_comparison_rels" USING btree ("order");
@@ -392,8 +392,8 @@ export async function down({ db, payload, req }: MigrateDownArgs): Promise<void>
   DROP TABLE "contacts" CASCADE;
   DROP TABLE "home" CASCADE;
   DROP TABLE "home_rels" CASCADE;
-  DROP TABLE "buy_homepage" CASCADE;
-  DROP TABLE "buy_homepage_rels" CASCADE;
+  DROP TABLE "buy_home" CASCADE;
+  DROP TABLE "buy_home_rels" CASCADE;
   DROP TABLE "car_comparison" CASCADE;
   DROP TABLE "car_comparison_rels" CASCADE;
   DROP TABLE "ai_practices" CASCADE;

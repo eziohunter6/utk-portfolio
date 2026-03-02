@@ -5,9 +5,9 @@ type Props = HTMLAttributes<HTMLDivElement>;
 
 const StickySection = ({ className, children, ...props }: Props) => {
   return (
-    <div className={cn("", className)} {...props}>
+    <section className={cn("", className)} {...props}>
       {children}
-    </div>
+    </section>
   );
 };
 

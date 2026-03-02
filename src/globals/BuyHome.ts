@@ -7,7 +7,7 @@ import {
 } from "./CommonField";
 
 export const BuyHome: GlobalConfig = {
-  slug: "buy-homepage",
+  slug: "buy-home",
   admin: {
     group: "Pages",
   },

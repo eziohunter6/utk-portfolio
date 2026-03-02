@@ -1,31 +1,50 @@
+import StickySection from "@/components/ui/StickySection";
 import Title from "@/components/ui/Title";
 import WorkCard from "@/components/works/Card";
-import type { getHomeContent } from "@/lib/services";
+import { filterPopulated } from "@/lib/utils";
+import type { Home, Work } from "@/payload-types";
 
-type Props = Awaited<ReturnType<typeof getHomeContent>>["works"];
+type Props = NonNullable<Home["works"]>;
 
-const WorkSection = ({ extendedCases, miniCases }: Props) => (
-  <section id="work">
-    <Title hideUnderLine index={1}>
-      Selected Work
-    </Title>
+const WorkSection = (props: Props) => {
+  const extendedCases = filterPopulated<Work>(props.extendedCases);
+  const miniCases = filterPopulated<Work>(props.miniCases);
 
-    {/* Extended Cases */}
-    <h3 className="text-xl border-b-2 border-current mb-8">Extended Cases</h3>
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-x-12 md:gap-y-16">
-      {extendedCases.map((work) => (
-        <WorkCard key={work.title} {...work} />
-      ))}
-    </div>
+  return (
+    <StickySection id="works">
+      <Title hideUnderLine index={1}>
+        Selected Work
+      </Title>
 
-    {/* Mini Cases */}
-    <h3 className="text-xl border-b-2 border-current mb-8 mt-16">Mini Cases</h3>
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-x-12 md:gap-y-16">
-      {miniCases.map((work) => (
-        <WorkCard key={work.slug} {...work} />
-      ))}
-    </div>
-  </section>
-);
+      {/* Extended Cases */}
+      {extendedCases.length > 0 && (
+        <>
+          <h3 className="text-xl border-b-2 border-current mb-8">
+            Extended Cases
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-x-12 md:gap-y-16">
+            {extendedCases.map((work) => (
+              <WorkCard key={work.title} {...work} />
+            ))}
+          </div>
+        </>
+      )}
+
+      {/* Mini Cases */}
+      {miniCases.length > 0 && (
+        <>
+          <h3 className="text-xl border-b-2 border-current mb-8 mt-16">
+            Mini Cases
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-x-12 md:gap-y-16">
+            {miniCases.map((work) => (
+              <WorkCard key={work.slug} {...work} />
+            ))}
+          </div>
+        </>
+      )}
+    </StickySection>
+  );
+};
 
 export default WorkSection;

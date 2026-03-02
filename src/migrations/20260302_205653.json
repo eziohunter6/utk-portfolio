@@ -1581,19 +1581,22 @@
           "name": "hero_content",
           "type": "jsonb",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "default": "'{\"root\":{\"type\":\"root\",\"children\":[{\"type\":\"paragraph\",\"children\":[{\"type\":\"text\",\"detail\":0,\"format\":0,\"mode\":\"normal\",\"style\":\"\",\"text\":\"\",\"version\":1}],\"direction\":null,\"format\":\"\",\"indent\":0,\"textFormat\":0,\"textStyle\":\"\",\"version\":1}],\"direction\":null,\"format\":\"\",\"indent\":0,\"version\":1}}'::jsonb"
         },
         "info_left_content": {
           "name": "info_left_content",
           "type": "jsonb",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "default": "'{\"root\":{\"type\":\"root\",\"children\":[{\"type\":\"paragraph\",\"children\":[{\"type\":\"text\",\"detail\":0,\"format\":0,\"mode\":\"normal\",\"style\":\"\",\"text\":\"\",\"version\":1}],\"direction\":null,\"format\":\"\",\"indent\":0,\"textFormat\":0,\"textStyle\":\"\",\"version\":1}],\"direction\":null,\"format\":\"\",\"indent\":0,\"version\":1}}'::jsonb"
         },
         "info_right_content": {
           "name": "info_right_content",
           "type": "jsonb",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "default": "'{\"root\":{\"type\":\"root\",\"children\":[{\"type\":\"paragraph\",\"children\":[{\"type\":\"text\",\"detail\":0,\"format\":0,\"mode\":\"normal\",\"style\":\"\",\"text\":\"\",\"version\":1}],\"direction\":null,\"format\":\"\",\"indent\":0,\"textFormat\":0,\"textStyle\":\"\",\"version\":1}],\"direction\":null,\"format\":\"\",\"indent\":0,\"version\":1}}'::jsonb"
         },
         "info_image_id": {
           "name": "info_image_id",
@@ -1863,8 +1866,8 @@
       "checkConstraints": {},
       "isRLSEnabled": false
     },
-    "public.buy_homepage": {
-      "name": "buy_homepage",
+    "public.buy_home": {
+      "name": "buy_home",
       "schema": "",
       "columns": {
         "id": {
@@ -2031,8 +2034,8 @@
         }
       },
       "indexes": {
-        "buy_homepage_exploration_exploration_image_idx": {
-          "name": "buy_homepage_exploration_exploration_image_idx",
+        "buy_home_exploration_exploration_image_idx": {
+          "name": "buy_home_exploration_exploration_image_idx",
           "columns": [
             {
               "expression": "exploration_image_id",
@@ -2046,8 +2049,8 @@
           "method": "btree",
           "with": {}
         },
-        "buy_homepage_final_designs_final_designs_image_idx": {
-          "name": "buy_homepage_final_designs_final_designs_image_idx",
+        "buy_home_final_designs_final_designs_image_idx": {
+          "name": "buy_home_final_designs_final_designs_image_idx",
           "columns": [
             {
               "expression": "final_designs_image_id",
@@ -2061,8 +2064,8 @@
           "method": "btree",
           "with": {}
         },
-        "buy_homepage_meta_meta_image_idx": {
-          "name": "buy_homepage_meta_meta_image_idx",
+        "buy_home_meta_meta_image_idx": {
+          "name": "buy_home_meta_meta_image_idx",
           "columns": [
             {
               "expression": "meta_image_id",
@@ -2078,9 +2081,9 @@
         }
       },
       "foreignKeys": {
-        "buy_homepage_exploration_image_id_media_id_fk": {
-          "name": "buy_homepage_exploration_image_id_media_id_fk",
-          "tableFrom": "buy_homepage",
+        "buy_home_exploration_image_id_media_id_fk": {
+          "name": "buy_home_exploration_image_id_media_id_fk",
+          "tableFrom": "buy_home",
           "tableTo": "media",
           "columnsFrom": [
             "exploration_image_id"
@@ -2091,9 +2094,9 @@
           "onDelete": "set null",
           "onUpdate": "no action"
         },
-        "buy_homepage_final_designs_image_id_media_id_fk": {
-          "name": "buy_homepage_final_designs_image_id_media_id_fk",
-          "tableFrom": "buy_homepage",
+        "buy_home_final_designs_image_id_media_id_fk": {
+          "name": "buy_home_final_designs_image_id_media_id_fk",
+          "tableFrom": "buy_home",
           "tableTo": "media",
           "columnsFrom": [
             "final_designs_image_id"
@@ -2104,9 +2107,9 @@
           "onDelete": "set null",
           "onUpdate": "no action"
         },
-        "buy_homepage_meta_image_id_media_id_fk": {
-          "name": "buy_homepage_meta_image_id_media_id_fk",
-          "tableFrom": "buy_homepage",
+        "buy_home_meta_image_id_media_id_fk": {
+          "name": "buy_home_meta_image_id_media_id_fk",
+          "tableFrom": "buy_home",
           "tableTo": "media",
           "columnsFrom": [
             "meta_image_id"
@@ -2124,8 +2127,8 @@
       "checkConstraints": {},
       "isRLSEnabled": false
     },
-    "public.buy_homepage_rels": {
-      "name": "buy_homepage_rels",
+    "public.buy_home_rels": {
+      "name": "buy_home_rels",
       "schema": "",
       "columns": {
         "id": {
@@ -2160,8 +2163,8 @@
         }
       },
       "indexes": {
-        "buy_homepage_rels_order_idx": {
-          "name": "buy_homepage_rels_order_idx",
+        "buy_home_rels_order_idx": {
+          "name": "buy_home_rels_order_idx",
           "columns": [
             {
               "expression": "order",
@@ -2175,8 +2178,8 @@
           "method": "btree",
           "with": {}
         },
-        "buy_homepage_rels_parent_idx": {
-          "name": "buy_homepage_rels_parent_idx",
+        "buy_home_rels_parent_idx": {
+          "name": "buy_home_rels_parent_idx",
           "columns": [
             {
               "expression": "parent_id",
@@ -2190,8 +2193,8 @@
           "method": "btree",
           "with": {}
         },
-        "buy_homepage_rels_path_idx": {
-          "name": "buy_homepage_rels_path_idx",
+        "buy_home_rels_path_idx": {
+          "name": "buy_home_rels_path_idx",
           "columns": [
             {
               "expression": "path",
@@ -2205,8 +2208,8 @@
           "method": "btree",
           "with": {}
         },
-        "buy_homepage_rels_works_id_idx": {
-          "name": "buy_homepage_rels_works_id_idx",
+        "buy_home_rels_works_id_idx": {
+          "name": "buy_home_rels_works_id_idx",
           "columns": [
             {
               "expression": "works_id",
@@ -2222,10 +2225,10 @@
         }
       },
       "foreignKeys": {
-        "buy_homepage_rels_parent_fk": {
-          "name": "buy_homepage_rels_parent_fk",
-          "tableFrom": "buy_homepage_rels",
-          "tableTo": "buy_homepage",
+        "buy_home_rels_parent_fk": {
+          "name": "buy_home_rels_parent_fk",
+          "tableFrom": "buy_home_rels",
+          "tableTo": "buy_home",
           "columnsFrom": [
             "parent_id"
           ],
@@ -2235,9 +2238,9 @@
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
-        "buy_homepage_rels_works_fk": {
-          "name": "buy_homepage_rels_works_fk",
-          "tableFrom": "buy_homepage_rels",
+        "buy_home_rels_works_fk": {
+          "name": "buy_home_rels_works_fk",
+          "tableFrom": "buy_home_rels",
           "tableTo": "works",
           "columnsFrom": [
             "works_id"
@@ -2991,6 +2994,6 @@
     "tables": {},
     "columns": {}
   },
-  "id": "e3d0eff7-5d86-471f-940b-e74a646ab838",
+  "id": "199ca7b6-fea4-477b-a749-05bab6a16a98",
   "prevId": "00000000-0000-0000-0000-000000000000"
 }

@@ -1,4 +1,4 @@
-import ContactSection from "../(home)/components/ContactSection";
+import ContactSection from "@/app/(frontend)/(home)/components/ContactSection";
 import AIContentSection from "./components/AIContentSection";
 import AIPrototypeSection from "./components/AIPrototypeSection";
 import AIVideoSection from "./components/AIVideoSection";

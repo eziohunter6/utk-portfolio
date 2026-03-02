@@ -11,6 +11,7 @@ import StrategyLimitationsSection from "./components/StrategyLimitationsSection"
 
 export default async function BuyHomePage() {
   const content = await getBuyHomeContent();
+  console.log("[BuyHomePage] content", content);
 
   return (
     <main id="buy-homepage">

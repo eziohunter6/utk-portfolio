@@ -1,4 +1,7 @@
-import { lexicalEditor } from "@payloadcms/richtext-lexical";
+import {
+  defaultRichTextValue,
+  lexicalEditor,
+} from "@payloadcms/richtext-lexical";
 import type { GlobalConfig } from "payload";
 
 export const Home: GlobalConfig = {
@@ -13,6 +16,7 @@ export const Home: GlobalConfig = {
     {
       type: "group",
       name: "hero",
+      defaultValue: {},
       fields: [
         {
           name: "title",
@@ -31,6 +35,7 @@ export const Home: GlobalConfig = {
           type: "richText",
           required: true,
           editor: lexicalEditor(),
+          defaultValue: defaultRichTextValue,
         },
         {
           name: "workedAt",
@@ -39,6 +44,7 @@ export const Home: GlobalConfig = {
           hasMany: true,
           label: "Worked At",
           required: true,
+          defaultValue: [],
           filterOptions: {
             mimeType: { contains: "image" },
           },
@@ -48,36 +54,42 @@ export const Home: GlobalConfig = {
     {
       type: "group",
       name: "works",
+      defaultValue: {},
       fields: [
         {
           name: "extendedCases",
           type: "relationship",
           relationTo: "works",
           hasMany: true,
+          defaultValue: [],
         },
         {
           name: "miniCases",
           type: "relationship",
           relationTo: "works",
           hasMany: true,
+          defaultValue: [],
         },
       ],
     },
     {
       type: "group",
       name: "info",
+      defaultValue: {},
       fields: [
         {
           name: "leftContent",
           type: "richText",
           required: true,
           editor: lexicalEditor(),
+          defaultValue: defaultRichTextValue,
         },
         {
           name: "rightContent",
           type: "richText",
           required: true,
           editor: lexicalEditor(),
+          defaultValue: defaultRichTextValue,
         },
         {
           name: "image",
