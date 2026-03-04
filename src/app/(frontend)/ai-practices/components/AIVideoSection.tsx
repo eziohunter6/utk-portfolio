@@ -1,7 +1,7 @@
 import { RichText } from "@payloadcms/richtext-lexical/react";
 import Image from "next/image";
-import LeftSection from "@/components/ui/LeftSection";
-import StickySection from "@/components/ui/StickySection";
+import LeftWrapper from "@/components/ui/LeftWrapper";
+import Section from "@/components/ui/Section";
 import Title from "@/components/ui/Title";
 import { getMediaURL } from "@/lib/utils";
 import type { AiPractice } from "@/payload-types";
@@ -14,11 +14,11 @@ const AIVideoSection = ({ title, content, videos, image, index }: Props) => {
   const img = getMediaURL(image);
 
   return (
-    <StickySection id="ai-video">
+    <Section id="ai-video">
       <Title index={index}>{title}</Title>
-      <LeftSection className="flex flex-col gap-8">
+      <LeftWrapper className="flex flex-col gap-8">
         <RichText data={content} className="prose" />
-      </LeftSection>
+      </LeftWrapper>
 
       {/* Videos */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
@@ -59,7 +59,7 @@ const AIVideoSection = ({ title, content, videos, image, index }: Props) => {
           </div>
         </div>
       )}
-    </StickySection>
+    </Section>
   );
 };
 

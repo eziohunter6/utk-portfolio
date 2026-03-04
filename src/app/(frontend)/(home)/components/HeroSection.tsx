@@ -1,6 +1,6 @@
 import { RichText } from "@payloadcms/richtext-lexical/react";
 import Image from "next/image";
-import StickySection from "@/components/ui/StickySection";
+import Section from "@/components/ui/Section";
 import { filterPopulated } from "@/lib/utils";
 import type { Home } from "@/payload-types";
 import HandSvg from "./HandSvg";
@@ -8,8 +8,8 @@ import HandSvg from "./HandSvg";
 type Props = NonNullable<Home["hero"]>;
 
 const HeroSection = ({ title, subtitle, content, workedAt }: Props) => (
-  <StickySection id="hero">
-    <div className="flex flex-col justify-center gap-8 mb-16">
+  <Section id="hero">
+    <div className="flex flex-col justify-center gap-8 mb-16 pt-32 sm:pt-40 ">
       <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-[10rem]/45 font-semibold">
         {title}
       </h1>
@@ -22,7 +22,7 @@ const HeroSection = ({ title, subtitle, content, workedAt }: Props) => (
     <div className="flex flex-col gap-2 w-full md:w-3/4 lg:w-3/5 my-16">
       <HandSvg className="size-16 md:size-24" />
 
-      <RichText data={content} className="prose" />
+      <RichText data={content} className="prose prose-xl" />
     </div>
 
     {/* Worked At */}
@@ -51,7 +51,7 @@ const HeroSection = ({ title, subtitle, content, workedAt }: Props) => (
         })}
       </div>
     </div>
-  </StickySection>
+  </Section>
 );
 
 export default HeroSection;

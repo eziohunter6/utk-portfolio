@@ -3,13 +3,10 @@ import { cn } from "@/lib/utils";
 
 type Props = HTMLAttributes<HTMLDivElement>;
 
-const StickySection = ({ className, children, ...props }: Props) => {
+const Section = ({ className, children, ...props }: Props) => {
   return (
     <section
-      className={cn(
-        "sticky top-0 max-w-7xl m-auto bg-white px-6 py-15",
-        className,
-      )}
+      className={cn("max-w-7xl m-auto bg-white px-6 py-12 md:py-15", className)}
       {...props}
     >
       {children}
@@ -17,4 +14,4 @@ const StickySection = ({ className, children, ...props }: Props) => {
   );
 };
 
-export default StickySection;
+export default Section;

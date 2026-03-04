@@ -1,7 +1,7 @@
 import { RichText } from "@payloadcms/richtext-lexical/react";
 import Image from "next/image";
-import LeftSection from "@/components/ui/LeftSection";
-import StickySection from "@/components/ui/StickySection";
+import LeftWrapper from "@/components/ui/LeftWrapper";
+import Section from "@/components/ui/Section";
 import Title from "@/components/ui/Title";
 import type { CarComparison } from "@/payload-types";
 
@@ -12,12 +12,12 @@ type Props = NonNullable<CarComparison["floorTesting"]> & {
 // TODO: Add iframe
 
 const FloorTestingSection = ({ title, content, index }: Props) => (
-  <StickySection id="floorTesting">
+  <Section id="floorTesting">
     <Title index={index}>{title}</Title>
 
-    <LeftSection className="flex flex-col gap-8">
+    <LeftWrapper className="flex flex-col gap-8">
       <RichText data={content} className="prose" />
-    </LeftSection>
+    </LeftWrapper>
 
     {/* Image */}
     <div className="bg-muted flex flex-col md:flex-row gap-10 rounded-2xl p-4 mt-8">
@@ -38,7 +38,7 @@ const FloorTestingSection = ({ title, content, index }: Props) => (
         />
       </div>
     </div>
-  </StickySection>
+  </Section>
 );
 
 export default FloorTestingSection;

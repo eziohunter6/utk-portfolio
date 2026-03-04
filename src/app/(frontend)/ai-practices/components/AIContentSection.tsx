@@ -1,7 +1,7 @@
 import { RichText } from "@payloadcms/richtext-lexical/react";
 import Image from "next/image";
-import LeftSection from "@/components/ui/LeftSection";
-import StickySection from "@/components/ui/StickySection";
+import LeftWrapper from "@/components/ui/LeftWrapper";
+import Section from "@/components/ui/Section";
 import Title from "@/components/ui/Title";
 import { getMediaURL } from "@/lib/utils";
 import type { AiPractice } from "@/payload-types";
@@ -11,11 +11,11 @@ type Props = NonNullable<AiPractice["aiContent"]> & {
 };
 
 const AIContentSection = ({ title, content, images, index }: Props) => (
-  <StickySection id="ai-content">
+  <Section id="ai-content">
     <Title index={index}>{title}</Title>
-    <LeftSection className="flex flex-col gap-8">
+    <LeftWrapper className="flex flex-col gap-8">
       <RichText data={content} className="prose" />
-    </LeftSection>
+    </LeftWrapper>
 
     {/* Image */}
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
@@ -31,7 +31,7 @@ const AIContentSection = ({ title, content, images, index }: Props) => (
         );
       })}
     </div>
-  </StickySection>
+  </Section>
 );
 
 export default AIContentSection;

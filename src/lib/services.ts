@@ -22,7 +22,10 @@ export const getContacts = async () => {
 export const getHomeContent = async () => {
   const payload = await getPayload();
 
-  const result = await payload.findGlobal({ slug: "home", depth: 1 });
+  const result = await payload.findGlobal({
+    slug: "home",
+    depth: 2,
+  });
 
   return result;
 };
@@ -32,7 +35,7 @@ export const getBuyHomeContent = async () => {
 
   const result = await payload.findGlobal({
     slug: "buy-home",
-    depth: 1,
+    depth: 2,
   });
 
   return result;
@@ -43,7 +46,7 @@ export const getCarComparisonContent = async () => {
 
   const result = await payload.findGlobal({
     slug: "car-comparison",
-    depth: 1,
+    depth: 2,
   });
 
   return result;
@@ -54,7 +57,7 @@ export const getAiPracticesContent = async () => {
 
   const result = await payload.findGlobal({
     slug: "ai-practices",
-    depth: 1,
+    depth: 2,
   });
 
   return result;

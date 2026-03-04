@@ -1,7 +1,7 @@
 import { RichText } from "@payloadcms/richtext-lexical/react";
 import Image from "next/image";
-import LeftSection from "@/components/ui/LeftSection";
-import StickySection from "@/components/ui/StickySection";
+import LeftWrapper from "@/components/ui/LeftWrapper";
+import Section from "@/components/ui/Section";
 import Title from "@/components/ui/Title";
 import { getMediaURL } from "@/lib/utils";
 import type { BuyHome } from "@/payload-types";
@@ -14,12 +14,12 @@ const FinalDesignsSection = ({ title, content, index, images }: Props) => {
   const imagesData = images?.map(getMediaURL);
 
   return (
-    <StickySection id="final-designs">
+    <Section id="final-designs">
       <Title index={index}>{title}</Title>
 
-      <LeftSection className="flex flex-col gap-8">
+      <LeftWrapper className="flex flex-col gap-8">
         <RichText data={content} className="prose" />
-      </LeftSection>
+      </LeftWrapper>
 
       {imagesData?.map((image) => (
         <div key={image?.src} className="bg-muted rounded-2xl mt-8">
@@ -33,7 +33,7 @@ const FinalDesignsSection = ({ title, content, index, images }: Props) => {
           </div>
         </div>
       ))}
-    </StickySection>
+    </Section>
   );
 };
 

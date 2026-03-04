@@ -6,7 +6,7 @@ const Header = async () => {
   const links = await getNavlinks();
 
   return (
-    <header className="fixed top-0 inset-x-0 z-20 py-5 md:py-6 bg-main/50 backdrop-blur-sm md:shadow-xs">
+    <header className="fixed top-0 inset-x-0 z-20 py-5 md:py-6 bg-main">
       <div className="px-6 max-w-7xl m-auto flex items-center justify-between">
         {/* Home */}
         <Link href="/" className="w-0 text-4xl relative">

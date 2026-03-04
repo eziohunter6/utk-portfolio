@@ -18,8 +18,8 @@ const Title = ({
   return (
     <hgroup
       className={cn(
-        "relative flex items-end justify-between",
-        !hideUnderLine && "pb-6 border-b-2 border-current",
+        "flex items-end justify-between pb-6 mb-12 sticky top-20 md:top-22 z-10 bg-main",
+        !hideUnderLine && "border-b-2 border-current",
         className,
       )}
       {...props}

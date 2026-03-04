@@ -1,6 +1,6 @@
 import { RichText } from "@payloadcms/richtext-lexical/react";
-import LeftSection from "@/components/ui/LeftSection";
-import StickySection from "@/components/ui/StickySection";
+import LeftWrapper from "@/components/ui/LeftWrapper";
+import Section from "@/components/ui/Section";
 import Title from "@/components/ui/Title";
 import type { CarComparison } from "@/payload-types";
 
@@ -9,13 +9,13 @@ type Props = NonNullable<CarComparison["reflections"]> & {
 };
 
 const ReflectionsSection = ({ title, content, index }: Props) => (
-  <StickySection id="reflections">
+  <Section id="reflections">
     <Title index={index}>{title}</Title>
 
-    <LeftSection className="flex flex-col gap-8">
+    <LeftWrapper className="flex flex-col gap-8">
       <RichText data={content} className="prose" />
-    </LeftSection>
-  </StickySection>
+    </LeftWrapper>
+  </Section>
 );
 
 export default ReflectionsSection;

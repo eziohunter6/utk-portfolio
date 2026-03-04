@@ -1,6 +1,7 @@
 import { RichText } from "@payloadcms/richtext-lexical/react";
 import Image from "next/image";
-import StickySection from "@/components/ui/StickySection";
+import LeftWrapper from "@/components/ui/LeftWrapper";
+import Section from "@/components/ui/Section";
 import Title from "@/components/ui/Title";
 import { getMediaURL } from "@/lib/utils";
 import type { Home } from "@/payload-types";
@@ -11,26 +12,22 @@ const InfoSection = ({ leftContent, rightContent, image }: Props) => {
   const imageData = getMediaURL(image);
 
   return (
-    <StickySection id="info">
+    <Section id="info">
       <Title index={2}>Info</Title>
 
-      <div className="w-full md:w-3/4 lg:w-3/5 flex flex-col gap-8 ml-auto">
+      <LeftWrapper className="flex flex-col gap-8">
         {/* Info Content */}
-        <div className="flex flex-col md:flex-row gap-4">
+        <div className="flex flex-col md:flex-row gap-8 md:gap-4">
           {/* Content 1 */}
-          <div className="flex flex-col gap-4">
-            <RichText data={leftContent} className="prose" />
-          </div>
+          <RichText data={leftContent} className="prose" />
 
           {/* Content 2 */}
-          <div className="flex flex-col gap-4">
-            <RichText data={rightContent} className="prose" />
-          </div>
+          <RichText data={rightContent} className="prose" />
         </div>
 
         {/* Info Image */}
         {imageData && (
-          <div className="relative w-full aspect-square bg-muted">
+          <div className="relative w-full md:w-11/12 aspect-square">
             <Image
               fill
               src={imageData.src}
@@ -39,8 +36,8 @@ const InfoSection = ({ leftContent, rightContent, image }: Props) => {
             />
           </div>
         )}
-      </div>
-    </StickySection>
+      </LeftWrapper>
+    </Section>
   );
 };
 
