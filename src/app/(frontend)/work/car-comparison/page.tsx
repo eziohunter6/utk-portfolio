@@ -1,4 +1,6 @@
+import type { Metadata } from "next";
 import MoreWorkSection from "@/components/works/MoreWorks";
+import { buildMetadataFromPayload } from "@/lib/seo";
 import { getCarComparisonContent } from "@/lib/services";
 import { filterPopulated } from "@/lib/utils";
 import {
@@ -12,6 +14,15 @@ import {
   ProblemSection,
   ReflectionsSection,
 } from "./components";
+
+export const generateMetadata = async (): Promise<Metadata> => {
+  const { meta } = await getCarComparisonContent();
+
+  return buildMetadataFromPayload({
+    meta,
+    urlPath: "/work/car-comparison",
+  });
+};
 
 export default async function CarComparisonPage() {
   const {
