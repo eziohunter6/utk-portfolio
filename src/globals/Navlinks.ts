@@ -13,6 +13,8 @@ export const Navlinks: GlobalConfig = {
       name: "navLinks",
       type: "array",
       label: "Nav Links",
+      required: true,
+      defaultValue: [],
       fields: [
         {
           name: "title",

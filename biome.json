@@ -7,15 +7,7 @@
   },
   "files": {
     "ignoreUnknown": true,
-    "includes": [
-      "**",
-      "!node_modules",
-      "!.next",
-      "!dist",
-      "!build",
-      "!payload-types.ts",
-      "!src/migrations*"
-    ]
+    "includes": ["**", "!node_modules", "!.next", "!dist", "!build"]
   },
   "formatter": {
     "enabled": true,
@@ -24,6 +16,7 @@
   },
   "linter": {
     "enabled": true,
+    "includes": ["!src/payload-types.ts", "!src/migrations*"],
     "rules": {
       "recommended": true,
       "suspicious": {

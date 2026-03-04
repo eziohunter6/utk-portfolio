@@ -1,4 +1,7 @@
-import { lexicalEditor } from "@payloadcms/richtext-lexical";
+import {
+  defaultRichTextValue,
+  lexicalEditor,
+} from "@payloadcms/richtext-lexical";
 import type { GlobalConfig } from "payload";
 
 export const Contacts: GlobalConfig = {
@@ -14,11 +17,14 @@ export const Contacts: GlobalConfig = {
       name: "content",
       type: "richText",
       required: true,
+      defaultValue: defaultRichTextValue,
       editor: lexicalEditor(),
     },
     {
       name: "contacts",
       type: "array",
+      required: true,
+      defaultValue: [],
       fields: [
         {
           name: "name",

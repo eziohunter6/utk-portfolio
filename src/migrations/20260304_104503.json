@@ -219,12 +219,8 @@
           "name": "media_thumbnail_id_media_id_fk",
           "tableFrom": "media",
           "tableTo": "media",
-          "columnsFrom": [
-            "thumbnail_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["thumbnail_id"],
+          "columnsTo": ["id"],
           "onDelete": "set null",
           "onUpdate": "no action"
         }
@@ -307,12 +303,8 @@
           "name": "users_sessions_parent_id_fk",
           "tableFrom": "users_sessions",
           "tableTo": "users",
-          "columnsFrom": [
-            "_parent_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["_parent_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -511,12 +503,8 @@
           "name": "works_tags_parent_id_fk",
           "tableFrom": "works_tags",
           "tableTo": "works",
-          "columnsFrom": [
-            "_parent_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["_parent_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -657,12 +645,8 @@
           "name": "works_image_id_media_id_fk",
           "tableFrom": "works",
           "tableTo": "media",
-          "columnsFrom": [
-            "image_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["image_id"],
+          "columnsTo": ["id"],
           "onDelete": "set null",
           "onUpdate": "no action"
         }
@@ -949,12 +933,8 @@
           "name": "payload_locked_documents_rels_parent_fk",
           "tableFrom": "payload_locked_documents_rels",
           "tableTo": "payload_locked_documents",
-          "columnsFrom": [
-            "parent_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["parent_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
@@ -962,12 +942,8 @@
           "name": "payload_locked_documents_rels_media_fk",
           "tableFrom": "payload_locked_documents_rels",
           "tableTo": "media",
-          "columnsFrom": [
-            "media_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["media_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
@@ -975,12 +951,8 @@
           "name": "payload_locked_documents_rels_users_fk",
           "tableFrom": "payload_locked_documents_rels",
           "tableTo": "users",
-          "columnsFrom": [
-            "users_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["users_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
@@ -988,12 +960,8 @@
           "name": "payload_locked_documents_rels_works_fk",
           "tableFrom": "payload_locked_documents_rels",
           "tableTo": "works",
-          "columnsFrom": [
-            "works_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["works_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -1197,12 +1165,8 @@
           "name": "payload_preferences_rels_parent_fk",
           "tableFrom": "payload_preferences_rels",
           "tableTo": "payload_preferences",
-          "columnsFrom": [
-            "parent_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["parent_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
@@ -1210,12 +1174,8 @@
           "name": "payload_preferences_rels_users_fk",
           "tableFrom": "payload_preferences_rels",
           "tableTo": "users",
-          "columnsFrom": [
-            "users_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["users_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -1374,12 +1334,8 @@
           "name": "navlinks_nav_links_parent_id_fk",
           "tableFrom": "navlinks_nav_links",
           "tableTo": "navlinks",
-          "columnsFrom": [
-            "_parent_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["_parent_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -1500,12 +1456,8 @@
           "name": "contacts_contacts_parent_id_fk",
           "tableFrom": "contacts_contacts",
           "tableTo": "contacts",
-          "columnsFrom": [
-            "_parent_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["_parent_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -1672,12 +1624,8 @@
           "name": "home_info_image_id_media_id_fk",
           "tableFrom": "home",
           "tableTo": "media",
-          "columnsFrom": [
-            "info_image_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["info_image_id"],
+          "columnsTo": ["id"],
           "onDelete": "set null",
           "onUpdate": "no action"
         },
@@ -1685,12 +1633,8 @@
           "name": "home_meta_image_id_media_id_fk",
           "tableFrom": "home",
           "tableTo": "media",
-          "columnsFrom": [
-            "meta_image_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["meta_image_id"],
+          "columnsTo": ["id"],
           "onDelete": "set null",
           "onUpdate": "no action"
         }
@@ -1824,12 +1768,8 @@
           "name": "home_rels_parent_fk",
           "tableFrom": "home_rels",
           "tableTo": "home",
-          "columnsFrom": [
-            "parent_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["parent_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
@@ -1837,12 +1777,8 @@
           "name": "home_rels_media_fk",
           "tableFrom": "home_rels",
           "tableTo": "media",
-          "columnsFrom": [
-            "media_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["media_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
@@ -1850,12 +1786,8 @@
           "name": "home_rels_works_fk",
           "tableFrom": "home_rels",
           "tableTo": "works",
-          "columnsFrom": [
-            "works_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["works_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -2083,12 +2015,8 @@
           "name": "buy_home_exploration_image_id_media_id_fk",
           "tableFrom": "buy_home",
           "tableTo": "media",
-          "columnsFrom": [
-            "exploration_image_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["exploration_image_id"],
+          "columnsTo": ["id"],
           "onDelete": "set null",
           "onUpdate": "no action"
         },
@@ -2096,12 +2024,8 @@
           "name": "buy_home_meta_image_id_media_id_fk",
           "tableFrom": "buy_home",
           "tableTo": "media",
-          "columnsFrom": [
-            "meta_image_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["meta_image_id"],
+          "columnsTo": ["id"],
           "onDelete": "set null",
           "onUpdate": "no action"
         }
@@ -2235,12 +2159,8 @@
           "name": "buy_home_rels_parent_fk",
           "tableFrom": "buy_home_rels",
           "tableTo": "buy_home",
-          "columnsFrom": [
-            "parent_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["parent_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
@@ -2248,12 +2168,8 @@
           "name": "buy_home_rels_media_fk",
           "tableFrom": "buy_home_rels",
           "tableTo": "media",
-          "columnsFrom": [
-            "media_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["media_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
@@ -2261,12 +2177,8 @@
           "name": "buy_home_rels_works_fk",
           "tableFrom": "buy_home_rels",
           "tableTo": "works",
-          "columnsFrom": [
-            "works_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["works_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -2508,12 +2420,8 @@
           "name": "car_comparison_floor_testing_image_id_media_id_fk",
           "tableFrom": "car_comparison",
           "tableTo": "media",
-          "columnsFrom": [
-            "floor_testing_image_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["floor_testing_image_id"],
+          "columnsTo": ["id"],
           "onDelete": "set null",
           "onUpdate": "no action"
         },
@@ -2521,12 +2429,8 @@
           "name": "car_comparison_meta_image_id_media_id_fk",
           "tableFrom": "car_comparison",
           "tableTo": "media",
-          "columnsFrom": [
-            "meta_image_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["meta_image_id"],
+          "columnsTo": ["id"],
           "onDelete": "set null",
           "onUpdate": "no action"
         }
@@ -2660,12 +2564,8 @@
           "name": "car_comparison_rels_parent_fk",
           "tableFrom": "car_comparison_rels",
           "tableTo": "car_comparison",
-          "columnsFrom": [
-            "parent_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["parent_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
@@ -2673,12 +2573,8 @@
           "name": "car_comparison_rels_media_fk",
           "tableFrom": "car_comparison_rels",
           "tableTo": "media",
-          "columnsFrom": [
-            "media_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["media_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
@@ -2686,12 +2582,8 @@
           "name": "car_comparison_rels_works_fk",
           "tableFrom": "car_comparison_rels",
           "tableTo": "works",
-          "columnsFrom": [
-            "works_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["works_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -2842,12 +2734,8 @@
           "name": "ai_practices_ai_video_image_id_media_id_fk",
           "tableFrom": "ai_practices",
           "tableTo": "media",
-          "columnsFrom": [
-            "ai_video_image_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["ai_video_image_id"],
+          "columnsTo": ["id"],
           "onDelete": "set null",
           "onUpdate": "no action"
         },
@@ -2855,12 +2743,8 @@
           "name": "ai_practices_meta_image_id_media_id_fk",
           "tableFrom": "ai_practices",
           "tableTo": "media",
-          "columnsFrom": [
-            "meta_image_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["meta_image_id"],
+          "columnsTo": ["id"],
           "onDelete": "set null",
           "onUpdate": "no action"
         }
@@ -2973,12 +2857,8 @@
           "name": "ai_practices_rels_parent_fk",
           "tableFrom": "ai_practices_rels",
           "tableTo": "ai_practices",
-          "columnsFrom": [
-            "parent_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["parent_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
@@ -2986,12 +2866,8 @@
           "name": "ai_practices_rels_media_fk",
           "tableFrom": "ai_practices_rels",
           "tableTo": "media",
-          "columnsFrom": [
-            "media_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["media_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -3007,29 +2883,17 @@
     "public.enum_media_prefix": {
       "name": "enum_media_prefix",
       "schema": "public",
-      "values": [
-        "",
-        "logos",
-        "works",
-        "videos",
-        "images"
-      ]
+      "values": ["", "logos", "works", "videos", "images"]
     },
     "public.enum_works_link_target": {
       "name": "enum_works_link_target",
       "schema": "public",
-      "values": [
-        "_self",
-        "_blank"
-      ]
+      "values": ["_self", "_blank"]
     },
     "public.enum_contacts_contacts_type": {
       "name": "enum_contacts_contacts_type",
       "schema": "public",
-      "values": [
-        "copy",
-        "link"
-      ]
+      "values": ["copy", "link"]
     }
   },
   "schemas": {},

@@ -1,4 +1,8 @@
-import { MigrateUpArgs, MigrateDownArgs, sql } from '@payloadcms/db-vercel-postgres'
+import {
+  MigrateDownArgs,
+  MigrateUpArgs,
+  sql,
+} from "@payloadcms/db-vercel-postgres";
 
 export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   await db.execute(sql`
@@ -370,10 +374,14 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "ai_practices_rels_order_idx" ON "ai_practices_rels" USING btree ("order");
   CREATE INDEX "ai_practices_rels_parent_idx" ON "ai_practices_rels" USING btree ("parent_id");
   CREATE INDEX "ai_practices_rels_path_idx" ON "ai_practices_rels" USING btree ("path");
-  CREATE INDEX "ai_practices_rels_media_id_idx" ON "ai_practices_rels" USING btree ("media_id");`)
+  CREATE INDEX "ai_practices_rels_media_id_idx" ON "ai_practices_rels" USING btree ("media_id");`);
 }
 
-export async function down({ db, payload, req }: MigrateDownArgs): Promise<void> {
+export async function down({
+  db,
+  payload,
+  req,
+}: MigrateDownArgs): Promise<void> {
   await db.execute(sql`
    DROP TABLE "media" CASCADE;
   DROP TABLE "users_sessions" CASCADE;
@@ -400,5 +408,5 @@ export async function down({ db, payload, req }: MigrateDownArgs): Promise<void>
   DROP TABLE "ai_practices_rels" CASCADE;
   DROP TYPE "public"."enum_media_prefix";
   DROP TYPE "public"."enum_works_link_target";
-  DROP TYPE "public"."enum_contacts_contacts_type";`)
+  DROP TYPE "public"."enum_contacts_contacts_type";`);
 }
