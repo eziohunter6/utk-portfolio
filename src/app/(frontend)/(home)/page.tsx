@@ -10,7 +10,7 @@ export default async function Home() {
   const { hero, works, info } = await getHomeContent();
 
   return (
-    <main className="w-full pt-32 sm:pt-40 md:pt-48 lg:pt-52">
+    <main id="home">
       {/* Hero Section */}
       <HeroSection {...hero} />
 

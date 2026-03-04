@@ -23,7 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${fonts.variable} antialiased bg-main font-sans font-medium text-brand px-6 max-w-7xl m-auto scroll-smooth overflow-x-hidden`}
+        className={`${fonts.variable} antialiased bg-main font-sans font-medium text-brand scroll-smooth overflow-x-hidden`}
       >
         <Header />
         {children}
