@@ -1,24 +1,23 @@
+import { RichText } from "@payloadcms/richtext-lexical/react";
+import LeftSection from "@/components/ui/LeftSection";
+import StickySection from "@/components/ui/StickySection";
 import Title from "@/components/ui/Title";
+import type { AiPractice } from "@/payload-types";
 
-const HeroSection = () => (
-  <section>
-    <Title as="h1" className="mb-8" index={1}>
-      AI Practices
+type Props = NonNullable<AiPractice["hero"]> & {
+  index: number;
+};
+
+const HeroSection = ({ title, content, index }: Props) => (
+  <StickySection id="hero">
+    <Title as="h1" className="mb-8" index={index}>
+      {title}
     </Title>
 
-    <div className="w-full md:w-3/4 lg:w-3/5 flex flex-col gap-6 ml-auto">
-      {/* Hero Content */}
-
-      <p className="text-base">
-        Over the past few years, I’ve integrated AI tools into my daily design
-        work. It’s helped me spark new ideas, communicate more effectively, and
-        make sense of complex information. And also turn concepts into real,
-        tangible experiences. I use AI across different domains, from content
-        and imagery to rapid prototyping, enabling me to do more and stay
-        creative sustainably.
-      </p>
-    </div>
-  </section>
+    <LeftSection className="flex flex-col gap-8">
+      <RichText data={content} className="prose" />
+    </LeftSection>
+  </StickySection>
 );
 
 export default HeroSection;

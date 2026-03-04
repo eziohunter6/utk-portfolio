@@ -48,3 +48,14 @@ export const getCarComparisonContent = async () => {
 
   return result;
 };
+
+export const getAiPracticesContent = async () => {
+  const payload = await getPayload();
+
+  const result = await payload.findGlobal({
+    slug: "ai-practices",
+    depth: 1,
+  });
+
+  return result;
+};
