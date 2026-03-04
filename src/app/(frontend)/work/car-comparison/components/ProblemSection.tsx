@@ -22,8 +22,8 @@ const ProblemSection = ({ title, content, iframe, index }: Props) => (
       {/* Image */}
       <div className="relative aspect-9/16 rounded-lg overflow-hidden">
         <Image
-          src="/images/buy-home/returning-user.webp"
-          alt="Process Image"
+          src="/images/car-comparison/comparing-user.webp"
+          alt="Comparing User Image"
           fill
           className="object-contain object-top"
         />
