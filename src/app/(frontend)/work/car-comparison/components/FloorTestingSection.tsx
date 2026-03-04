@@ -10,8 +10,8 @@ type Props = NonNullable<CarComparison["floorTesting"]> & {
   index: number;
 };
 
-const FloorTestingSection = ({ title, content, image, index }: Props) => {
-  const imageData = getMediaURL(image);
+const FloorTestingSection = async ({ title, content, image, index }: Props) => {
+  const imageData = await getMediaURL(image);
 
   return (
     <Section id="floorTesting">
@@ -30,6 +30,8 @@ const FloorTestingSection = ({ title, content, image, index }: Props) => {
               alt={imageData.alt}
               fill
               className="object-contain"
+              placeholder={imageData.base64Preview ? "blur" : "empty"}
+              blurDataURL={imageData.base64Preview}
             />
           </div>
         </div>

@@ -1,22 +1,26 @@
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 import type { Media } from "@/payload-types";
+import { getBase64 } from "./getBase64";
 import type { TMedia } from "./types";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export const getMediaURL = (
+export const getMediaURL = async (
   media: (number | null) | Media | undefined,
-): TMedia | null => {
+): Promise<TMedia | null> => {
   if (!media || typeof media === "number") return null;
 
   return {
     alt: media.alt ?? "",
     src: media.url ?? "",
-    thumbnail: getMediaURL(media.thumbnail),
+    thumbnail: media.thumbnail ? await getMediaURL(media.thumbnail) : null,
     type: media.mimeType?.startsWith("image/") ? "image" : "video",
+    base64Preview: media.sizes?.preview?.url
+      ? await getBase64(media.sizes?.preview?.url)
+      : undefined,
   };
 };
 

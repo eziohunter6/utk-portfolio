@@ -10,33 +10,44 @@ type Props = NonNullable<BuyHome["finalDesigns"]> & {
   index: number;
 };
 
-const FinalDesignsSection = ({ title, content, index, images }: Props) => (
-  <Section id="final-designs">
-    <Title index={index}>{title}</Title>
+const FinalDesignsSection = async ({
+  title,
+  content,
+  index,
+  images,
+}: Props) => {
+  const imageData = await Promise.all(
+    images?.map((image) => getMediaURL(image)) ?? [],
+  );
 
-    <LeftWrapper>
-      <RichText data={content} className="prose" />
-    </LeftWrapper>
+  return (
+    <Section id="final-designs">
+      <Title index={index}>{title}</Title>
 
-    {images?.map((image) => {
-      const img = getMediaURL(image);
+      <LeftWrapper>
+        <RichText data={content} className="prose" />
+      </LeftWrapper>
 
-      if (!img) return null;
+      {imageData?.map((img) => {
+        if (!img) return null;
 
-      return (
-        <div key={img.alt} className="rounded-2xl mt-8">
-          <div className="relative w-full aspect-29/15 rounded-lg overflow-hidden">
-            <Image
-              src={img.src}
-              alt={img.alt}
-              fill
-              className="object-contain object-top-left"
-            />
+        return (
+          <div key={img.alt} className="rounded-2xl mt-8">
+            <div className="relative w-full aspect-29/15 rounded-lg overflow-hidden">
+              <Image
+                src={img.src}
+                alt={img.alt}
+                fill
+                className="object-contain object-top-left"
+                placeholder={img.base64Preview ? "blur" : "empty"}
+                blurDataURL={img.base64Preview}
+              />
+            </div>
           </div>
-        </div>
-      );
-    })}
-  </Section>
-);
+        );
+      })}
+    </Section>
+  );
+};
 
 export default FinalDesignsSection;

@@ -5,14 +5,14 @@ import Link from "next/link";
 import type { TWork } from "@/lib/types";
 import { getMediaURL } from "@/lib/utils";
 
-const WorkCard = ({
+const WorkCard = async ({
   title,
   image,
   link: { href, target },
   tags,
   description,
 }: TWork) => {
-  const imageData = getMediaURL(image);
+  const imageData = await getMediaURL(image);
 
   return (
     <Link
@@ -28,6 +28,8 @@ const WorkCard = ({
             alt={imageData.alt}
             fill
             className="object-cover object-top-left group-hover:scale-105 transition-all duration-300 ease-in-out"
+            placeholder={imageData.base64Preview ? "blur" : "empty"}
+            blurDataURL={imageData.base64Preview}
           />
         )}
       </figure>

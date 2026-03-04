@@ -10,29 +10,40 @@ type Props = NonNullable<AiPractice["aiPrototyping"]> & {
   index: number;
 };
 
-const AIPrototypeSection = ({ title, content, images, index }: Props) => (
-  <Section id="ai-prototyping">
-    <Title index={index}>{title}</Title>
+const AIPrototypeSection = async ({ title, content, images, index }: Props) => {
+  const imageData = await Promise.all(
+    images?.map((image) => getMediaURL(image)) ?? [],
+  );
 
-    <LeftWrapper>
-      <RichText data={content} className="prose" />
-    </LeftWrapper>
+  return (
+    <Section id="ai-prototyping">
+      <Title index={index}>{title}</Title>
 
-    {/* Image */}
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
-      {images?.map((image) => {
-        const img = getMediaURL(image);
+      <LeftWrapper>
+        <RichText data={content} className="prose" />
+      </LeftWrapper>
 
-        if (!img) return null;
+      {/* Image */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
+        {imageData?.map((img) => {
+          if (!img) return null;
 
-        return (
-          <div key={img.alt} className="relative w-full aspect-4/3 bg-muted">
-            <Image src={img.src} alt={img.alt} fill className="object-cover" />
-          </div>
-        );
-      })}
-    </div>
-  </Section>
-);
+          return (
+            <div key={img.alt} className="relative w-full aspect-4/3 bg-muted">
+              <Image
+                src={img.src}
+                alt={img.alt}
+                fill
+                className="object-cover"
+                placeholder={img.base64Preview ? "blur" : "empty"}
+                blurDataURL={img.base64Preview}
+              />
+            </div>
+          );
+        })}
+      </div>
+    </Section>
+  );
+};
 
 export default AIPrototypeSection;

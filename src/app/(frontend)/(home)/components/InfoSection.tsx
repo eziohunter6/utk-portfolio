@@ -3,13 +3,14 @@ import Image from "next/image";
 import LeftWrapper from "@/components/ui/LeftWrapper";
 import Section from "@/components/ui/Section";
 import Title from "@/components/ui/Title";
+import { getBase64 } from "@/lib/getBase64";
 import { getMediaURL } from "@/lib/utils";
 import type { Home } from "@/payload-types";
 
 type Props = NonNullable<Home["info"]>;
 
-const InfoSection = ({ leftContent, rightContent, image }: Props) => {
-  const imageData = getMediaURL(image);
+const InfoSection = async ({ leftContent, rightContent, image }: Props) => {
+  const imageData = await getMediaURL(image);
 
   return (
     <Section id="info">
@@ -33,6 +34,8 @@ const InfoSection = ({ leftContent, rightContent, image }: Props) => {
               src={imageData.src}
               alt={imageData.alt}
               className="object-cover"
+              placeholder={imageData.base64Preview ? "blur" : "empty"}
+              blurDataURL={imageData.base64Preview}
             />
           </div>
         )}

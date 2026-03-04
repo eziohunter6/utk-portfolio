@@ -10,8 +10,17 @@ type Props = NonNullable<AiPractice["aiVideo"]> & {
   index: number;
 };
 
-const AIVideoSection = ({ title, content, videos, image, index }: Props) => {
-  const img = getMediaURL(image);
+const AIVideoSection = async ({
+  title,
+  content,
+  videos,
+  image,
+  index,
+}: Props) => {
+  const img = await getMediaURL(image);
+  const videoData = await Promise.all(
+    videos?.map((video) => getMediaURL(video)) ?? [],
+  );
 
   return (
     <Section id="ai-video">
@@ -22,9 +31,7 @@ const AIVideoSection = ({ title, content, videos, image, index }: Props) => {
 
       {/* Videos */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8 items-center">
-        {videos?.map((video, index) => {
-          const vid = getMediaURL(video);
-
+        {videoData?.map((vid, index) => {
           if (!vid) return null;
 
           return (

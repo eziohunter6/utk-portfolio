@@ -17,4 +17,5 @@ export type TMedia = {
   src: string;
   thumbnail: TMedia | null;
   type: "image" | "video";
+  base64Preview: string | undefined;
 };

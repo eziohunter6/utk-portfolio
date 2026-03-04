@@ -5,15 +5,15 @@ import { getPlaiceholder } from "plaiceholder";
 
 export const getBase64 = async (
   src: string | null | undefined,
-): Promise<string | null> => {
+): Promise<string | undefined> => {
   if (!src) {
-    return null;
+    return undefined;
   }
 
   try {
     const response = await fetch(`${process.env.BASE_URL}${src}`);
     if (!response.ok) {
-      return null;
+      return undefined;
     }
 
     const arrayBuffer = await response.arrayBuffer();
@@ -23,6 +23,6 @@ export const getBase64 = async (
     return base64;
   } catch (error) {
     console.error("[getBase64] Error fetching base64 ->", { src, error });
-    return null;
+    return undefined;
   }
 };

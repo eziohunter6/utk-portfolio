@@ -10,13 +10,13 @@ type Props = NonNullable<BuyHome["exploration"]> & {
   index: number;
 };
 
-const ExplorationTradeoffsSection = ({
+const ExplorationTradeoffsSection = async ({
   title,
   content,
   index,
   image,
 }: Props) => {
-  const imageData = getMediaURL(image);
+  const imageData = await getMediaURL(image);
 
   return (
     <Section id="exploration">
@@ -35,6 +35,8 @@ const ExplorationTradeoffsSection = ({
               alt={imageData.alt}
               fill
               className="object-contain"
+              placeholder={imageData.base64Preview ? "blur" : "empty"}
+              blurDataURL={imageData.base64Preview}
             />
           </div>
         </div>

@@ -10,33 +10,43 @@ type Props = NonNullable<CarComparison["finalDesigns"]> & {
   index: number;
 };
 
-const FinalDesignsSection = ({ title, content, index, images }: Props) => (
-  <Section id="finalDesigns">
-    <Title index={index}>{title}</Title>
+const FinalDesignsSection = async ({
+  title,
+  content,
+  index,
+  images,
+}: Props) => {
+  const imageData = await Promise.all(
+    images?.map((image) => getMediaURL(image)) ?? [],
+  );
+  return (
+    <Section id="finalDesigns">
+      <Title index={index}>{title}</Title>
 
-    <LeftWrapper>
-      <RichText data={content} className="prose" />
-    </LeftWrapper>
+      <LeftWrapper>
+        <RichText data={content} className="prose" />
+      </LeftWrapper>
 
-    {images?.map((image) => {
-      const img = getMediaURL(image);
+      {imageData?.map((img) => {
+        if (!img) return null;
 
-      if (!img) return null;
-
-      return (
-        <div key={img.alt} className="rounded-2xl mt-8">
-          <div className="relative w-full aspect-29/15 rounded-lg overflow-hidden">
-            <Image
-              src={img.src}
-              alt={img.alt}
-              fill
-              className="object-contain object-top-left"
-            />
+        return (
+          <div key={img.alt} className="rounded-2xl mt-8">
+            <div className="relative w-full aspect-29/15 rounded-lg overflow-hidden">
+              <Image
+                src={img.src}
+                alt={img.alt}
+                fill
+                className="object-contain object-top-left"
+                placeholder={img.base64Preview ? "blur" : "empty"}
+                blurDataURL={img.base64Preview}
+              />
+            </div>
           </div>
-        </div>
-      );
-    })}
-  </Section>
-);
+        );
+      })}
+    </Section>
+  );
+};
 
 export default FinalDesignsSection;
