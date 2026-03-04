@@ -27,16 +27,18 @@ const ExplorationTradeoffsSection = ({
       </LeftWrapper>
 
       {/* Image */}
-      <div className="bg-muted rounded-2xl mt-8">
-        <div className="relative w-full aspect-29/15 rounded-lg overflow-hidden">
-          <Image
-            src={imageData?.src ?? ""}
-            alt={imageData?.alt ?? ""}
-            fill
-            className="object-contain object-top"
-          />
+      {imageData && (
+        <div className="rounded-2xl mt-8">
+          <div className="relative w-full aspect-29/15 rounded-lg overflow-hidden">
+            <Image
+              src={imageData.src}
+              alt={imageData.alt}
+              fill
+              className="object-contain"
+            />
+          </div>
         </div>
-      </div>
+      )}
     </Section>
   );
 };

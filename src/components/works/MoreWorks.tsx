@@ -1,6 +1,7 @@
 import Title from "@/components/ui/Title";
 import WorkCard from "@/components/works/Card";
 import type { Work } from "@/payload-types";
+import Section from "../ui/Section";
 
 type Props = {
   index: number;
@@ -8,7 +9,7 @@ type Props = {
 };
 
 const MoreWorkSection = ({ index, works }: Props) => (
-  <section id="more-work">
+  <Section id="more-work">
     <Title index={index}>More Work</Title>
 
     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-x-12 md:gap-y-16 mb-16">
@@ -16,7 +17,7 @@ const MoreWorkSection = ({ index, works }: Props) => (
         <WorkCard key={work.title} {...work} />
       ))}
     </div>
-  </section>
+  </Section>
 );
 
 export default MoreWorkSection;

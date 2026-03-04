@@ -10,31 +10,33 @@ type Props = NonNullable<BuyHome["finalDesigns"]> & {
   index: number;
 };
 
-const FinalDesignsSection = ({ title, content, index, images }: Props) => {
-  const imagesData = images?.map(getMediaURL);
+const FinalDesignsSection = ({ title, content, index, images }: Props) => (
+  <Section id="final-designs">
+    <Title index={index}>{title}</Title>
 
-  return (
-    <Section id="final-designs">
-      <Title index={index}>{title}</Title>
+    <LeftWrapper className="flex flex-col gap-8">
+      <RichText data={content} className="prose" />
+    </LeftWrapper>
 
-      <LeftWrapper className="flex flex-col gap-8">
-        <RichText data={content} className="prose" />
-      </LeftWrapper>
+    {images?.map((image) => {
+      const img = getMediaURL(image);
 
-      {imagesData?.map((image) => (
-        <div key={image?.src} className="bg-muted rounded-2xl mt-8">
+      if (!img) return null;
+
+      return (
+        <div key={img.alt} className="rounded-2xl mt-8">
           <div className="relative w-full aspect-29/15 rounded-lg overflow-hidden">
             <Image
-              src={image?.src ?? ""}
-              alt={image?.alt ?? ""}
+              src={img.src}
+              alt={img.alt}
               fill
-              className="object-contain object-top"
+              className="object-contain object-top-left"
             />
           </div>
         </div>
-      ))}
-    </Section>
-  );
-};
+      );
+    })}
+  </Section>
+);
 
 export default FinalDesignsSection;
