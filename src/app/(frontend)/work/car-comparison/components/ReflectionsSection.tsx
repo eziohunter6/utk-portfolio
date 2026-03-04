@@ -12,7 +12,7 @@ const ReflectionsSection = ({ title, content, index }: Props) => (
   <Section id="reflections">
     <Title index={index}>{title}</Title>
 
-    <LeftWrapper className="flex flex-col gap-8">
+    <LeftWrapper>
       <RichText data={content} className="prose" />
     </LeftWrapper>
   </Section>

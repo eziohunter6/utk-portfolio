@@ -1,4 +1,5 @@
 import { RichText } from "@payloadcms/richtext-lexical/react";
+import { Embed } from "@/components/ui/Embed";
 import LeftWrapper from "@/components/ui/LeftWrapper";
 import Section from "@/components/ui/Section";
 import Title from "@/components/ui/Title";
@@ -8,15 +9,15 @@ type Props = NonNullable<CarComparison["exploration"]> & {
   index: number;
 };
 
-// TODO: Add iframe
-
-const DesignExplorationSection = ({ title, content, index }: Props) => (
+const DesignExplorationSection = ({ title, content, iframe, index }: Props) => (
   <Section id="exploration">
     <Title index={index}>{title}</Title>
 
-    <LeftWrapper className="flex flex-col gap-8">
+    <LeftWrapper>
       <RichText data={content} className="prose" />
     </LeftWrapper>
+
+    <Embed url={iframe} className="mt-8 aspect-9/16 md:aspect-29/15" />
   </Section>
 );
 

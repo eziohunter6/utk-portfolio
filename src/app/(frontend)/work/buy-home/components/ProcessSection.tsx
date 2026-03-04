@@ -30,7 +30,7 @@ const ProcessSection = ({ title, content, index, iframe }: Props) => (
       </div>
 
       {/* Iframe */}
-      <Embed url={iframe} className="col-span-2 aspect-9/16 md:aspect-29/15" />
+      <Embed url={iframe} className="col-span-2 aspect-9/16 md:aspect-auto" />
     </div>
   </Section>
 );
