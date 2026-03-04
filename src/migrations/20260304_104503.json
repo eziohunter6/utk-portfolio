@@ -1880,79 +1880,92 @@
           "name": "hero_title",
           "type": "varchar",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "default": "''"
         },
         "hero_content": {
           "name": "hero_content",
           "type": "jsonb",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "default": "'{\"root\":{\"type\":\"root\",\"children\":[{\"type\":\"paragraph\",\"children\":[{\"type\":\"text\",\"detail\":0,\"format\":0,\"mode\":\"normal\",\"style\":\"\",\"text\":\"\",\"version\":1}],\"direction\":null,\"format\":\"\",\"indent\":0,\"textFormat\":0,\"textStyle\":\"\",\"version\":1}],\"direction\":null,\"format\":\"\",\"indent\":0,\"version\":1}}'::jsonb"
         },
         "process_title": {
           "name": "process_title",
           "type": "varchar",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "default": "''"
         },
         "process_content": {
           "name": "process_content",
           "type": "jsonb",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "default": "'{\"root\":{\"type\":\"root\",\"children\":[{\"type\":\"paragraph\",\"children\":[{\"type\":\"text\",\"detail\":0,\"format\":0,\"mode\":\"normal\",\"style\":\"\",\"text\":\"\",\"version\":1}],\"direction\":null,\"format\":\"\",\"indent\":0,\"textFormat\":0,\"textStyle\":\"\",\"version\":1}],\"direction\":null,\"format\":\"\",\"indent\":0,\"version\":1}}'::jsonb"
         },
         "process_iframe": {
           "name": "process_iframe",
           "type": "varchar",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "default": "''"
         },
         "analysis_title": {
           "name": "analysis_title",
           "type": "varchar",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "default": "''"
         },
         "analysis_content": {
           "name": "analysis_content",
           "type": "jsonb",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "default": "'{\"root\":{\"type\":\"root\",\"children\":[{\"type\":\"paragraph\",\"children\":[{\"type\":\"text\",\"detail\":0,\"format\":0,\"mode\":\"normal\",\"style\":\"\",\"text\":\"\",\"version\":1}],\"direction\":null,\"format\":\"\",\"indent\":0,\"textFormat\":0,\"textStyle\":\"\",\"version\":1}],\"direction\":null,\"format\":\"\",\"indent\":0,\"version\":1}}'::jsonb"
         },
         "analysis_iframe": {
           "name": "analysis_iframe",
           "type": "varchar",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "default": "''"
         },
         "strategy_title": {
           "name": "strategy_title",
           "type": "varchar",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "default": "''"
         },
         "strategy_content": {
           "name": "strategy_content",
           "type": "jsonb",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "default": "'{\"root\":{\"type\":\"root\",\"children\":[{\"type\":\"paragraph\",\"children\":[{\"type\":\"text\",\"detail\":0,\"format\":0,\"mode\":\"normal\",\"style\":\"\",\"text\":\"\",\"version\":1}],\"direction\":null,\"format\":\"\",\"indent\":0,\"textFormat\":0,\"textStyle\":\"\",\"version\":1}],\"direction\":null,\"format\":\"\",\"indent\":0,\"version\":1}}'::jsonb"
         },
         "strategy_iframe": {
           "name": "strategy_iframe",
           "type": "varchar",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "default": "''"
         },
         "exploration_title": {
           "name": "exploration_title",
           "type": "varchar",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "default": "''"
         },
         "exploration_content": {
           "name": "exploration_content",
           "type": "jsonb",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "default": "'{\"root\":{\"type\":\"root\",\"children\":[{\"type\":\"paragraph\",\"children\":[{\"type\":\"text\",\"detail\":0,\"format\":0,\"mode\":\"normal\",\"style\":\"\",\"text\":\"\",\"version\":1}],\"direction\":null,\"format\":\"\",\"indent\":0,\"textFormat\":0,\"textStyle\":\"\",\"version\":1}],\"direction\":null,\"format\":\"\",\"indent\":0,\"version\":1}}'::jsonb"
         },
         "exploration_image_id": {
           "name": "exploration_image_id",
@@ -1964,43 +1977,43 @@
           "name": "final_designs_title",
           "type": "varchar",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "default": "''"
         },
         "final_designs_content": {
           "name": "final_designs_content",
           "type": "jsonb",
           "primaryKey": false,
-          "notNull": true
-        },
-        "final_designs_image_id": {
-          "name": "final_designs_image_id",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": false
+          "notNull": true,
+          "default": "'{\"root\":{\"type\":\"root\",\"children\":[{\"type\":\"paragraph\",\"children\":[{\"type\":\"text\",\"detail\":0,\"format\":0,\"mode\":\"normal\",\"style\":\"\",\"text\":\"\",\"version\":1}],\"direction\":null,\"format\":\"\",\"indent\":0,\"textFormat\":0,\"textStyle\":\"\",\"version\":1}],\"direction\":null,\"format\":\"\",\"indent\":0,\"version\":1}}'::jsonb"
         },
         "outcome_title": {
           "name": "outcome_title",
           "type": "varchar",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "default": "''"
         },
         "outcome_content": {
           "name": "outcome_content",
           "type": "jsonb",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "default": "'{\"root\":{\"type\":\"root\",\"children\":[{\"type\":\"paragraph\",\"children\":[{\"type\":\"text\",\"detail\":0,\"format\":0,\"mode\":\"normal\",\"style\":\"\",\"text\":\"\",\"version\":1}],\"direction\":null,\"format\":\"\",\"indent\":0,\"textFormat\":0,\"textStyle\":\"\",\"version\":1}],\"direction\":null,\"format\":\"\",\"indent\":0,\"version\":1}}'::jsonb"
         },
         "reflections_title": {
           "name": "reflections_title",
           "type": "varchar",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "default": "''"
         },
         "reflections_content": {
           "name": "reflections_content",
           "type": "jsonb",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "default": "'{\"root\":{\"type\":\"root\",\"children\":[{\"type\":\"paragraph\",\"children\":[{\"type\":\"text\",\"detail\":0,\"format\":0,\"mode\":\"normal\",\"style\":\"\",\"text\":\"\",\"version\":1}],\"direction\":null,\"format\":\"\",\"indent\":0,\"textFormat\":0,\"textStyle\":\"\",\"version\":1}],\"direction\":null,\"format\":\"\",\"indent\":0,\"version\":1}}'::jsonb"
         },
         "meta_title": {
           "name": "meta_title",
@@ -2049,21 +2062,6 @@
           "method": "btree",
           "with": {}
         },
-        "buy_home_final_designs_final_designs_image_idx": {
-          "name": "buy_home_final_designs_final_designs_image_idx",
-          "columns": [
-            {
-              "expression": "final_designs_image_id",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            }
-          ],
-          "isUnique": false,
-          "concurrently": false,
-          "method": "btree",
-          "with": {}
-        },
         "buy_home_meta_meta_image_idx": {
           "name": "buy_home_meta_meta_image_idx",
           "columns": [
@@ -2087,19 +2085,6 @@
           "tableTo": "media",
           "columnsFrom": [
             "exploration_image_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
-          "onDelete": "set null",
-          "onUpdate": "no action"
-        },
-        "buy_home_final_designs_image_id_media_id_fk": {
-          "name": "buy_home_final_designs_image_id_media_id_fk",
-          "tableFrom": "buy_home",
-          "tableTo": "media",
-          "columnsFrom": [
-            "final_designs_image_id"
           ],
           "columnsTo": [
             "id"
@@ -2155,6 +2140,12 @@
           "primaryKey": false,
           "notNull": true
         },
+        "media_id": {
+          "name": "media_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
         "works_id": {
           "name": "works_id",
           "type": "integer",
@@ -2208,6 +2199,21 @@
           "method": "btree",
           "with": {}
         },
+        "buy_home_rels_media_id_idx": {
+          "name": "buy_home_rels_media_id_idx",
+          "columns": [
+            {
+              "expression": "media_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
         "buy_home_rels_works_id_idx": {
           "name": "buy_home_rels_works_id_idx",
           "columns": [
@@ -2231,6 +2237,19 @@
           "tableTo": "buy_home",
           "columnsFrom": [
             "parent_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "buy_home_rels_media_fk": {
+          "name": "buy_home_rels_media_fk",
+          "tableFrom": "buy_home_rels",
+          "tableTo": "media",
+          "columnsFrom": [
+            "media_id"
           ],
           "columnsTo": [
             "id"
@@ -2272,91 +2291,106 @@
           "name": "hero_title",
           "type": "varchar",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "default": "''"
         },
         "hero_content": {
           "name": "hero_content",
           "type": "jsonb",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "default": "'{\"root\":{\"type\":\"root\",\"children\":[{\"type\":\"paragraph\",\"children\":[{\"type\":\"text\",\"detail\":0,\"format\":0,\"mode\":\"normal\",\"style\":\"\",\"text\":\"\",\"version\":1}],\"direction\":null,\"format\":\"\",\"indent\":0,\"textFormat\":0,\"textStyle\":\"\",\"version\":1}],\"direction\":null,\"format\":\"\",\"indent\":0,\"version\":1}}'::jsonb"
         },
         "opportunity_title": {
           "name": "opportunity_title",
           "type": "varchar",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "default": "''"
         },
         "opportunity_content": {
           "name": "opportunity_content",
           "type": "jsonb",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "default": "'{\"root\":{\"type\":\"root\",\"children\":[{\"type\":\"paragraph\",\"children\":[{\"type\":\"text\",\"detail\":0,\"format\":0,\"mode\":\"normal\",\"style\":\"\",\"text\":\"\",\"version\":1}],\"direction\":null,\"format\":\"\",\"indent\":0,\"textFormat\":0,\"textStyle\":\"\",\"version\":1}],\"direction\":null,\"format\":\"\",\"indent\":0,\"version\":1}}'::jsonb"
         },
         "opportunity_iframe": {
           "name": "opportunity_iframe",
           "type": "varchar",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "default": "''"
         },
         "problem_title": {
           "name": "problem_title",
           "type": "varchar",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "default": "''"
         },
         "problem_content": {
           "name": "problem_content",
           "type": "jsonb",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "default": "'{\"root\":{\"type\":\"root\",\"children\":[{\"type\":\"paragraph\",\"children\":[{\"type\":\"text\",\"detail\":0,\"format\":0,\"mode\":\"normal\",\"style\":\"\",\"text\":\"\",\"version\":1}],\"direction\":null,\"format\":\"\",\"indent\":0,\"textFormat\":0,\"textStyle\":\"\",\"version\":1}],\"direction\":null,\"format\":\"\",\"indent\":0,\"version\":1}}'::jsonb"
         },
         "problem_iframe": {
           "name": "problem_iframe",
           "type": "varchar",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "default": "''"
         },
         "hypothesis_title": {
           "name": "hypothesis_title",
           "type": "varchar",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "default": "''"
         },
         "hypothesis_content": {
           "name": "hypothesis_content",
           "type": "jsonb",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "default": "'{\"root\":{\"type\":\"root\",\"children\":[{\"type\":\"paragraph\",\"children\":[{\"type\":\"text\",\"detail\":0,\"format\":0,\"mode\":\"normal\",\"style\":\"\",\"text\":\"\",\"version\":1}],\"direction\":null,\"format\":\"\",\"indent\":0,\"textFormat\":0,\"textStyle\":\"\",\"version\":1}],\"direction\":null,\"format\":\"\",\"indent\":0,\"version\":1}}'::jsonb"
         },
         "exploration_title": {
           "name": "exploration_title",
           "type": "varchar",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "default": "''"
         },
         "exploration_content": {
           "name": "exploration_content",
           "type": "jsonb",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "default": "'{\"root\":{\"type\":\"root\",\"children\":[{\"type\":\"paragraph\",\"children\":[{\"type\":\"text\",\"detail\":0,\"format\":0,\"mode\":\"normal\",\"style\":\"\",\"text\":\"\",\"version\":1}],\"direction\":null,\"format\":\"\",\"indent\":0,\"textFormat\":0,\"textStyle\":\"\",\"version\":1}],\"direction\":null,\"format\":\"\",\"indent\":0,\"version\":1}}'::jsonb"
         },
         "exploration_iframe": {
           "name": "exploration_iframe",
           "type": "varchar",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "default": "''"
         },
         "floor_testing_title": {
           "name": "floor_testing_title",
           "type": "varchar",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "default": "''"
         },
         "floor_testing_content": {
           "name": "floor_testing_content",
           "type": "jsonb",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "default": "'{\"root\":{\"type\":\"root\",\"children\":[{\"type\":\"paragraph\",\"children\":[{\"type\":\"text\",\"detail\":0,\"format\":0,\"mode\":\"normal\",\"style\":\"\",\"text\":\"\",\"version\":1}],\"direction\":null,\"format\":\"\",\"indent\":0,\"textFormat\":0,\"textStyle\":\"\",\"version\":1}],\"direction\":null,\"format\":\"\",\"indent\":0,\"version\":1}}'::jsonb"
         },
         "floor_testing_image_id": {
           "name": "floor_testing_image_id",
@@ -2368,37 +2402,43 @@
           "name": "final_designs_title",
           "type": "varchar",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "default": "''"
         },
         "final_designs_content": {
           "name": "final_designs_content",
           "type": "jsonb",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "default": "'{\"root\":{\"type\":\"root\",\"children\":[{\"type\":\"paragraph\",\"children\":[{\"type\":\"text\",\"detail\":0,\"format\":0,\"mode\":\"normal\",\"style\":\"\",\"text\":\"\",\"version\":1}],\"direction\":null,\"format\":\"\",\"indent\":0,\"textFormat\":0,\"textStyle\":\"\",\"version\":1}],\"direction\":null,\"format\":\"\",\"indent\":0,\"version\":1}}'::jsonb"
         },
         "outcome_title": {
           "name": "outcome_title",
           "type": "varchar",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "default": "''"
         },
         "outcome_content": {
           "name": "outcome_content",
           "type": "jsonb",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "default": "'{\"root\":{\"type\":\"root\",\"children\":[{\"type\":\"paragraph\",\"children\":[{\"type\":\"text\",\"detail\":0,\"format\":0,\"mode\":\"normal\",\"style\":\"\",\"text\":\"\",\"version\":1}],\"direction\":null,\"format\":\"\",\"indent\":0,\"textFormat\":0,\"textStyle\":\"\",\"version\":1}],\"direction\":null,\"format\":\"\",\"indent\":0,\"version\":1}}'::jsonb"
         },
         "reflections_title": {
           "name": "reflections_title",
           "type": "varchar",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "default": "''"
         },
         "reflections_content": {
           "name": "reflections_content",
           "type": "jsonb",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "default": "'{\"root\":{\"type\":\"root\",\"children\":[{\"type\":\"paragraph\",\"children\":[{\"type\":\"text\",\"detail\":0,\"format\":0,\"mode\":\"normal\",\"style\":\"\",\"text\":\"\",\"version\":1}],\"direction\":null,\"format\":\"\",\"indent\":0,\"textFormat\":0,\"textStyle\":\"\",\"version\":1}],\"direction\":null,\"format\":\"\",\"indent\":0,\"version\":1}}'::jsonb"
         },
         "meta_title": {
           "name": "meta_title",
@@ -2676,37 +2716,43 @@
           "name": "hero_title",
           "type": "varchar",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "default": "''"
         },
         "hero_content": {
           "name": "hero_content",
           "type": "jsonb",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "default": "'{\"root\":{\"type\":\"root\",\"children\":[{\"type\":\"paragraph\",\"children\":[{\"type\":\"text\",\"detail\":0,\"format\":0,\"mode\":\"normal\",\"style\":\"\",\"text\":\"\",\"version\":1}],\"direction\":null,\"format\":\"\",\"indent\":0,\"textFormat\":0,\"textStyle\":\"\",\"version\":1}],\"direction\":null,\"format\":\"\",\"indent\":0,\"version\":1}}'::jsonb"
         },
         "ai_content_title": {
           "name": "ai_content_title",
           "type": "varchar",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "default": "''"
         },
         "ai_content_content": {
           "name": "ai_content_content",
           "type": "jsonb",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "default": "'{\"root\":{\"type\":\"root\",\"children\":[{\"type\":\"paragraph\",\"children\":[{\"type\":\"text\",\"detail\":0,\"format\":0,\"mode\":\"normal\",\"style\":\"\",\"text\":\"\",\"version\":1}],\"direction\":null,\"format\":\"\",\"indent\":0,\"textFormat\":0,\"textStyle\":\"\",\"version\":1}],\"direction\":null,\"format\":\"\",\"indent\":0,\"version\":1}}'::jsonb"
         },
         "ai_video_title": {
           "name": "ai_video_title",
           "type": "varchar",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "default": "''"
         },
         "ai_video_content": {
           "name": "ai_video_content",
           "type": "jsonb",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "default": "'{\"root\":{\"type\":\"root\",\"children\":[{\"type\":\"paragraph\",\"children\":[{\"type\":\"text\",\"detail\":0,\"format\":0,\"mode\":\"normal\",\"style\":\"\",\"text\":\"\",\"version\":1}],\"direction\":null,\"format\":\"\",\"indent\":0,\"textFormat\":0,\"textStyle\":\"\",\"version\":1}],\"direction\":null,\"format\":\"\",\"indent\":0,\"version\":1}}'::jsonb"
         },
         "ai_video_image_id": {
           "name": "ai_video_image_id",
@@ -2718,13 +2764,15 @@
           "name": "ai_prototyping_title",
           "type": "varchar",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "default": "''"
         },
         "ai_prototyping_content": {
           "name": "ai_prototyping_content",
           "type": "jsonb",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "default": "'{\"root\":{\"type\":\"root\",\"children\":[{\"type\":\"paragraph\",\"children\":[{\"type\":\"text\",\"detail\":0,\"format\":0,\"mode\":\"normal\",\"style\":\"\",\"text\":\"\",\"version\":1}],\"direction\":null,\"format\":\"\",\"indent\":0,\"textFormat\":0,\"textStyle\":\"\",\"version\":1}],\"direction\":null,\"format\":\"\",\"indent\":0,\"version\":1}}'::jsonb"
         },
         "meta_title": {
           "name": "meta_title",
@@ -2994,6 +3042,6 @@
     "tables": {},
     "columns": {}
   },
-  "id": "199ca7b6-fea4-477b-a749-05bab6a16a98",
+  "id": "6f2f03f1-6b7a-46cb-b761-de1cf39f9747",
   "prevId": "00000000-0000-0000-0000-000000000000"
 }
