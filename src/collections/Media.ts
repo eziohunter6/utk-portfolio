@@ -1,12 +1,11 @@
 import type { CollectionConfig } from "payload";
 
-const MAX_IMAGE_SIZE = 5 * 1024 * 1024; // 5MB
-const MAX_VIDEO_SIZE = 50 * 1024 * 1024; // 50MB
+const MAX_SIZE = 4.5 * 1024 * 1024; // 4.5MB
 
 export const Media: CollectionConfig = {
   slug: "media",
   admin: {
-    description: "Images: max 5MB. Videos: max 50MB.",
+    description: "max 4.5MB",
   },
   upload: {
     formatOptions: { format: "webp" },
@@ -53,14 +52,10 @@ export const Media: CollectionConfig = {
         const mimeType = data?.mimeType as string | undefined;
         if (filesize == null || mimeType == null) return;
 
-        const isVideo = mimeType.startsWith("video/");
-        const maxSize = isVideo ? MAX_VIDEO_SIZE : MAX_IMAGE_SIZE;
-        const maxLabel = isVideo ? "50MB" : "5MB";
+        const maxLabel = "4.5MB";
 
-        if (filesize > maxSize) {
-          throw new Error(
-            `File size exceeds ${maxLabel} limit. Images: max 5MB. Videos: max 50MB.`,
-          );
+        if (filesize > MAX_SIZE) {
+          throw new Error(`File size exceeds ${maxLabel} limit.`);
         }
       },
     ],

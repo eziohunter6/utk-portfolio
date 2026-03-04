@@ -13,6 +13,7 @@ type Props = NonNullable<AiPractice["aiContent"]> & {
 const AIContentSection = ({ title, content, images, index }: Props) => (
   <Section id="ai-content">
     <Title index={index}>{title}</Title>
+
     <LeftWrapper>
       <RichText data={content} className="prose" />
     </LeftWrapper>

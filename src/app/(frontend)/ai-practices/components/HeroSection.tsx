@@ -10,7 +10,7 @@ type Props = NonNullable<AiPractice["hero"]> & {
 
 const HeroSection = ({ title, content, index }: Props) => (
   <Section id="hero">
-    <Title as="h1" className="mb-8" index={index}>
+    <Title as="h1" index={index}>
       {title}
     </Title>
 

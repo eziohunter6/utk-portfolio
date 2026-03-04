@@ -3,7 +3,7 @@ import Image from "next/image";
 import LeftWrapper from "@/components/ui/LeftWrapper";
 import Section from "@/components/ui/Section";
 import Title from "@/components/ui/Title";
-import { getMediaURL } from "@/lib/utils";
+import { cn, getMediaURL } from "@/lib/utils";
 import type { AiPractice } from "@/payload-types";
 
 type Props = NonNullable<AiPractice["aiVideo"]> & {
@@ -21,8 +21,8 @@ const AIVideoSection = ({ title, content, videos, image, index }: Props) => {
       </LeftWrapper>
 
       {/* Videos */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
-        {videos?.map((video) => {
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8 items-center">
+        {videos?.map((video, index) => {
           const vid = getMediaURL(video);
 
           if (!vid) return null;
@@ -30,16 +30,20 @@ const AIVideoSection = ({ title, content, videos, image, index }: Props) => {
           return (
             <div
               key={vid.alt}
-              className="relative w-full aspect-video bg-muted"
+              className={cn(
+                "group relative w-full h-full bg-muted rounded-2xl overflow-hidden border border-black/10",
+                index === 1 && "col-span-2",
+              )}
             >
               <video
                 src={vid.src}
-                className="w-full h-full object-contain"
+                className="w-full h-full object-cover transition-all duration-300 hover:scale-105"
                 playsInline
                 controls
-                preload="none"
                 muted
                 loop
+                autoPlay
+                poster={vid.thumbnail?.src}
               />
             </div>
           );
