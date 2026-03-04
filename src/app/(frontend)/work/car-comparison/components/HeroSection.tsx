@@ -11,17 +11,26 @@ type Props = NonNullable<CarComparison["hero"]> & {
 
 const HeroSection = ({ title, content, index }: Props) => (
   <Section id="hero">
-    <Title as="h1" className="mb-8" index={index}>
+    <Title as="h1" index={index}>
       {title}
     </Title>
 
+    <LeftWrapper className="pt-8 pb-16">
+      <ul className="flex flex-col gap-1 text-base">
+        <li>Used Car Comparison</li>
+        <li>Lead Designer</li>
+        <li>3 Weeks</li>
+        <li>Mobile + Web</li>
+      </ul>
+    </LeftWrapper>
+
     {/* Bento Grid */}
-    <div className="mt-8 grid lg:max-h-[600px] grid-cols-1 md:grid-cols-[1.8fr_1fr_1.3fr] md:grid-rows-[1fr_1fr] lg:grid-rows-[0.8fr_1fr] gap-4">
+    <div className="grid lg:max-h-[600px] grid-cols-1 md:grid-cols-[1.8fr_1fr_1.3fr] md:grid-rows-[1fr_1fr] lg:grid-rows-[0.8fr_1fr] gap-4">
       {/* Car Comparison Mockup */}
       <div className="group px-8 pt-8 row-span-2 bg-muted rounded-2xl overflow-hidden">
         <div className="relative w-full h-full aspect-11/16">
           <Image
-            src="/images/car-comparison/mockup.png"
+            src="/images/car-comparison/mockup.webp"
             alt="Car Comparison Mockup"
             fill
             className="object-cover object-top group-hover:scale-105 transition-all duration-300 ease-in-out"
@@ -40,7 +49,7 @@ const HeroSection = ({ title, content, index }: Props) => (
 
         <div className="relative -mb-4 overflow-hidden w-full aspect-29/20">
           <Image
-            src="/images/car-comparison/comfort.png"
+            src="/images/car-comparison/comfort.webp"
             alt="Comfort model"
             fill
             className="object-cover object-top group-hover:scale-105 transition-all duration-300 ease-in-out"
@@ -60,7 +69,7 @@ const HeroSection = ({ title, content, index }: Props) => (
 
         <div className="relative overflow-hidden w-full aspect-21/10">
           <Image
-            src="/images/car-comparison/quality.png"
+            src="/images/car-comparison/quality.webp"
             alt="Quality model"
             fill
             className="object-contain group-hover:scale-105 transition-all duration-300 ease-in-out"
@@ -72,7 +81,7 @@ const HeroSection = ({ title, content, index }: Props) => (
       <div className="group p-4 md:col-span-2 bg-muted rounded-2xl flex flex-col md:flex-row justify-between items-center md:items-start gap-4 min-w-0 overflow-hidden">
         <div className="relative w-4/5 md:w-2/5 aspect-5/6 -mt-4 shrink-0">
           <Image
-            src="/images/car-comparison/compare.png"
+            src="/images/car-comparison/compare.webp"
             alt="Compare model"
             fill
             className="object-cover object-bottom group-hover:scale-105 transition-all duration-300 ease-in-out"
@@ -89,7 +98,7 @@ const HeroSection = ({ title, content, index }: Props) => (
       </div>
     </div>
 
-    <LeftWrapper className="flex flex-col gap-8">
+    <LeftWrapper className="mt-16">
       <RichText data={content} className="prose" />
     </LeftWrapper>
   </Section>

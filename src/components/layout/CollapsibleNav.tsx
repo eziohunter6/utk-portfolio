@@ -36,7 +36,7 @@ const CollapsibleNav = ({ links }: { links: TNavLink[] }) => {
       aria-modal="true"
       aria-label="Mobile navigation"
       className={cn(
-        "md:hidden fixed inset-x-0 top-20 bottom-0 z-20 bg-main/50 backdrop-blur-sm shadow-xs transition-opacity duration-300 ease-in-out",
+        "md:hidden fixed inset-x-0 top-20 bottom-0 z-20 bg-main shadow-xs transition-opacity duration-300 ease-in-out",
         isOpen ? "opacity-100" : "opacity-0 pointer-events-none",
       )}
     >

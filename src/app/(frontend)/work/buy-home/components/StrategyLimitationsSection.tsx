@@ -23,7 +23,7 @@ const StrategyLimitationsSection = ({
       <RichText data={content} className="prose" />
     </LeftWrapper>
 
-    <Embed url={iframe} className="mt-8 aspect-29/15" />
+    <Embed url={iframe} className="mt-8 aspect-9/16 md:aspect-29/15" />
   </Section>
 );
 

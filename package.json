@@ -9,7 +9,8 @@
     "start": "next start",
     "check": "biome check --write",
     "payload": "payload",
-    "payload:reset": "payload migrate:create --force-accept-warning && echo y | payload migrate:fresh"
+    "payload:reset": "payload migrate:create --force-accept-warning && echo y | payload migrate:fresh",
+    "postinstall": "payload generate:importmap && payload generate:types"
   },
   "dependencies": {
     "@payloadcms/db-vercel-postgres": "^3.78.0",
