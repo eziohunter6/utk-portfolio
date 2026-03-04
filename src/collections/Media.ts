@@ -13,7 +13,6 @@ export const Media: CollectionConfig = {
       {
         name: "preview",
         width: 400,
-        height: 300,
         position: "centre",
         formatOptions: { format: "webp" },
         admin: {
@@ -66,16 +65,9 @@ export const Media: CollectionConfig = {
   fields: [
     {
       name: "prefix",
-      type: "select",
+      type: "text",
       label: "Storage folder",
-      options: [
-        { label: "General", value: "" },
-        { label: "Logos", value: "logos" },
-        { label: "Works", value: "works" },
-        { label: "Videos", value: "videos" },
-        { label: "Images", value: "images" },
-      ],
-      defaultValue: "",
+      defaultValue: "/media",
       admin: {
         hidden: false,
         readOnly: false,

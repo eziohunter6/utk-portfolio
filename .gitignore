@@ -42,6 +42,9 @@ yarn-error.log*
 # Payload media uploads (local storage)
 /media
 
+# Downloaded media backup
+/download
+
 # vercel
 .vercel
 

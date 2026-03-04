@@ -1,19 +1,14 @@
-import {
-  MigrateDownArgs,
-  MigrateUpArgs,
-  sql,
-} from "@payloadcms/db-vercel-postgres";
+import { MigrateUpArgs, MigrateDownArgs, sql } from '@payloadcms/db-vercel-postgres'
 
 export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   await db.execute(sql`
-   CREATE TYPE "public"."enum_media_prefix" AS ENUM('', 'logos', 'works', 'videos', 'images');
-  CREATE TYPE "public"."enum_works_link_target" AS ENUM('_self', '_blank');
+   CREATE TYPE "public"."enum_works_link_target" AS ENUM('_self', '_blank');
   CREATE TYPE "public"."enum_contacts_contacts_type" AS ENUM('copy', 'link');
   CREATE TABLE "media" (
   	"id" serial PRIMARY KEY NOT NULL,
   	"alt" varchar NOT NULL,
   	"thumbnail_id" integer,
-  	"prefix" "enum_media_prefix" DEFAULT '',
+  	"prefix" varchar DEFAULT '',
   	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
   	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
   	"url" varchar,
@@ -145,7 +140,7 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   
   CREATE TABLE "contacts" (
   	"id" serial PRIMARY KEY NOT NULL,
-  	"content" jsonb NOT NULL,
+  	"content" jsonb DEFAULT '{"root":{"type":"root","children":[{"type":"paragraph","children":[{"type":"text","detail":0,"format":0,"mode":"normal","style":"","text":"","version":1}],"direction":null,"format":"","indent":0,"textFormat":0,"textStyle":"","version":1}],"direction":null,"format":"","indent":0,"version":1}}'::jsonb NOT NULL,
   	"updated_at" timestamp(3) with time zone,
   	"created_at" timestamp(3) with time zone
   );
@@ -374,14 +369,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "ai_practices_rels_order_idx" ON "ai_practices_rels" USING btree ("order");
   CREATE INDEX "ai_practices_rels_parent_idx" ON "ai_practices_rels" USING btree ("parent_id");
   CREATE INDEX "ai_practices_rels_path_idx" ON "ai_practices_rels" USING btree ("path");
-  CREATE INDEX "ai_practices_rels_media_id_idx" ON "ai_practices_rels" USING btree ("media_id");`);
+  CREATE INDEX "ai_practices_rels_media_id_idx" ON "ai_practices_rels" USING btree ("media_id");`)
 }
 
-export async function down({
-  db,
-  payload,
-  req,
-}: MigrateDownArgs): Promise<void> {
+export async function down({ db, payload, req }: MigrateDownArgs): Promise<void> {
   await db.execute(sql`
    DROP TABLE "media" CASCADE;
   DROP TABLE "users_sessions" CASCADE;
@@ -406,7 +397,6 @@ export async function down({
   DROP TABLE "car_comparison_rels" CASCADE;
   DROP TABLE "ai_practices" CASCADE;
   DROP TABLE "ai_practices_rels" CASCADE;
-  DROP TYPE "public"."enum_media_prefix";
   DROP TYPE "public"."enum_works_link_target";
-  DROP TYPE "public"."enum_contacts_contacts_type";`);
+  DROP TYPE "public"."enum_contacts_contacts_type";`)
 }
