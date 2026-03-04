@@ -16,7 +16,7 @@ const AIVideoSection = ({ title, content, videos, image, index }: Props) => {
   return (
     <Section id="ai-video">
       <Title index={index}>{title}</Title>
-      <LeftWrapper className="flex flex-col gap-8">
+      <LeftWrapper>
         <RichText data={content} className="prose" />
       </LeftWrapper>
 

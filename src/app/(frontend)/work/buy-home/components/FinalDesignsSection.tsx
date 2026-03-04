@@ -14,7 +14,7 @@ const FinalDesignsSection = ({ title, content, index, images }: Props) => (
   <Section id="final-designs">
     <Title index={index}>{title}</Title>
 
-    <LeftWrapper className="flex flex-col gap-8">
+    <LeftWrapper>
       <RichText data={content} className="prose" />
     </LeftWrapper>
 

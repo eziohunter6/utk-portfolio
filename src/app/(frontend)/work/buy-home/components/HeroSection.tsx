@@ -11,17 +11,26 @@ type Props = NonNullable<BuyHome["hero"]> & {
 
 const HeroSection = ({ title, content, index }: Props) => (
   <Section id="hero">
-    <Title as="h1" className="mb-8" index={index}>
+    <Title as="h1" index={index}>
       {title}
     </Title>
 
+    <LeftWrapper className="pt-8 pb-16">
+      <ul className="flex flex-col gap-1 text-base">
+        <li>Spinny</li>
+        <li>Lead Designer</li>
+        <li>4 Weeks</li>
+        <li>Mobile + Web</li>
+      </ul>
+    </LeftWrapper>
+
     {/* Bento Grid */}
-    <div className="mt-8 grid lg:max-h-[600px] grid-cols-1 md:grid-cols-[1.8fr_1fr_1.3fr] md:grid-rows-[1fr_1fr] lg:grid-rows-[0.8fr_1fr] gap-4">
+    <div className="grid lg:max-h-[600px] grid-cols-1 md:grid-cols-[1.8fr_1fr_1.3fr] md:grid-rows-[1fr_1fr] lg:grid-rows-[0.8fr_1fr] gap-4">
       {/* Buy Homepage Mockup */}
       <div className="group px-8 pt-8 row-span-2 bg-muted rounded-2xl overflow-hidden">
         <div className="relative w-full h-full aspect-2/3">
           <Image
-            src="/images/buy-home/mockup.png"
+            src="/images/buy-home/mockup.webp"
             alt="Buy Homepage Mockup"
             fill
             className="object-cover object-top group-hover:scale-105 transition-all duration-300 ease-in-out"
@@ -33,7 +42,7 @@ const HeroSection = ({ title, content, index }: Props) => (
       <div className="group p-4 bg-muted rounded-2xl flex flex-col-reverse md:flex-col justify-between items-center md:items-start gap-4 min-w-0 overflow-hidden">
         <div className="relative overflow-hidden w-full aspect-29/20">
           <Image
-            src="/images/buy-home/kam-v1.png"
+            src="/images/buy-home/kam-v1.webp"
             alt="KAM V1"
             fill
             className="object-contain group-hover:scale-105 transition-all duration-300 ease-in-out"
@@ -59,7 +68,7 @@ const HeroSection = ({ title, content, index }: Props) => (
 
         <div className="relative overflow-hidden w-full aspect-21/10">
           <Image
-            src="/images/buy-home/kam-v2.png"
+            src="/images/buy-home/kam-v2.webp"
             alt="KAM V2"
             fill
             className="object-contain group-hover:scale-105 transition-all duration-300 ease-in-out"
@@ -69,9 +78,9 @@ const HeroSection = ({ title, content, index }: Props) => (
 
       {/* Activity Card */}
       <div className="group p-4 md:col-span-2 bg-muted rounded-2xl flex flex-col-reverse md:flex-row justify-between items-center md:items-start gap-4 min-w-0 overflow-hidden">
-        <div className="relative w-4/5 md:w-2/5 aspect-5/6 -mb-4 shrink-0">
+        <div className="relative w-4/5 md:w-1/2 aspect-5/6 -mb-4 shrink-0">
           <Image
-            src="/images/buy-home/activity-card.png"
+            src="/images/buy-home/activity-card.webp"
             alt="Activity Card"
             fill
             className="object-contain object-bottom-left group-hover:scale-105 transition-all duration-300 ease-in-out"
@@ -97,7 +106,7 @@ const HeroSection = ({ title, content, index }: Props) => (
       </div>
     </div>
 
-    <LeftWrapper className="flex flex-col gap-8">
+    <LeftWrapper className="mt-16">
       <RichText data={content} className="prose" />
     </LeftWrapper>
   </Section>

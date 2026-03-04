@@ -1,5 +1,5 @@
 import { RichText } from "@payloadcms/richtext-lexical/react";
-import Image from "next/image";
+import { Embed } from "@/components/ui/Embed";
 import LeftWrapper from "@/components/ui/LeftWrapper";
 import Section from "@/components/ui/Section";
 import Title from "@/components/ui/Title";
@@ -9,27 +9,15 @@ type Props = NonNullable<BuyHome["analysis"]> & {
   index: number;
 };
 
-// TODO: Add iframe
-
-const AnalysisSection = ({ title, content, index }: Props) => (
+const AnalysisSection = ({ title, content, iframe, index }: Props) => (
   <Section id="analysis">
     <Title index={index}>{title}</Title>
 
-    <LeftWrapper className="flex flex-col gap-8">
+    <LeftWrapper>
       <RichText data={content} className="prose" />
     </LeftWrapper>
 
-    {/* Image */}
-    <div className="bg-muted rounded-2xl px-8 pt-8 mt-8">
-      <div className="relative w-11/12 aspect-video rounded-lg overflow-hidden mx-auto">
-        <Image
-          src="/images/buy-home/analysis.png"
-          alt="Analysis Image"
-          fill
-          className="object-contain object-top"
-        />
-      </div>
-    </div>
+    <Embed url={iframe} className="mt-8 aspect-29/15" />
   </Section>
 );
 
