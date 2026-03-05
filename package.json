@@ -10,7 +10,8 @@
     "check": "biome check --write",
     "payload": "payload",
     "payload:reset": "payload migrate:create --force-accept-warning && echo y | payload migrate:fresh",
-    "download-media": "bun run scripts/download-media.ts",
+    "download-media": "bun run scripts/blob-media-sync.ts --download",
+    "upload-media": "bun run scripts/blob-media-sync.ts --upload",
     "postinstall": "payload generate:importmap && payload generate:types"
   },
   "dependencies": {
