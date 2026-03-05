@@ -18,7 +18,7 @@ const ProcessSection = ({ title, content, index, iframe }: Props) => (
       <RichText data={content} className="prose" />
     </LeftWrapper>
 
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-14">
       {/* Image */}
       <div className="relative aspect-9/16 rounded-lg overflow-hidden">
         <Image

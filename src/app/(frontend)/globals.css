@@ -80,27 +80,27 @@ html {
   --tw-prose-invert-td-borders: var(--color-brand);
 }
 
-/* @layer components {
-  .prose h1 {
-    font-size: 2.25rem; 
-    line-height: 2.5rem;
-  }
-
-  .prose h2 {
-    font-size: 1.875rem; 
-    line-height: 2.25rem;
-  }
-
+@layer components {
   .prose h3 {
-    font-size: 1.5rem; 
-    line-height: 2rem;
+    @apply text-4xl!;
+    @apply mb-8!;
   }
 
   .prose h4 {
-    font-size: 1.25rem; 
-    line-height: 1.75rem;
+    @apply text-4xl!;
+    @apply font-medium!;
+    @apply mb-8!;
   }
-} */
+
+  .prose h5 {
+    @apply text-2xl;
+  }
+
+  .prose ul,
+  .prose ol {
+    @apply text-2xl!;
+  }
+}
 
 .prose input,
 .prose select,

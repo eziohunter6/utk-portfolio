@@ -14,12 +14,14 @@ const WorkCard = async ({
 }: TWork) => {
   const imageData = await getMediaURL(image);
 
+  console.log(title.split("\\n"));
+
   return (
     <Link
       href={href}
       target={target ?? "_self"}
       rel={target === "_blank" ? "noopener noreferrer" : undefined}
-      className="group flex flex-col gap-6"
+      className="group"
     >
       <figure className="relative overflow-hidden w-full aspect-8/5 rounded-2xl bg-muted">
         {imageData && (
@@ -35,7 +37,7 @@ const WorkCard = async ({
       </figure>
 
       {tags && (
-        <div className="flex flex-row items-center gap-2">
+        <div className="flex flex-row items-center gap-2 mt-6 mb-3">
           <div className="flex flex-row gap-2 flex-wrap">
             {tags.map((tag) => (
               <span
@@ -49,15 +51,21 @@ const WorkCard = async ({
         </div>
       )}
 
-      <h3 className="text-3xl flex items-baseline justify-between gap-6">
-        <span className="line-clamp-2">{title}</span>
+      <hgroup className="text-3xl flex items-baseline justify-between gap-6">
+        <h3>
+          {title.split("\\n").map((line, index) => (
+            <span key={index} className="line-clamp-2">
+              {line}
+            </span>
+          ))}
+        </h3>
         <ArrowUpRightIcon className="size-6 shrink-0 origin-bottom-left group-hover:scale-120 transition-all duration-300 ease-in-out" />
-      </h3>
+      </hgroup>
 
-      <hr className="border-current" />
+      <hr className="border-current my-6" />
 
       {description && (
-        <RichText data={description} className="prose prose-xl" />
+        <RichText data={description} className="prose prose-xl leading-7" />
       )}
     </Link>
   );

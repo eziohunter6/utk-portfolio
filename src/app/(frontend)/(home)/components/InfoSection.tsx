@@ -20,20 +20,20 @@ const InfoSection = async ({ leftContent, rightContent, image }: Props) => {
         {/* Info Content */}
         <div className="flex flex-col md:flex-row gap-8 md:gap-4">
           {/* Content 1 */}
-          <RichText data={leftContent} className="prose" />
+          <RichText data={leftContent} className="prose  prose-h4:text-4xl" />
 
           {/* Content 2 */}
-          <RichText data={rightContent} className="prose" />
+          <RichText data={rightContent} className="prose prose-h4:text-4xl" />
         </div>
 
         {/* Info Image */}
         {imageData && (
-          <div className="relative w-full md:w-11/12 aspect-square">
+          <div className="relative w-full aspect-3/2">
             <Image
               fill
               src={imageData.src}
               alt={imageData.alt}
-              className="object-cover"
+              className="object-contain"
               placeholder={imageData.base64Preview ? "blur" : "empty"}
               blurDataURL={imageData.base64Preview}
             />

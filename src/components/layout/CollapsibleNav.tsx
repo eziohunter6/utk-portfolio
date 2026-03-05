@@ -36,20 +36,20 @@ const CollapsibleNav = ({ links }: { links: TNavLink[] }) => {
       aria-modal="true"
       aria-label="Mobile navigation"
       className={cn(
-        "md:hidden fixed inset-x-0 top-20 bottom-0 z-20 bg-main shadow-xs transition-opacity duration-300 ease-in-out",
+        "md:hidden fixed inset-x-0 top-20 bottom-0 z-20 bg-brand text-white shadow-xs transition-opacity duration-300 ease-in-out",
         isOpen ? "opacity-100" : "opacity-0 pointer-events-none",
       )}
     >
       <nav
         aria-label="Mobile navigation"
-        className="h-3/4 flex flex-col gap-4 p-10 px-6 justify-between"
+        className="h-2/4 flex flex-col gap-8 p-10 px-6 justify-between"
       >
         {links.map(({ href, title, id }) => (
           <Link
             key={id ?? href}
             href={href}
             onClick={handleClose}
-            className="text-xl py-4"
+            className="text-4xl font-light py-4 border-b-2 border-current"
           >
             {title}
           </Link>

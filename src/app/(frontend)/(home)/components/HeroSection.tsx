@@ -20,17 +20,19 @@ const HeroSection = ({ title, subtitle, content, workedAt }: Props) => (
     </div>
 
     <div className="flex flex-col gap-2 w-full md:w-3/4 lg:w-3/5 my-16">
-      <HandSvg className="size-16 md:size-24" />
+      <HandSvg className="size-24" />
 
-      <RichText data={content} className="prose prose-xl" />
+      <RichText
+        data={content}
+        className="prose prose-h4:text-4xl prose-h4:font-medium"
+      />
     </div>
 
     {/* Worked At */}
     <div className="relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen bg-brand text-white/35 py-4">
-      <h3 className="text-[0.6rem] sm:text-xs font-semibold text-center">
-        WORKED AT
-      </h3>
+      <h3 className="text-xs font-semibold text-center">WORKED AT</h3>
 
+      {/* TODO: add marqure text here */}
       <div className="flex flex-row justify-center py-4">
         {filterPopulated(workedAt).map(({ alt, url, filename }) => {
           if (!url) return null;
@@ -42,7 +44,7 @@ const HeroSection = ({ title, subtitle, content, workedAt }: Props) => (
                 alt={alt ?? filename ?? ""}
                 height={32}
                 width={100}
-                className="object-contain h-4 sm:h-8 w-auto"
+                className="object-contain h-8 w-auto"
               />
 
               <span className="mx-2 sm:mx-4 h-2/3 w-[1.5px] rounded-full bg-[#778BFF] group-last:hidden" />

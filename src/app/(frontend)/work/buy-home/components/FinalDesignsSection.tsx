@@ -3,7 +3,7 @@ import Image from "next/image";
 import LeftWrapper from "@/components/ui/LeftWrapper";
 import Section from "@/components/ui/Section";
 import Title from "@/components/ui/Title";
-import { getMediaURL } from "@/lib/utils";
+import { cn, getMediaURL } from "@/lib/utils";
 import type { BuyHome } from "@/payload-types";
 
 type Props = NonNullable<BuyHome["finalDesigns"]> & {
@@ -25,10 +25,10 @@ const FinalDesignsSection = async ({
       <Title index={index}>{title}</Title>
 
       <LeftWrapper>
-        <RichText data={content} className="prose" />
+        <RichText data={content} className="prose prose-p:w-3/4" />
       </LeftWrapper>
 
-      {imageData?.map((img) => {
+      {imageData?.map((img, index) => {
         if (!img) return null;
 
         return (
@@ -38,7 +38,10 @@ const FinalDesignsSection = async ({
                 src={img.src}
                 alt={img.alt}
                 fill
-                className="object-contain object-top-left"
+                className={cn(
+                  "object-contain object-top-left",
+                  index === 0 && "object-cover",
+                )}
                 placeholder={img.base64Preview ? "blur" : "empty"}
                 blurDataURL={img.base64Preview}
               />

@@ -24,13 +24,13 @@ const ContactLink = ({ name, href, type }: TContact) => {
       target="_blank"
       onClick={type === "copy" ? handleCopy : undefined}
       rel="noopener noreferrer"
-      className="group relative flex items-center gap-2 text-xl font-semibold hover:underline"
+      className="group relative flex items-center flex-wrap gap-2 text-2xl md:text-3xl font-semibold hover:underline"
     >
       {name}
       {type === "link" && <ArrowUpRightIcon className="w-6 h-6" />}
 
       {type === "copy" && (
-        <span className="bg-brand text-main rounded-full text-xs font-light px-2 pt-1 pb-1.5 opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 transition-all duration-200 ease-in-out">
+        <span className="bg-brand text-main rounded-full text-xs font-light px-2 pt-1 pb-1.5 opacity-100 md:opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 transition-all duration-200 ease-in-out">
           {isCopied ? "copied" : "click to copy"}
         </span>
       )}

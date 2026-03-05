@@ -6,7 +6,7 @@ type Props = HTMLAttributes<HTMLDivElement>;
 const LeftWrapper = ({ className, children, ...props }: Props) => {
   return (
     <div
-      className={cn("w-full md:w-3/4 lg:w-3/5 ml-auto", className)}
+      className={cn("w-full md:w-[71%] lg:w-2/3 ml-auto ", className)}
       {...props}
     >
       {children}
