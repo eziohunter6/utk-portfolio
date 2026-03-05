@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import SmoothScroll from "@/components/LenisProvider";
 import Layout from "@/components/layout";
 
 export const metadata: Metadata = {
@@ -12,5 +13,9 @@ export default function AppLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <Layout>{children}</Layout>;
+  return (
+    <SmoothScroll>
+      <Layout>{children}</Layout>
+    </SmoothScroll>
+  );
 }
