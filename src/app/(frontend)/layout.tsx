@@ -10,12 +10,17 @@ export const metadata: Metadata = {
 
 export default function AppLayout({
   children,
+  modal,
 }: Readonly<{
   children: React.ReactNode;
+  modal: React.ReactNode;
 }>) {
   return (
     <SmoothScroll>
-      <Layout>{children}</Layout>
+      <Layout>
+        {children}
+        {modal}
+      </Layout>
     </SmoothScroll>
   );
 }

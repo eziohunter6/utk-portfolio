@@ -39,7 +39,7 @@ const FinalDesignsSection = async ({
               src={img.src}
               alt={img.alt}
               fill
-              className="object-contain object-top-left"
+              className="object-cover object-top-left"
               placeholder={img.base64Preview ? "blur" : "empty"}
               blurDataURL={img.base64Preview}
             />

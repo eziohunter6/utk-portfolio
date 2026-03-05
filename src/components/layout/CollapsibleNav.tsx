@@ -1,5 +1,6 @@
 "use client";
 
+import { useLenis } from "lenis/react";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -8,6 +9,7 @@ import type { TNavLink } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
 const CollapsibleNav = ({ links }: { links: TNavLink[] }) => {
+  const lenis = useLenis();
   const [isOpen, setIsOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
 
@@ -15,15 +17,18 @@ const CollapsibleNav = ({ links }: { links: TNavLink[] }) => {
 
   const handleClose = () => {
     setIsOpen(false);
-    document.body.style.overflow = "auto";
+    document.body.style.overflow = "";
+    lenis?.start();
   };
 
   const handleToggle = () =>
     setIsOpen((prev) => {
       if (prev) {
-        document.body.style.overflow = "auto";
+        document.body.style.overflow = "";
+        lenis?.start();
       } else {
         document.body.style.overflow = "hidden";
+        lenis?.stop();
       }
 
       return !prev;

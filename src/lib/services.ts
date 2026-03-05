@@ -59,3 +59,25 @@ export const getAiPracticesContent = async () => {
 
   return result;
 };
+
+export const getEcTimesContent = async () => {
+  const payload = await getPayload();
+
+  const result = await payload.findGlobal({
+    slug: "car-comparison",
+    depth: 2,
+  });
+
+  return result;
+};
+
+export const getClearTripContent = async () => {
+  const payload = await getPayload();
+
+  const result = await payload.findGlobal({
+    slug: "car-comparison",
+    depth: 2,
+  });
+
+  return result;
+};

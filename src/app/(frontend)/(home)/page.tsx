@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { buildMetadataFromPayload } from "@/lib/seo";
 import { getHomeContent } from "@/lib/services";
 import {
