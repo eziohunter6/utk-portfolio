@@ -20,7 +20,7 @@ const FinalDesignsSection = async ({
     images?.map((image) => getMediaURL(image)) ?? [],
   );
   return (
-    <Section id="finalDesigns">
+    <Section id="final-designs">
       <Title index={index}>{title}</Title>
 
       <LeftWrapper>
@@ -31,17 +31,18 @@ const FinalDesignsSection = async ({
         if (!img) return null;
 
         return (
-          <div key={img.alt} className="rounded-2xl mt-8">
-            <div className="relative w-full aspect-29/15 rounded-lg overflow-hidden">
-              <Image
-                src={img.src}
-                alt={img.alt}
-                fill
-                className="object-contain object-top-left"
-                placeholder={img.base64Preview ? "blur" : "empty"}
-                blurDataURL={img.base64Preview}
-              />
-            </div>
+          <div
+            key={img.alt}
+            className="mt-8 rounded-2xl relative w-full aspect-29/15"
+          >
+            <Image
+              src={img.src}
+              alt={img.alt}
+              fill
+              className="object-contain object-top-left"
+              placeholder={img.base64Preview ? "blur" : "empty"}
+              blurDataURL={img.base64Preview}
+            />
           </div>
         );
       })}

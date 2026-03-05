@@ -13,15 +13,23 @@ export const getMediaURL = async (
 ): Promise<TMedia | null> => {
   if (!media || typeof media === "number") return null;
 
-  return {
-    alt: media.alt ?? "",
-    src: media.url ?? "",
-    thumbnail: media.thumbnail ? await getMediaURL(media.thumbnail) : null,
-    type: media.mimeType?.startsWith("image/") ? "image" : "video",
-    base64Preview: media.sizes?.preview?.url
-      ? await getBase64(media.sizes?.preview?.url)
-      : undefined,
-  };
+  try {
+    return {
+      alt: media.alt ?? "",
+      src: media.url ?? "",
+      thumbnail: media.thumbnail ? await getMediaURL(media.thumbnail) : null,
+      type: media.mimeType?.startsWith("image/") ? "image" : "video",
+      base64Preview: media.sizes?.preview?.url
+        ? await getBase64(media.sizes?.preview?.url)
+        : undefined,
+    };
+  } catch (error) {
+    console.error("[getMediaURL] Error fetching media URL ->", {
+      media,
+      error,
+    });
+    return null;
+  }
 };
 
 const isPopulated = <T extends object>(

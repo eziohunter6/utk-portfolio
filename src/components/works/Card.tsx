@@ -14,8 +14,6 @@ const WorkCard = async ({
 }: TWork) => {
   const imageData = await getMediaURL(image);
 
-  console.log(title.split("\\n"));
-
   return (
     <Link
       href={href}
