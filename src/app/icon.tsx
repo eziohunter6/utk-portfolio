@@ -12,10 +12,10 @@ export default function Icon() {
         width: "100%",
         alignItems: "center",
         justifyContent: "center",
-        backgroundColor: "#0f172a",
-        color: "#f9fafb",
+        backgroundColor: "transparent",
+        color: "#001ec6",
         fontSize: 20,
-        fontWeight: 700,
+        fontWeight: 600,
       }}
     >
       utk

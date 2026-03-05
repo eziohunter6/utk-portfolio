@@ -9,7 +9,7 @@ type Props = NonNullable<Home["hero"]>;
 
 const HeroSection = ({ title, subtitle, content, workedAt }: Props) => (
   <Section id="hero">
-    <div className="flex flex-col justify-center gap-8 mb-16 pt-32 sm:pt-40 ">
+    <div className="flex flex-col justify-center gap-8 mb-16 pt-32 sm:pt-40">
       <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-[10rem]/45 font-semibold">
         {title}
       </h1>
