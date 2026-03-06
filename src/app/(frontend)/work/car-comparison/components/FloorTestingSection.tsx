@@ -11,8 +11,15 @@ type Props = NonNullable<CarComparison["floorTesting"]> & {
   index: number;
 };
 
-const FloorTestingSection = async ({ title, content, image, index }: Props) => {
+const FloorTestingSection = async ({
+  title,
+  content,
+  image,
+  index,
+  redirectImage,
+}: Props) => {
   const imageData = await getMediaURL(image);
+  const redirectLink = await getMediaURL(redirectImage);
 
   return (
     <Section id="floorTesting">
@@ -21,9 +28,19 @@ const FloorTestingSection = async ({ title, content, image, index }: Props) => {
       <LeftWrapper>
         <RichText data={content} className="prose" />
 
-        <Link href="/" className="text-brand underline mt-8">
-          Variant 2 was selected for experiment rollout.
-        </Link>
+        {redirectLink?.src ? (
+          <Link
+            href={redirectLink.src}
+            target="_blank"
+            className="text-brand underline mt-8"
+          >
+            Variant 2 was selected for experiment rollout.
+          </Link>
+        ) : (
+          <p className="text-brand mt-8">
+            Variant 2 was selected for experiment rollout.
+          </p>
+        )}
       </LeftWrapper>
 
       {/* Image */}
