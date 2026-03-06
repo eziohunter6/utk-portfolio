@@ -23,7 +23,7 @@ export default function Drawer({
   const lenis = useLenis();
   const [isMounted, setIsMounted] = useState(false);
   const mainLayout = useMemo(
-    () => document.body?.querySelector("#main-layout"),
+    () => document?.body?.querySelector("#main-layout"),
     [],
   );
   const [isOpen, setIsOpen] = useState(false);
@@ -87,7 +87,7 @@ export default function Drawer({
       {/* Overlay */}
       <div
         className={cn(
-          "absolute inset-0 bg-black/40 transition-opacity duration-300",
+          "absolute inset-0 bg-neutral-700/75 transition-opacity duration-300",
           isOpen ? "opacity-100" : "opacity-0",
         )}
         onClick={onClose}

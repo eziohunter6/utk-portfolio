@@ -3,6 +3,7 @@ import {
   CommonSection,
   SectionWithImage,
   SectionWithImages,
+  VideoField,
   VideosField,
 } from "./CommonField";
 
@@ -28,7 +29,19 @@ export const AiPractices: GlobalConfig = {
     {
       type: "group",
       name: "aiVideo",
-      fields: [...SectionWithImage, VideosField],
+      fields: [
+        ...SectionWithImage,
+        VideosField,
+        {
+          name: "demoVideo",
+          type: "upload",
+          relationTo: "media",
+          filterOptions: { mimeType: { contains: "video" } },
+          admin: {
+            description: "Select a demo video file",
+          },
+        },
+      ],
     },
     {
       type: "group",

@@ -263,6 +263,7 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"ai_video_title" varchar DEFAULT '' NOT NULL,
   	"ai_video_content" jsonb DEFAULT '{"root":{"type":"root","children":[{"type":"paragraph","children":[{"type":"text","detail":0,"format":0,"mode":"normal","style":"","text":"","version":1}],"direction":null,"format":"","indent":0,"textFormat":0,"textStyle":"","version":1}],"direction":null,"format":"","indent":0,"version":1}}'::jsonb NOT NULL,
   	"ai_video_image_id" integer,
+  	"ai_video_demo_video_id" integer,
   	"ai_prototyping_title" varchar DEFAULT '' NOT NULL,
   	"ai_prototyping_content" jsonb DEFAULT '{"root":{"type":"root","children":[{"type":"paragraph","children":[{"type":"text","detail":0,"format":0,"mode":"normal","style":"","text":"","version":1}],"direction":null,"format":"","indent":0,"textFormat":0,"textStyle":"","version":1}],"direction":null,"format":"","indent":0,"version":1}}'::jsonb NOT NULL,
   	"meta_title" varchar,
@@ -376,6 +377,7 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   ALTER TABLE "car_comparison_rels" ADD CONSTRAINT "car_comparison_rels_media_fk" FOREIGN KEY ("media_id") REFERENCES "public"."media"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "car_comparison_rels" ADD CONSTRAINT "car_comparison_rels_works_fk" FOREIGN KEY ("works_id") REFERENCES "public"."works"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "ai_practices" ADD CONSTRAINT "ai_practices_ai_video_image_id_media_id_fk" FOREIGN KEY ("ai_video_image_id") REFERENCES "public"."media"("id") ON DELETE set null ON UPDATE no action;
+  ALTER TABLE "ai_practices" ADD CONSTRAINT "ai_practices_ai_video_demo_video_id_media_id_fk" FOREIGN KEY ("ai_video_demo_video_id") REFERENCES "public"."media"("id") ON DELETE set null ON UPDATE no action;
   ALTER TABLE "ai_practices" ADD CONSTRAINT "ai_practices_meta_image_id_media_id_fk" FOREIGN KEY ("meta_image_id") REFERENCES "public"."media"("id") ON DELETE set null ON UPDATE no action;
   ALTER TABLE "ai_practices_rels" ADD CONSTRAINT "ai_practices_rels_parent_fk" FOREIGN KEY ("parent_id") REFERENCES "public"."ai_practices"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "ai_practices_rels" ADD CONSTRAINT "ai_practices_rels_media_fk" FOREIGN KEY ("media_id") REFERENCES "public"."media"("id") ON DELETE cascade ON UPDATE no action;
@@ -452,6 +454,7 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "car_comparison_rels_media_id_idx" ON "car_comparison_rels" USING btree ("media_id");
   CREATE INDEX "car_comparison_rels_works_id_idx" ON "car_comparison_rels" USING btree ("works_id");
   CREATE INDEX "ai_practices_ai_video_ai_video_image_idx" ON "ai_practices" USING btree ("ai_video_image_id");
+  CREATE INDEX "ai_practices_ai_video_ai_video_demo_video_idx" ON "ai_practices" USING btree ("ai_video_demo_video_id");
   CREATE INDEX "ai_practices_meta_meta_image_idx" ON "ai_practices" USING btree ("meta_image_id");
   CREATE INDEX "ai_practices_rels_order_idx" ON "ai_practices_rels" USING btree ("order");
   CREATE INDEX "ai_practices_rels_parent_idx" ON "ai_practices_rels" USING btree ("parent_id");

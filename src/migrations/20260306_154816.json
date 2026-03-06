@@ -2768,6 +2768,12 @@
           "primaryKey": false,
           "notNull": false
         },
+        "ai_video_demo_video_id": {
+          "name": "ai_video_demo_video_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
         "ai_prototyping_title": {
           "name": "ai_prototyping_title",
           "type": "varchar",
@@ -2829,6 +2835,21 @@
           "method": "btree",
           "with": {}
         },
+        "ai_practices_ai_video_ai_video_demo_video_idx": {
+          "name": "ai_practices_ai_video_ai_video_demo_video_idx",
+          "columns": [
+            {
+              "expression": "ai_video_demo_video_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
         "ai_practices_meta_meta_image_idx": {
           "name": "ai_practices_meta_meta_image_idx",
           "columns": [
@@ -2851,6 +2872,15 @@
           "tableFrom": "ai_practices",
           "tableTo": "media",
           "columnsFrom": ["ai_video_image_id"],
+          "columnsTo": ["id"],
+          "onDelete": "set null",
+          "onUpdate": "no action"
+        },
+        "ai_practices_ai_video_demo_video_id_media_id_fk": {
+          "name": "ai_practices_ai_video_demo_video_id_media_id_fk",
+          "tableFrom": "ai_practices",
+          "tableTo": "media",
+          "columnsFrom": ["ai_video_demo_video_id"],
           "columnsTo": ["id"],
           "onDelete": "set null",
           "onUpdate": "no action"
@@ -3681,6 +3711,6 @@
     "tables": {},
     "columns": {}
   },
-  "id": "8da58125-0a58-4836-9419-6865ce4fe711",
+  "id": "f601e997-92f0-4e15-8006-4ae5cb3a9c31",
   "prevId": "00000000-0000-0000-0000-000000000000"
 }

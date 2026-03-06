@@ -15,7 +15,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { list, put } from "@vercel/blob";
+import { del, list, put } from "@vercel/blob";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DOWNLOAD_DIR = path.resolve(__dirname, "..", "download");
@@ -139,6 +139,42 @@ const runUpload = async (token: string): Promise<void> => {
   );
 };
 
+const runClear = async (token: string): Promise<void> => {
+  let cursor: string | undefined;
+  let totalDeleted = 0;
+
+  // eslint-disable-next-line no-constant-condition
+  while (true) {
+    const result = await list({
+      prefix: "",
+      limit: 1000,
+      cursor,
+      token,
+    });
+
+    if (result.blobs.length === 0) {
+      if (!result.hasMore || !result.cursor) break;
+      cursor = result.cursor;
+      continue;
+    }
+
+    const urls = result.blobs.map((blob) => blob.url);
+    try {
+      await del(urls, { token });
+      totalDeleted += urls.length;
+      console.log(`Deleted ${urls.length} files (total: ${totalDeleted})`);
+    } catch (err) {
+      console.error("Failed to delete batch:", err);
+      throw err;
+    }
+
+    if (!result.hasMore || !result.cursor) break;
+    cursor = result.cursor;
+  }
+
+  console.log(`\nDone. Deleted ${totalDeleted} files from Vercel Blob.`);
+};
+
 const run = async (): Promise<void> => {
   const token = process.env.BLOB_READ_WRITE_TOKEN;
   if (!token) {
@@ -148,7 +184,7 @@ const run = async (): Promise<void> => {
 
   const args = process.argv.slice(2);
   const modeArg = args.find(
-    (arg) => arg === "--download" || arg === "--upload",
+    (arg) => arg === "--download" || arg === "--upload" || arg === "--clear",
   );
 
   if (!modeArg || modeArg === "--download") {
@@ -161,7 +197,14 @@ const run = async (): Promise<void> => {
     return;
   }
 
-  console.error('Unknown mode. Use "--download" (default) or "--upload".');
+  if (modeArg === "--clear") {
+    await runClear(token);
+    return;
+  }
+
+  console.error(
+    'Unknown mode. Use "--download" (default), "--upload", or "--clear".',
+  );
   process.exit(1);
 };
 
