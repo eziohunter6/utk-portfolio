@@ -528,19 +528,22 @@
           "name": "slug",
           "type": "varchar",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "default": "''"
         },
         "title": {
           "name": "title",
           "type": "varchar",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "default": "''"
         },
         "description": {
           "name": "description",
           "type": "jsonb",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true,
+          "default": "'{\"root\":{\"type\":\"root\",\"children\":[{\"type\":\"paragraph\",\"children\":[{\"type\":\"text\",\"detail\":0,\"format\":0,\"mode\":\"normal\",\"style\":\"\",\"text\":\"\",\"version\":1}],\"direction\":null,\"format\":\"\",\"indent\":0,\"textFormat\":0,\"textStyle\":\"\",\"version\":1}],\"direction\":null,\"format\":\"\",\"indent\":0,\"version\":1}}'::jsonb"
         },
         "image_id": {
           "name": "image_id",
@@ -1843,6 +1846,12 @@
           "notNull": true,
           "default": "''"
         },
+        "process_image_id": {
+          "name": "process_image_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
         "analysis_title": {
           "name": "analysis_title",
           "type": "varchar",
@@ -1979,6 +1988,21 @@
         }
       },
       "indexes": {
+        "buy_home_process_process_image_idx": {
+          "name": "buy_home_process_process_image_idx",
+          "columns": [
+            {
+              "expression": "process_image_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
         "buy_home_exploration_exploration_image_idx": {
           "name": "buy_home_exploration_exploration_image_idx",
           "columns": [
@@ -2011,6 +2035,15 @@
         }
       },
       "foreignKeys": {
+        "buy_home_process_image_id_media_id_fk": {
+          "name": "buy_home_process_image_id_media_id_fk",
+          "tableFrom": "buy_home",
+          "tableTo": "media",
+          "columnsFrom": ["process_image_id"],
+          "columnsTo": ["id"],
+          "onDelete": "set null",
+          "onUpdate": "no action"
+        },
         "buy_home_exploration_image_id_media_id_fk": {
           "name": "buy_home_exploration_image_id_media_id_fk",
           "tableFrom": "buy_home",
@@ -2248,6 +2281,12 @@
           "notNull": true,
           "default": "'{\"root\":{\"type\":\"root\",\"children\":[{\"type\":\"paragraph\",\"children\":[{\"type\":\"text\",\"detail\":0,\"format\":0,\"mode\":\"normal\",\"style\":\"\",\"text\":\"\",\"version\":1}],\"direction\":null,\"format\":\"\",\"indent\":0,\"textFormat\":0,\"textStyle\":\"\",\"version\":1}],\"direction\":null,\"format\":\"\",\"indent\":0,\"version\":1}}'::jsonb"
         },
+        "problem_image_id": {
+          "name": "problem_image_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
         "problem_video_id": {
           "name": "problem_video_id",
           "type": "integer",
@@ -2305,6 +2344,12 @@
         },
         "floor_testing_image_id": {
           "name": "floor_testing_image_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "floor_testing_redirect_image_id": {
+          "name": "floor_testing_redirect_image_id",
           "type": "integer",
           "primaryKey": false,
           "notNull": false
@@ -2383,6 +2428,21 @@
         }
       },
       "indexes": {
+        "car_comparison_problem_problem_image_idx": {
+          "name": "car_comparison_problem_problem_image_idx",
+          "columns": [
+            {
+              "expression": "problem_image_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
         "car_comparison_problem_problem_video_idx": {
           "name": "car_comparison_problem_problem_video_idx",
           "columns": [
@@ -2413,6 +2473,21 @@
           "method": "btree",
           "with": {}
         },
+        "car_comparison_floor_testing_floor_testing_redirect_imag_idx": {
+          "name": "car_comparison_floor_testing_floor_testing_redirect_imag_idx",
+          "columns": [
+            {
+              "expression": "floor_testing_redirect_image_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
         "car_comparison_meta_meta_image_idx": {
           "name": "car_comparison_meta_meta_image_idx",
           "columns": [
@@ -2430,6 +2505,15 @@
         }
       },
       "foreignKeys": {
+        "car_comparison_problem_image_id_media_id_fk": {
+          "name": "car_comparison_problem_image_id_media_id_fk",
+          "tableFrom": "car_comparison",
+          "tableTo": "media",
+          "columnsFrom": ["problem_image_id"],
+          "columnsTo": ["id"],
+          "onDelete": "set null",
+          "onUpdate": "no action"
+        },
         "car_comparison_problem_video_id_media_id_fk": {
           "name": "car_comparison_problem_video_id_media_id_fk",
           "tableFrom": "car_comparison",
@@ -2444,6 +2528,15 @@
           "tableFrom": "car_comparison",
           "tableTo": "media",
           "columnsFrom": ["floor_testing_image_id"],
+          "columnsTo": ["id"],
+          "onDelete": "set null",
+          "onUpdate": "no action"
+        },
+        "car_comparison_floor_testing_redirect_image_id_media_id_fk": {
+          "name": "car_comparison_floor_testing_redirect_image_id_media_id_fk",
+          "tableFrom": "car_comparison",
+          "tableTo": "media",
+          "columnsFrom": ["floor_testing_redirect_image_id"],
           "columnsTo": ["id"],
           "onDelete": "set null",
           "onUpdate": "no action"
@@ -2900,6 +2993,670 @@
       "policies": {},
       "checkConstraints": {},
       "isRLSEnabled": false
+    },
+    "public.clear_trip_hero_tags": {
+      "name": "clear_trip_hero_tags",
+      "schema": "",
+      "columns": {
+        "_order": {
+          "name": "_order",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "_parent_id": {
+          "name": "_parent_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "id": {
+          "name": "id",
+          "type": "varchar",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "keyword": {
+          "name": "keyword",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {
+        "clear_trip_hero_tags_order_idx": {
+          "name": "clear_trip_hero_tags_order_idx",
+          "columns": [
+            {
+              "expression": "_order",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "clear_trip_hero_tags_parent_id_idx": {
+          "name": "clear_trip_hero_tags_parent_id_idx",
+          "columns": [
+            {
+              "expression": "_parent_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "clear_trip_hero_tags_parent_id_fk": {
+          "name": "clear_trip_hero_tags_parent_id_fk",
+          "tableFrom": "clear_trip_hero_tags",
+          "tableTo": "clear_trip",
+          "columnsFrom": ["_parent_id"],
+          "columnsTo": ["id"],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.clear_trip": {
+      "name": "clear_trip",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "hero_title": {
+          "name": "hero_title",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "''"
+        },
+        "problem_title": {
+          "name": "problem_title",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "''"
+        },
+        "problem_content": {
+          "name": "problem_content",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'{\"root\":{\"type\":\"root\",\"children\":[{\"type\":\"paragraph\",\"children\":[{\"type\":\"text\",\"detail\":0,\"format\":0,\"mode\":\"normal\",\"style\":\"\",\"text\":\"\",\"version\":1}],\"direction\":null,\"format\":\"\",\"indent\":0,\"textFormat\":0,\"textStyle\":\"\",\"version\":1}],\"direction\":null,\"format\":\"\",\"indent\":0,\"version\":1}}'::jsonb"
+        },
+        "challenge_title": {
+          "name": "challenge_title",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "''"
+        },
+        "challenge_content": {
+          "name": "challenge_content",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'{\"root\":{\"type\":\"root\",\"children\":[{\"type\":\"paragraph\",\"children\":[{\"type\":\"text\",\"detail\":0,\"format\":0,\"mode\":\"normal\",\"style\":\"\",\"text\":\"\",\"version\":1}],\"direction\":null,\"format\":\"\",\"indent\":0,\"textFormat\":0,\"textStyle\":\"\",\"version\":1}],\"direction\":null,\"format\":\"\",\"indent\":0,\"version\":1}}'::jsonb"
+        },
+        "impact_title": {
+          "name": "impact_title",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "''"
+        },
+        "impact_content": {
+          "name": "impact_content",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'{\"root\":{\"type\":\"root\",\"children\":[{\"type\":\"paragraph\",\"children\":[{\"type\":\"text\",\"detail\":0,\"format\":0,\"mode\":\"normal\",\"style\":\"\",\"text\":\"\",\"version\":1}],\"direction\":null,\"format\":\"\",\"indent\":0,\"textFormat\":0,\"textStyle\":\"\",\"version\":1}],\"direction\":null,\"format\":\"\",\"indent\":0,\"version\":1}}'::jsonb"
+        },
+        "impact_redirect_link": {
+          "name": "impact_redirect_link",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "''"
+        },
+        "meta_title": {
+          "name": "meta_title",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "meta_description": {
+          "name": "meta_description",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "meta_image_id": {
+          "name": "meta_image_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp(3) with time zone",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp(3) with time zone",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {
+        "clear_trip_meta_meta_image_idx": {
+          "name": "clear_trip_meta_meta_image_idx",
+          "columns": [
+            {
+              "expression": "meta_image_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "clear_trip_meta_image_id_media_id_fk": {
+          "name": "clear_trip_meta_image_id_media_id_fk",
+          "tableFrom": "clear_trip",
+          "tableTo": "media",
+          "columnsFrom": ["meta_image_id"],
+          "columnsTo": ["id"],
+          "onDelete": "set null",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.clear_trip_rels": {
+      "name": "clear_trip_rels",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "order": {
+          "name": "order",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "parent_id": {
+          "name": "parent_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "path": {
+          "name": "path",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "media_id": {
+          "name": "media_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {
+        "clear_trip_rels_order_idx": {
+          "name": "clear_trip_rels_order_idx",
+          "columns": [
+            {
+              "expression": "order",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "clear_trip_rels_parent_idx": {
+          "name": "clear_trip_rels_parent_idx",
+          "columns": [
+            {
+              "expression": "parent_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "clear_trip_rels_path_idx": {
+          "name": "clear_trip_rels_path_idx",
+          "columns": [
+            {
+              "expression": "path",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "clear_trip_rels_media_id_idx": {
+          "name": "clear_trip_rels_media_id_idx",
+          "columns": [
+            {
+              "expression": "media_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "clear_trip_rels_parent_fk": {
+          "name": "clear_trip_rels_parent_fk",
+          "tableFrom": "clear_trip_rels",
+          "tableTo": "clear_trip",
+          "columnsFrom": ["parent_id"],
+          "columnsTo": ["id"],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "clear_trip_rels_media_fk": {
+          "name": "clear_trip_rels_media_fk",
+          "tableFrom": "clear_trip_rels",
+          "tableTo": "media",
+          "columnsFrom": ["media_id"],
+          "columnsTo": ["id"],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.ec_times_hero_tags": {
+      "name": "ec_times_hero_tags",
+      "schema": "",
+      "columns": {
+        "_order": {
+          "name": "_order",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "_parent_id": {
+          "name": "_parent_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "id": {
+          "name": "id",
+          "type": "varchar",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "keyword": {
+          "name": "keyword",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {
+        "ec_times_hero_tags_order_idx": {
+          "name": "ec_times_hero_tags_order_idx",
+          "columns": [
+            {
+              "expression": "_order",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "ec_times_hero_tags_parent_id_idx": {
+          "name": "ec_times_hero_tags_parent_id_idx",
+          "columns": [
+            {
+              "expression": "_parent_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "ec_times_hero_tags_parent_id_fk": {
+          "name": "ec_times_hero_tags_parent_id_fk",
+          "tableFrom": "ec_times_hero_tags",
+          "tableTo": "ec_times",
+          "columnsFrom": ["_parent_id"],
+          "columnsTo": ["id"],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.ec_times": {
+      "name": "ec_times",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "hero_title": {
+          "name": "hero_title",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "''"
+        },
+        "problem_title": {
+          "name": "problem_title",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "''"
+        },
+        "problem_content": {
+          "name": "problem_content",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'{\"root\":{\"type\":\"root\",\"children\":[{\"type\":\"paragraph\",\"children\":[{\"type\":\"text\",\"detail\":0,\"format\":0,\"mode\":\"normal\",\"style\":\"\",\"text\":\"\",\"version\":1}],\"direction\":null,\"format\":\"\",\"indent\":0,\"textFormat\":0,\"textStyle\":\"\",\"version\":1}],\"direction\":null,\"format\":\"\",\"indent\":0,\"version\":1}}'::jsonb"
+        },
+        "challenge_title": {
+          "name": "challenge_title",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "''"
+        },
+        "challenge_content": {
+          "name": "challenge_content",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'{\"root\":{\"type\":\"root\",\"children\":[{\"type\":\"paragraph\",\"children\":[{\"type\":\"text\",\"detail\":0,\"format\":0,\"mode\":\"normal\",\"style\":\"\",\"text\":\"\",\"version\":1}],\"direction\":null,\"format\":\"\",\"indent\":0,\"textFormat\":0,\"textStyle\":\"\",\"version\":1}],\"direction\":null,\"format\":\"\",\"indent\":0,\"version\":1}}'::jsonb"
+        },
+        "impact_title": {
+          "name": "impact_title",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "''"
+        },
+        "impact_content": {
+          "name": "impact_content",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'{\"root\":{\"type\":\"root\",\"children\":[{\"type\":\"paragraph\",\"children\":[{\"type\":\"text\",\"detail\":0,\"format\":0,\"mode\":\"normal\",\"style\":\"\",\"text\":\"\",\"version\":1}],\"direction\":null,\"format\":\"\",\"indent\":0,\"textFormat\":0,\"textStyle\":\"\",\"version\":1}],\"direction\":null,\"format\":\"\",\"indent\":0,\"version\":1}}'::jsonb"
+        },
+        "impact_redirect_link": {
+          "name": "impact_redirect_link",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "''"
+        },
+        "meta_title": {
+          "name": "meta_title",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "meta_description": {
+          "name": "meta_description",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "meta_image_id": {
+          "name": "meta_image_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp(3) with time zone",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp(3) with time zone",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {
+        "ec_times_meta_meta_image_idx": {
+          "name": "ec_times_meta_meta_image_idx",
+          "columns": [
+            {
+              "expression": "meta_image_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "ec_times_meta_image_id_media_id_fk": {
+          "name": "ec_times_meta_image_id_media_id_fk",
+          "tableFrom": "ec_times",
+          "tableTo": "media",
+          "columnsFrom": ["meta_image_id"],
+          "columnsTo": ["id"],
+          "onDelete": "set null",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.ec_times_rels": {
+      "name": "ec_times_rels",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "order": {
+          "name": "order",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "parent_id": {
+          "name": "parent_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "path": {
+          "name": "path",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "media_id": {
+          "name": "media_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {
+        "ec_times_rels_order_idx": {
+          "name": "ec_times_rels_order_idx",
+          "columns": [
+            {
+              "expression": "order",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "ec_times_rels_parent_idx": {
+          "name": "ec_times_rels_parent_idx",
+          "columns": [
+            {
+              "expression": "parent_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "ec_times_rels_path_idx": {
+          "name": "ec_times_rels_path_idx",
+          "columns": [
+            {
+              "expression": "path",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "ec_times_rels_media_id_idx": {
+          "name": "ec_times_rels_media_id_idx",
+          "columns": [
+            {
+              "expression": "media_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "ec_times_rels_parent_fk": {
+          "name": "ec_times_rels_parent_fk",
+          "tableFrom": "ec_times_rels",
+          "tableTo": "ec_times",
+          "columnsFrom": ["parent_id"],
+          "columnsTo": ["id"],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "ec_times_rels_media_fk": {
+          "name": "ec_times_rels_media_fk",
+          "tableFrom": "ec_times_rels",
+          "tableTo": "media",
+          "columnsFrom": ["media_id"],
+          "columnsTo": ["id"],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
     }
   },
   "enums": {
@@ -2924,6 +3681,6 @@
     "tables": {},
     "columns": {}
   },
-  "id": "c54c64e6-64c4-4587-9f20-4ac584029b5a",
+  "id": "8da58125-0a58-4836-9419-6865ce4fe711",
   "prevId": "00000000-0000-0000-0000-000000000000"
 }
