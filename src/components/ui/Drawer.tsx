@@ -1,7 +1,6 @@
 "use client";
 
-import { useLenis } from "lenis/react";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { cn } from "@/lib/utils";
 
@@ -20,12 +19,7 @@ export default function Drawer({
   onCloseComplete,
   children,
 }: DrawerProps) {
-  const lenis = useLenis();
   const [isMounted, setIsMounted] = useState(false);
-  const mainLayout = useMemo(
-    () => document?.body?.querySelector("#main-layout"),
-    [],
-  );
   const [isOpen, setIsOpen] = useState(false);
   const unmountTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -46,15 +40,13 @@ export default function Drawer({
       });
 
       // Hide the body overflow
-      document.body.style.overflow = "hidden";
-      lenis?.stop();
+      document.documentElement.classList.add("overflow-hidden");
     } else {
       // Close the drawer
       setIsOpen(false);
 
       // Show the body overflow
-      document.body.style.overflow = "";
-      lenis?.start();
+      document.documentElement.classList.remove("overflow-hidden");
 
       // Unmount the drawer after transition completes
       unmountTimer.current = setTimeout(() => {
@@ -65,7 +57,7 @@ export default function Drawer({
         }
       }, DRAWER_ANIMATION_DURATION);
     }
-  }, [open, lenis]);
+  }, [open]);
 
   // Cleanup timer on component unmount and body overflow
   useEffect(() => {
@@ -73,12 +65,11 @@ export default function Drawer({
       if (unmountTimer.current) {
         clearTimeout(unmountTimer.current);
       }
-      document.body.style.overflow = "";
-      lenis?.start();
+      document.documentElement.classList.remove("overflow-hidden");
     };
-  }, [lenis]);
+  }, []);
 
-  if (!isMounted || !mainLayout) {
+  if (!isMounted) {
     return null;
   }
 
@@ -122,6 +113,6 @@ export default function Drawer({
         </div>
       </div>
     </div>,
-    mainLayout,
+    document.body,
   );
 }

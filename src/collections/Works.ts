@@ -43,7 +43,6 @@ export const Works: CollectionConfig = {
       type: "upload",
       relationTo: "media",
       required: true,
-      defaultValue: [],
       filterOptions: { mimeType: { contains: "image" } },
     },
     {

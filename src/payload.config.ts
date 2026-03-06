@@ -51,6 +51,7 @@ export default buildConfig({
     outputFile: path.resolve(dirname, "payload-types.ts"),
   },
   admin: {
+    suppressHydrationWarning: true,
     user: Users.slug,
     importMap: {
       baseDir: path.resolve(dirname),

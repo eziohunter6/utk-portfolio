@@ -37,7 +37,7 @@ const HeroSection = ({ title, subtitle, content, workedAt }: Props) => (
               alt={alt ?? filename ?? ""}
               height={32}
               width={100}
-              className="object-contain h-8 w-auto invert-100"
+              className="object-contain h-8 w-auto"
             />
 
             <span className="shrink-0 mx-2 sm:mx-4 h-2/3 w-[1.5px] rounded-full bg-[#EDF0FF] group-last:hidden" />

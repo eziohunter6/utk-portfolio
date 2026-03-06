@@ -1,9 +1,8 @@
 import Link from "next/link";
-import Layout from "@/components/layout";
 import Section from "@/components/ui/Section";
 
-const NotFound = () => (
-  <Layout>
+const NotFound = () => {
+  return (
     <Section
       id="not-found"
       className="flex flex-col justify-center gap-8 min-h-[calc(100dvh-70px)]"
@@ -24,7 +23,7 @@ const NotFound = () => (
         Back to home
       </Link>
     </Section>
-  </Layout>
-);
+  );
+};
 
 export default NotFound;
