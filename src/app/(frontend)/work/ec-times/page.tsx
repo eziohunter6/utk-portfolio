@@ -23,10 +23,10 @@ export default async function EcTimesPage() {
 
   return (
     <main id="ec-times-page">
-      <HeroSection {...hero} index={1} />
-      <ProblemSection {...problem} index={2} />
-      <ChallengeSection {...challenge} index={3} />
-      <ImpactSection {...impact} index={4} />
+      <HeroSection {...hero} index={0} />
+      <ProblemSection {...problem} index={1} />
+      <ChallengeSection {...challenge} index={2} />
+      <ImpactSection {...impact} index={3} />
     </main>
   );
 }
