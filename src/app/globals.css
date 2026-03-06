@@ -100,17 +100,44 @@ html {
   .prose ol {
     @apply text-2xl!;
   }
+
+  .prose input,
+  .prose select,
+  .prose textarea {
+    @apply bg-muted border-brand;
+  }
+
+  .prose input[type="checkbox"],
+  .prose input[type="radio"] {
+    @apply accent-brand bg-muted;
+  }
 }
 
-.prose input,
-.prose select,
-.prose textarea {
-  background-color: var(--color-muted);
-  border-color: var(--color-brand);
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--brand) var(--muted);
 }
 
-.prose input[type="checkbox"],
-.prose input[type="radio"] {
-  accent-color: var(--color-brand);
-  background-color: var(--color-muted);
+/* Chrome, Edge, Safari */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--muted);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--brand);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #0018a8;
+}
+
+::-webkit-scrollbar-corner {
+  background: var(--muted);
 }

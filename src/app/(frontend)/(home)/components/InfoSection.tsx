@@ -20,10 +20,10 @@ const InfoSection = async ({ leftContent, rightContent, image }: Props) => {
         {/* Info Content */}
         <div className="flex flex-col md:flex-row gap-8 md:gap-4">
           {/* Content 1 */}
-          <RichText data={leftContent} className="prose  prose-h4:text-4xl" />
+          <RichText data={leftContent} className="prose" />
 
           {/* Content 2 */}
-          <RichText data={rightContent} className="prose prose-h4:text-4xl" />
+          <RichText data={rightContent} className="prose" />
         </div>
 
         {/* Info Image */}

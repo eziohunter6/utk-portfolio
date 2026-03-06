@@ -22,10 +22,7 @@ const HeroSection = ({ title, subtitle, content, workedAt }: Props) => (
     <div className="flex flex-col gap-2 w-full md:w-3/4 lg:w-3/5 my-16">
       <HandSvg className="size-24" />
 
-      <RichText
-        data={content}
-        className="prose prose-h4:text-4xl prose-h4:font-medium"
-      />
+      <RichText data={content} className="prose" />
     </div>
 
     {/* Worked At */}

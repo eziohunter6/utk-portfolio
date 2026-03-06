@@ -1,3 +1,5 @@
+import ClearTripPage from "@/app/(frontend)/work/clear-trip/page";
+
 export default function ClearTripModalPage() {
-  return <div>Hello world from Clear Trip modal</div>;
+  return <ClearTripPage />;
 }

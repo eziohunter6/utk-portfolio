@@ -1,7 +1,7 @@
 "use client";
 
 import { useLenis } from "lenis/react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { cn } from "@/lib/utils";
 
@@ -22,6 +22,10 @@ export default function Drawer({
 }: DrawerProps) {
   const lenis = useLenis();
   const [isMounted, setIsMounted] = useState(false);
+  const mainLayout = useMemo(
+    () => document.body?.querySelector("#main-layout"),
+    [],
+  );
   const [isOpen, setIsOpen] = useState(false);
   const unmountTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -74,7 +78,7 @@ export default function Drawer({
     };
   }, [lenis]);
 
-  if (!isMounted) {
+  if (!isMounted || !mainLayout) {
     return null;
   }
 
@@ -93,24 +97,31 @@ export default function Drawer({
       <div
         className={cn(
           // Base styles
-          "absolute bg-white shadow-xl transition-transform duration-300 ease-in-out",
+          "fixed inset-0 bg-main shadow-2xl overscroll-contain",
+
+          // Transition styles
+          "transition-transform duration-300 ease-in-out",
 
           // Mobile: bottom sheet — slides up/down
-          "bottom-0 left-0 right-0 rounded-t-2xl p-6",
+          "bottom-0 left-0 right-0 rounded-t-2xl max-h-dvh",
 
           // Desktop: right side panel — slides in from right
-          "md:top-0 md:left-0 md:right-auto md:h-full md:w-1/2 md:rounded-none",
+          "md:top-0 md:left-0 md:right-auto md:h-full md:max-h-dvh md:w-2/3 md:rounded-none",
 
-          // Hidden state: pushed off-screen
-          !isOpen && "translate-y-full md:translate-y-0 md:-translate-x-full",
-
-          // Visible state: in place
-          isOpen && "translate-y-0 md:translate-x-0",
+          // Translation styles
+          isOpen
+            ? "translate-y-0 md:translate-x-0"
+            : "translate-y-full md:translate-y-0 md:-translate-x-full",
         )}
       >
-        {children}
+        <div
+          data-lenis-prevent
+          className="h-full overflow-x-hidden overflow-y-auto"
+        >
+          {children}
+        </div>
       </div>
     </div>,
-    document.body,
+    mainLayout,
   );
 }

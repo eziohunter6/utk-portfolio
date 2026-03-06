@@ -13,10 +13,7 @@ const ContactSection = async ({ index }: { index?: number }) => {
       <Title index={index ?? 3}>Contact</Title>
 
       <LeftWrapper className="flex flex-col gap-10 mb-8">
-        <RichText
-          data={content}
-          className="prose prose-h5:text-4xl prose-h5:font-normal"
-        />
+        <RichText data={content} className="prose" />
 
         <div className="flex flex-col gap-6">
           {contacts.map((contact) => (
