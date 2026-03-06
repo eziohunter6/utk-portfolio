@@ -1,7 +1,7 @@
 import { RichText } from "@payloadcms/richtext-lexical/react";
 import Image, { getImageProps } from "next/image";
 import Section from "@/components/ui/Section";
-import { filterPopulated } from "@/lib/utils";
+import WorkedAtSection from "@/components/works/WorkedAtSection";
 import type { Home } from "@/payload-types";
 
 type Props = NonNullable<Home["hero"]>;
@@ -52,29 +52,7 @@ const HeroSection = ({ title, subtitle, content, workedAt }: Props) => {
         <RichText data={content} className="prose" />
       </div>
 
-      {/* Worked At */}
-      <h3 className="text-sm font-semibold text-center">WORKED AT</h3>
-
-      {/* TODO: add marqure text here */}
-      <div className="flex flex-row justify-center py-4 border-b-2 border-current">
-        {filterPopulated(workedAt).map(({ alt, url, filename }) => {
-          if (!url) return null;
-
-          return (
-            <div key={filename} className="flex flex-row items-center group">
-              <Image
-                src={url}
-                alt={alt ?? filename ?? ""}
-                height={32}
-                width={100}
-                className="object-contain h-8 w-auto"
-              />
-
-              <span className="shrink-0 mx-2 sm:mx-4 h-2/3 w-[1.5px] rounded-full bg-[#EDF0FF] group-last:hidden" />
-            </div>
-          );
-        })}
-      </div>
+      <WorkedAtSection workedAt={workedAt} />
     </Section>
   );
 };
