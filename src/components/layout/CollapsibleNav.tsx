@@ -47,14 +47,14 @@ const CollapsibleNav = ({ links }: { links: TNavLink[] }) => {
     >
       <nav
         aria-label="Mobile navigation"
-        className="h-2/4 flex flex-col gap-8 p-10 px-6 justify-between"
+        className="h-2/4 flex flex-col gap-4 p-10 px-6 justify-between text-4xl"
       >
         {links.map(({ href, title, id }) => (
           <Link
             key={id ?? href}
             href={href}
             onClick={handleClose}
-            className="text-4xl font-light py-4 border-b-2 border-current"
+            className="py-4 border-b-2 border-current"
           >
             {title}
           </Link>

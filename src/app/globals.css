@@ -95,6 +95,10 @@ html {
   .prose h5 {
     @apply text-2xl;
   }
+  
+  .prose h6 {
+    @apply text-xl mt-8;
+  }
 
   .prose ul,
   .prose ol {
@@ -110,6 +114,14 @@ html {
   .prose input[type="checkbox"],
   .prose input[type="radio"] {
     @apply accent-brand bg-muted;
+  }
+
+  .prose ol ol {
+    @apply ps-0!;
+    
+    li {
+      @apply list-disc list-inside text-lg!;
+    }
   }
 }
 
