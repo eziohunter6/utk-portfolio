@@ -37,7 +37,7 @@ export default async function BuyHomePage() {
   } = await getBuyHomeContent();
 
   return (
-    <main id="buy-homepage">
+    <>
       <HeroSection {...hero} index={1} />
       <ProcessSection {...process} index={2} />
       <AnalysisSection {...analysis} index={3} />
@@ -50,6 +50,6 @@ export default async function BuyHomePage() {
         works={filterPopulated(moreWork?.works ?? [])}
         index={9}
       />
-    </main>
+    </>
   );
 }

@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { buildMetadataFromPayload } from "@/lib/seo";
 import { getHomeContent } from "@/lib/services";
 import {
@@ -22,7 +21,7 @@ export default async function Home() {
   const { hero, works, info } = await getHomeContent();
 
   return (
-    <main id="home">
+    <>
       {/* Hero Section */}
       <HeroSection {...hero} />
 
@@ -34,6 +33,6 @@ export default async function Home() {
 
       {/* Contact Section */}
       <ContactSection />
-    </main>
+    </>
   );
 }

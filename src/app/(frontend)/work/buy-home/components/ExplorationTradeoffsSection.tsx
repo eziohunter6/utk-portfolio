@@ -28,17 +28,15 @@ const ExplorationTradeoffsSection = async ({
 
       {/* Image */}
       {imageData && (
-        <div className="rounded-2xl mt-8">
-          <div className="relative w-full aspect-29/15 rounded-lg overflow-hidden">
-            <Image
-              src={imageData.src}
-              alt={imageData.alt}
-              fill
-              className="object-contain"
-              placeholder={imageData.base64Preview ? "blur" : "empty"}
-              blurDataURL={imageData.base64Preview}
-            />
-          </div>
+        <div className="relative w-full aspect-29/15 rounded-2xl overflow-hidden mt-8">
+          <Image
+            src={imageData.src}
+            alt={imageData.alt}
+            fill
+            className="object-contain"
+            placeholder={imageData.base64Preview ? "blur" : "empty"}
+            blurDataURL={imageData.base64Preview}
+          />
         </div>
       )}
     </Section>

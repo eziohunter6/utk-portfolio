@@ -95,7 +95,7 @@ html {
   .prose h5 {
     @apply text-2xl;
   }
-  
+
   .prose h6 {
     @apply text-xl mt-8;
   }
@@ -118,7 +118,7 @@ html {
 
   .prose ol ol {
     @apply ps-0!;
-    
+
     li {
       @apply list-disc list-inside text-lg!;
     }

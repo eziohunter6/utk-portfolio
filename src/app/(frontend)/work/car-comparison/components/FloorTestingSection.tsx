@@ -1,5 +1,6 @@
 import { RichText } from "@payloadcms/richtext-lexical/react";
 import Image from "next/image";
+import Link from "next/link";
 import LeftWrapper from "@/components/ui/LeftWrapper";
 import Section from "@/components/ui/Section";
 import Title from "@/components/ui/Title";
@@ -19,6 +20,10 @@ const FloorTestingSection = async ({ title, content, image, index }: Props) => {
 
       <LeftWrapper>
         <RichText data={content} className="prose" />
+
+        <Link href="/" className="text-brand underline mt-8">
+          Variant 2 was selected for experiment rollout.
+        </Link>
       </LeftWrapper>
 
       {/* Image */}

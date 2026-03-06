@@ -5,6 +5,7 @@ import {
   SectionWithIFrame,
   SectionWithImage,
   SectionWithImages,
+  VideoField,
 } from "./CommonField";
 
 export const CarComparison: GlobalConfig = {
@@ -29,7 +30,7 @@ export const CarComparison: GlobalConfig = {
     {
       type: "group",
       name: "problem",
-      fields: SectionWithIFrame,
+      fields: [...CommonSection, VideoField],
     },
     {
       type: "group",

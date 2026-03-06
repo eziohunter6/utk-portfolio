@@ -79,3 +79,13 @@ export const VideosField: Field = {
   },
   defaultValue: [],
 };
+
+export const VideoField: Field = {
+  name: "video",
+  type: "upload",
+  relationTo: "media",
+  filterOptions: { mimeType: { contains: "video" } },
+  admin: {
+    description: "Select a video file",
+  },
+};

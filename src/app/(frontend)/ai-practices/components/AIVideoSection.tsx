@@ -60,7 +60,7 @@ const AIVideoSection = async ({
       {/* Image */}
       {img && (
         <div className="bg-muted rounded-2xl px-8 pt-8 mt-8">
-          <div className="relative w-11/12 aspect-11/5 rounded-lg overflow-hidden mx-auto">
+          <div className="relative w-11/12 aspect-11/5 rounded-2xl overflow-hidden mx-auto">
             <Image
               src={img.src}
               alt={img.alt}

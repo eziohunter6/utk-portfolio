@@ -1,38 +1,64 @@
 import { RichText } from "@payloadcms/richtext-lexical/react";
 import Image from "next/image";
-import { Embed } from "@/components/ui/Embed";
 import LeftWrapper from "@/components/ui/LeftWrapper";
 import Section from "@/components/ui/Section";
 import Title from "@/components/ui/Title";
+import { getBase64 } from "@/lib/getBase64";
+import { cn, getMediaURL } from "@/lib/utils";
 import type { CarComparison } from "@/payload-types";
 
 type Props = NonNullable<CarComparison["problem"]> & {
   index: number;
 };
 
-const ProblemSection = ({ title, content, iframe, index }: Props) => (
-  <Section id="problem">
-    <Title index={index}>{title}</Title>
+const ProblemSection = async ({ title, content, video, index }: Props) => {
+  const vid = await getMediaURL(video);
+  const imgBase64 = await getBase64(
+    "/images/car-comparison/comparing-user.webp",
+  );
 
-    <LeftWrapper className="flex flex-col gap-8">
-      <RichText data={content} className="prose" />
-    </LeftWrapper>
+  return (
+    <Section id="problem">
+      <Title index={index}>{title}</Title>
 
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
-      {/* Image */}
-      <div className="relative aspect-9/16 rounded-lg overflow-hidden">
-        <Image
-          src="/images/car-comparison/comparing-user.webp"
-          alt="Comparing User Image"
-          fill
-          className="object-contain object-top"
-        />
+      <LeftWrapper className="flex flex-col gap-8">
+        <RichText data={content} className="prose" />
+      </LeftWrapper>
+
+      <div className="flex flex-col md:flex-row gap-8 mt-8">
+        {/* Image */}
+        <div className="w-full md:w-1/2 relative aspect-9/16 md:aspect-auto rounded-2xl overflow-hidden">
+          <Image
+            src="/images/car-comparison/comparing-user.webp"
+            alt="Comparing User Image"
+            fill
+            className="object-cover object-top"
+            placeholder={imgBase64 ? "blur" : "empty"}
+            blurDataURL={imgBase64}
+          />
+        </div>
+
+        {/* Video */}
+        {vid && (
+          <div
+            key={vid.alt}
+            className="w-full md:w-1/2 group relative aspect-9/16 md:aspect-auto rounded-2xl overflow-hidden border border-black/10"
+          >
+            <video
+              src={vid.src}
+              className="w-full h-full object-cover transition-all duration-300 hover:scale-105"
+              controls={false}
+              playsInline
+              autoPlay
+              muted
+              loop
+              poster={vid.thumbnail?.src}
+            />
+          </div>
+        )}
       </div>
-
-      {/* Iframe */}
-      <Embed url={iframe} className="col-span-2 aspect-9/16 md:aspect-auto" />
-    </div>
-  </Section>
-);
+    </Section>
+  );
+};
 
 export default ProblemSection;

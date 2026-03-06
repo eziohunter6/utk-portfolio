@@ -29,7 +29,10 @@ const AIContentSection = async ({ title, content, images, index }: Props) => {
           if (!img) return null;
 
           return (
-            <div key={img.alt} className="relative w-full aspect-4/3 bg-muted">
+            <div
+              key={img.alt}
+              className="relative w-full aspect-4/3 bg-muted rounded-2xl overflow-hidden"
+            >
               <Image
                 src={img.src}
                 alt={img.alt}
