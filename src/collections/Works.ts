@@ -1,4 +1,7 @@
-import { lexicalEditor } from "@payloadcms/richtext-lexical";
+import {
+  defaultRichTextValue,
+  lexicalEditor,
+} from "@payloadcms/richtext-lexical";
 import type { CollectionConfig } from "payload";
 
 export const Works: CollectionConfig = {
@@ -16,6 +19,7 @@ export const Works: CollectionConfig = {
       type: "text",
       required: true,
       unique: true,
+      defaultValue: "",
       admin: {
         description:
           "e.g. buy-home, car-comparison - must match work page slug",
@@ -25,22 +29,27 @@ export const Works: CollectionConfig = {
       name: "title",
       type: "text",
       required: true,
+      defaultValue: "",
     },
     {
       name: "description",
       type: "richText",
+      defaultValue: defaultRichTextValue,
       editor: lexicalEditor(),
+      required: true,
     },
     {
       name: "image",
       type: "upload",
       relationTo: "media",
       required: true,
+      defaultValue: [],
       filterOptions: { mimeType: { contains: "image" } },
     },
     {
       name: "link",
       type: "group",
+      defaultValue: [],
       fields: [
         {
           name: "href",
@@ -62,6 +71,7 @@ export const Works: CollectionConfig = {
       name: "tags",
       type: "array",
       label: "Tags",
+      defaultValue: [],
       admin: {
         description: "Tags to show under the image",
       },

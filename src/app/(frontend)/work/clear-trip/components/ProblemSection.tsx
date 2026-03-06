@@ -2,9 +2,9 @@ import { RichText } from "@payloadcms/richtext-lexical/react";
 import LeftWrapper from "@/components/ui/LeftWrapper";
 import Section from "@/components/ui/Section";
 import Title from "@/components/ui/Title";
-import type { CarComparison } from "@/payload-types";
+import type { ClearTrip } from "@/payload-types";
 
-type Props = NonNullable<CarComparison["outcome"]> & {
+type Props = NonNullable<ClearTrip["problem"]> & {
   index: number;
 };
 

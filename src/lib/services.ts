@@ -64,7 +64,7 @@ export const getEcTimesContent = async () => {
   const payload = await getPayload();
 
   const result = await payload.findGlobal({
-    slug: "car-comparison",
+    slug: "ec-times",
     depth: 2,
   });
 
@@ -75,7 +75,7 @@ export const getClearTripContent = async () => {
   const payload = await getPayload();
 
   const result = await payload.findGlobal({
-    slug: "car-comparison",
+    slug: "clear-trip",
     depth: 2,
   });
 
