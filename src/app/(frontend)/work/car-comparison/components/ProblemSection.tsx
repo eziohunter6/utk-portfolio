@@ -3,19 +3,22 @@ import Image from "next/image";
 import LeftWrapper from "@/components/ui/LeftWrapper";
 import Section from "@/components/ui/Section";
 import Title from "@/components/ui/Title";
-import { getBase64 } from "@/lib/getBase64";
-import { cn, getMediaURL } from "@/lib/utils";
+import { getMediaURL } from "@/lib/utils";
 import type { CarComparison } from "@/payload-types";
 
 type Props = NonNullable<CarComparison["problem"]> & {
   index: number;
 };
 
-const ProblemSection = async ({ title, content, video, index }: Props) => {
+const ProblemSection = async ({
+  title,
+  content,
+  video,
+  index,
+  image,
+}: Props) => {
   const vid = await getMediaURL(video);
-  const imgBase64 = await getBase64(
-    "/images/car-comparison/comparing-user.webp",
-  );
+  const img = await getMediaURL(image);
 
   return (
     <Section id="problem">
@@ -28,14 +31,16 @@ const ProblemSection = async ({ title, content, video, index }: Props) => {
       <div className="flex flex-col md:flex-row gap-8 mt-8">
         {/* Image */}
         <div className="w-full md:w-1/2 relative aspect-9/16 md:aspect-auto rounded-2xl overflow-hidden">
-          <Image
-            src="/images/car-comparison/comparing-user.webp"
-            alt="Comparing User Image"
-            fill
-            className="object-cover object-top"
-            placeholder={imgBase64 ? "blur" : "empty"}
-            blurDataURL={imgBase64}
-          />
+          {img && (
+            <Image
+              src={img?.src}
+              alt={img?.alt}
+              fill
+              className="object-cover object-top"
+              placeholder={img?.base64Preview ? "blur" : "empty"}
+              blurDataURL={img?.base64Preview}
+            />
+          )}
         </div>
 
         {/* Video */}

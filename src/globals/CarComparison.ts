@@ -1,6 +1,7 @@
-import type { GlobalConfig } from "payload";
+import type { Field, GlobalConfig } from "payload";
 import {
   CommonSection,
+  ImageField,
   MoreWorkSection,
   SectionWithIFrame,
   SectionWithImage,
@@ -30,7 +31,7 @@ export const CarComparison: GlobalConfig = {
     {
       type: "group",
       name: "problem",
-      fields: [...CommonSection, VideoField],
+      fields: [...SectionWithImage, VideoField],
     },
     {
       type: "group",
@@ -45,7 +46,18 @@ export const CarComparison: GlobalConfig = {
     {
       type: "group",
       name: "floorTesting",
-      fields: SectionWithImage,
+      fields: [
+        ...SectionWithImage,
+        {
+          name: "redirectImage",
+          type: "upload",
+          relationTo: "media",
+          filterOptions: { mimeType: { contains: "image" } },
+          admin: {
+            description: "Select an image file for the redirect button",
+          },
+        },
+      ],
     },
     {
       type: "group",

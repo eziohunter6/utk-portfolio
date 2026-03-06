@@ -1,6 +1,7 @@
 import type { GlobalConfig } from "payload";
 import {
   CommonSection,
+  ImageField,
   MoreWorkSection,
   SectionWithIFrame,
   SectionWithImage,
@@ -26,7 +27,7 @@ export const BuyHome: GlobalConfig = {
       type: "group",
       name: "process",
       defaultValue: {},
-      fields: SectionWithIFrame,
+      fields: [...SectionWithIFrame, ImageField],
     },
     {
       type: "group",

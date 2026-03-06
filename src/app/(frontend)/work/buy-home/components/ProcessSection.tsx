@@ -4,15 +4,21 @@ import { Embed } from "@/components/ui/Embed";
 import LeftWrapper from "@/components/ui/LeftWrapper";
 import Section from "@/components/ui/Section";
 import Title from "@/components/ui/Title";
-import { getBase64 } from "@/lib/getBase64";
+import { getMediaURL } from "@/lib/utils";
 import type { BuyHome } from "@/payload-types";
 
 type Props = NonNullable<BuyHome["process"]> & {
   index: number;
 };
 
-const ProcessSection = async ({ title, content, index, iframe }: Props) => {
-  const imgBase64 = await getBase64("/images/buy-home/returning-user.webp");
+const ProcessSection = async ({
+  title,
+  content,
+  index,
+  iframe,
+  image,
+}: Props) => {
+  const img = await getMediaURL(image);
 
   return (
     <Section id="process">
@@ -25,14 +31,16 @@ const ProcessSection = async ({ title, content, index, iframe }: Props) => {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-14">
         {/* Image */}
         <div className="relative aspect-9/16 rounded-2xl overflow-hidden">
-          <Image
-            src="/images/buy-home/returning-user.webp"
-            alt="Process Image"
-            fill
-            className="object-cover object-top"
-            placeholder={imgBase64 ? "blur" : "empty"}
-            blurDataURL={imgBase64}
-          />
+          {img && (
+            <Image
+              src={img?.src}
+              alt={img?.alt}
+              fill
+              className="object-cover object-top"
+              placeholder={img?.base64Preview ? "blur" : "empty"}
+              blurDataURL={img?.base64Preview}
+            />
+          )}
         </div>
 
         {/* Iframe */}

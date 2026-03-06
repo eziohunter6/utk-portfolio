@@ -20,54 +20,6 @@ export const CommonSection: Field[] = [
   },
 ];
 
-export const SectionWithIFrame: Field[] = [
-  ...CommonSection,
-  {
-    name: "iframe",
-    type: "text",
-    required: true,
-    defaultValue: "",
-    admin: {
-      description: "Iframe Embed code source",
-    },
-  },
-];
-
-export const SectionWithImage: Field[] = [
-  ...CommonSection,
-  {
-    name: "image",
-    type: "upload",
-    relationTo: "media",
-    filterOptions: { mimeType: { contains: "image" } },
-  },
-];
-
-export const SectionWithImages: Field[] = [
-  ...CommonSection,
-  {
-    name: "images",
-    type: "upload",
-    hasMany: true,
-    relationTo: "media",
-    filterOptions: { mimeType: { contains: "image" } },
-    defaultValue: [],
-  },
-];
-
-export const MoreWorkSection: Field[] = [
-  {
-    name: "works",
-    type: "relationship",
-    relationTo: "works",
-    hasMany: true,
-    admin: {
-      description: "Select and order work cards for the more work section",
-    },
-    defaultValue: [],
-  },
-];
-
 export const VideosField: Field = {
   name: "videos",
   type: "upload",
@@ -89,3 +41,54 @@ export const VideoField: Field = {
     description: "Select a video file",
   },
 };
+
+export const ImageField: Field = {
+  name: "image",
+  type: "upload",
+  relationTo: "media",
+  filterOptions: { mimeType: { contains: "image" } },
+  admin: {
+    description: "Select an image file",
+  },
+};
+
+export const ImagesField: Field = {
+  name: "images",
+  type: "upload",
+  hasMany: true,
+  relationTo: "media",
+  filterOptions: { mimeType: { contains: "image" } },
+  admin: {
+    description: "Select and order image files",
+  },
+  defaultValue: [],
+};
+
+export const IFrameField: Field = {
+  name: "iframe",
+  type: "text",
+  required: true,
+  defaultValue: "",
+  admin: {
+    description: "Iframe Embed code source",
+  },
+};
+
+export const SectionWithIFrame: Field[] = [...CommonSection, IFrameField];
+
+export const SectionWithImage: Field[] = [...CommonSection, ImageField];
+
+export const SectionWithImages: Field[] = [...CommonSection, ImagesField];
+
+export const MoreWorkSection: Field[] = [
+  {
+    name: "works",
+    type: "relationship",
+    relationTo: "works",
+    hasMany: true,
+    admin: {
+      description: "Select and order work cards for the more work section",
+    },
+    defaultValue: [],
+  },
+];
