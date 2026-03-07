@@ -25,11 +25,11 @@ const Title = ({
       {...props}
     >
       {index && (
-        <p className="sm:w-0 font-semibold text-sm sm:text-base md:text-lg">
+        <p className="md:w-0 font-semibold text-sm sm:text-base md:text-lg">
           {index.toString().padStart(2, "0")}.
         </p>
       )}
-      <Tag className="w-full md:w-[71%] lg:w-2/3 ml-auto text-right sm:text-left text-4xl sm:text-5xl md:text-6xl lg:text-7xl">
+      <Tag className="w-full md:w-[71%] lg:w-2/3 ml-auto text-right md:text-left text-4xl sm:text-5xl md:text-6xl lg:text-7xl">
         {children}
       </Tag>
     </hgroup>
