@@ -24,7 +24,7 @@ const Title = ({
       )}
       {...props}
     >
-      {index && (
+      {!!index && (
         <p className="md:w-0 font-semibold text-sm sm:text-base md:text-lg">
           {index.toString().padStart(2, "0")}.
         </p>

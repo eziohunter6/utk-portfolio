@@ -21,7 +21,7 @@ const ImpactSection = ({ title, content, index, redirectLink }: Props) => (
       <Link
         href={redirectLink}
         target="_blank"
-        className="px-4 py-2 bg-brand text-main rounded-lg mt-6"
+        className="inline-block px-8 py-4 mt-6 bg-brand text-main rounded-lg"
       >
         Read full case study
       </Link>

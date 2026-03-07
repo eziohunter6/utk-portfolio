@@ -1,5 +1,7 @@
 "use client";
 
+import ReactLenis, { LenisRef } from "lenis/react";
+import { X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { cn } from "@/lib/utils";
@@ -78,17 +80,18 @@ export default function Drawer({
       {/* Overlay */}
       <div
         className={cn(
-          "absolute inset-0 bg-neutral-700/75 transition-opacity duration-300",
+          "absolute inset-0 bg-neutral-700/75 backdrop-blur-xs transition-opacity duration-300",
           isOpen ? "opacity-100" : "opacity-0",
         )}
         onClick={onClose}
       />
 
       {/* Panel */}
-      <div
+      <ReactLenis
+        options={{ overscroll: false }}
         className={cn(
           // Base styles
-          "fixed inset-0 bg-main shadow-2xl overscroll-contain",
+          "fixed inset-0 bg-main shadow-2xl overscroll-none overflow-x-hidden",
 
           // Transition styles
           "transition-transform duration-300 ease-in-out",
@@ -105,13 +108,13 @@ export default function Drawer({
             : "translate-y-full md:translate-y-0 md:-translate-x-full",
         )}
       >
-        <div
-          data-lenis-prevent
-          className="h-full overflow-x-hidden overflow-y-auto"
-        >
-          {children}
-        </div>
-      </div>
+        <header className="sticky top-0 z-20 bg-main py-4">
+          <button type="button" onClick={onClose} className="p-4">
+            <X className="size-6" aria-hidden />
+          </button>
+        </header>
+        {children}
+      </ReactLenis>
     </div>,
     document.body,
   );

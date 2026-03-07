@@ -16,7 +16,7 @@ const HeroSection = async ({ title, tags, images, index }: Props) => {
   return (
     <Section id="hero">
       {tags && (
-        <div className="flex flex-row items-center gap-2 mt-6 mb-3">
+        <div className="flex flex-row items-center gap-2 mb-4">
           <div className="flex flex-row gap-2 flex-wrap">
             {tags.map((tag) => (
               <span

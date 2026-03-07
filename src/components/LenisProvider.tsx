@@ -9,13 +9,7 @@ export default function SmoothScroll({
   children: React.ReactNode;
 }) {
   return (
-    <ReactLenis
-      root
-      options={{
-        allowNestedScroll: true,
-        autoToggle: true,
-      }}
-    >
+    <ReactLenis root options={{ autoToggle: true }}>
       {children}
     </ReactLenis>
   );
