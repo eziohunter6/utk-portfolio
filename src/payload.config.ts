@@ -20,6 +20,7 @@ import { Navlinks } from "@/globals/Navlinks";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
+const deployHookUrl = process.env.DEPLOY_HOOK_URL || "";
 
 export default buildConfig({
   sharp,
@@ -55,6 +56,9 @@ export default buildConfig({
     user: Users.slug,
     importMap: {
       baseDir: path.resolve(dirname),
+    },
+    components: {
+      settingsMenu: deployHookUrl ? ["/components/admin/Deploy"] : [],
     },
   },
   plugins: [
