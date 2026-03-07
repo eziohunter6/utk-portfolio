@@ -17,11 +17,6 @@
   --font-sans: var(--font-main);
 }
 
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 80px;
-}
-
 @layer utilities {
   .text-ai-gradient {
     background: var(--ai-gradient);

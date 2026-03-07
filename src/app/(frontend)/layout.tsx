@@ -4,6 +4,7 @@ import "@/app/globals.css";
 import SmoothScroll from "@/components/LenisProvider";
 import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
+import { cn } from "@/lib/utils";
 
 const fonts = Inter({ variable: "--font-main", subsets: ["latin"] });
 
@@ -51,8 +52,11 @@ export default function FrontendLayout({
   modal?: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={fonts.variable}>
-      <body className="antialiased font-sans scroll-smooth font-medium bg-main text-brand overflow-clip">
+    <html
+      lang="en"
+      className={cn(fonts.variable, "md:scroll-pt-20 scroll-smooth")}
+    >
+      <body className="antialiased font-sans scroll-smooth font-medium bg-main text-brand overflow-x-clip">
         <SmoothScroll>
           <Header />
           {children}
