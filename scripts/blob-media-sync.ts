@@ -121,13 +121,14 @@ const runUpload = async (token: string): Promise<void> => {
     try {
       const fileBuffer = fs.readFileSync(file.absolutePath);
 
-      await put(file.relativePath, fileBuffer, {
+      const result = await put(file.relativePath, fileBuffer, {
         token,
         access: "public",
+        addRandomSuffix: false,
       });
 
       uploadedCount++;
-      console.log(`Uploaded: ${file.relativePath}`);
+      console.log(`Uploaded: ${file.relativePath} ${result.url}`);
     } catch (error) {
       failedCount++;
       console.error(`Failed to upload ${file.relativePath}:`, error);
