@@ -31,8 +31,8 @@ const HeroSection = ({ title, subtitle, content, workedAt }: Props) => {
 
   return (
     <Section id="hero">
-      <div className="flex flex-col justify-center gap-8 mb-16 pt-8">
-        <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-[10rem]/45 font-semibold border-b-2 border-current pb-4">
+      <div className="flex flex-col justify-center pt-30 md:pt-20">
+        <h1 className="text-6xl md:text-8xl lg:text-[10rem]/45 font-semibold border-b-2 border-current pb-4 mb-4">
           {title}
         </h1>
 
@@ -40,7 +40,7 @@ const HeroSection = ({ title, subtitle, content, workedAt }: Props) => {
           {subtitle}
         </h2>
 
-        <div className="relative left-1/2 right-1/2 -mx-[50vw] w-screen -mt-[10%] md:-mt-[15%] -mb-[20%] md:-mb-[25%]">
+        <div className="relative left-1/2 right-1/2 -mx-[50vw] w-screen md:-mt-[12.5%] md:-mb-[20%] my-8">
           <picture>
             <source media="(max-width: 640px)" srcSet={mobile} />
             <img {...rest} srcSet={desktop} className="object-cover" />
@@ -48,7 +48,7 @@ const HeroSection = ({ title, subtitle, content, workedAt }: Props) => {
         </div>
       </div>
 
-      <div className="w-full md:w-3/4 lg:w-3/5 my-16">
+      <div className="w-full md:w-3/4 lg:w-3/5 mb-16">
         <RichText data={content} className="prose" />
       </div>
 

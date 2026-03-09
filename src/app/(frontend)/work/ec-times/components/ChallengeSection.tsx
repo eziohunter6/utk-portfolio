@@ -6,11 +6,14 @@ import type { EcTime } from "@/payload-types";
 
 type Props = NonNullable<EcTime["challenge"]> & {
   index: number;
+  isModal?: boolean;
 };
 
-const ChallengeSection = ({ title, content, index }: Props) => (
+const ChallengeSection = ({ title, content, index, isModal }: Props) => (
   <Section id="challenge">
-    <Title index={index}>{title}</Title>
+    <Title index={index} isModal={isModal}>
+      {title}
+    </Title>
 
     <LeftWrapper>
       <RichText data={content} className="prose" />

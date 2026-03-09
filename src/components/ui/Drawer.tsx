@@ -91,13 +91,13 @@ export default function Drawer({
         options={{ overscroll: false }}
         className={cn(
           // Base styles
-          "fixed inset-0 bg-main shadow-2xl overscroll-none overflow-x-hidden",
+          "fixed bg-main shadow-2xl overscroll-none overflow-x-hidden @container",
 
           // Transition styles
           "transition-transform duration-300 ease-in-out",
 
           // Mobile: bottom sheet — slides up/down
-          "bottom-0 left-0 right-0 rounded-t-2xl max-h-dvh",
+          "bottom-0 left-0 right-0 rounded-t-2xl max-h-[75dvh]",
 
           // Desktop: right side panel — slides in from right
           "md:top-0 md:left-0 md:right-auto md:h-full md:max-h-dvh md:w-2/3 md:rounded-none",
@@ -108,7 +108,7 @@ export default function Drawer({
             : "translate-y-full md:translate-y-0 md:-translate-x-full",
         )}
       >
-        <header className="sticky top-0 z-20 bg-main py-4">
+        <header className="sticky top-0 z-20 bg-main py-3 md:py-4">
           <button type="button" onClick={onClose} className="p-4">
             <X className="size-6" aria-hidden />
           </button>

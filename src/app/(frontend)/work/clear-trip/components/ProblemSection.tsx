@@ -6,11 +6,14 @@ import type { ClearTrip } from "@/payload-types";
 
 type Props = NonNullable<ClearTrip["problem"]> & {
   index: number;
+  isModal?: boolean;
 };
 
-const ProblemSection = ({ title, content, index }: Props) => (
+const ProblemSection = ({ title, content, index, isModal }: Props) => (
   <Section id="problem">
-    <Title index={index}>{title}</Title>
+    <Title index={index} isModal={isModal}>
+      {title}
+    </Title>
 
     <LeftWrapper>
       <RichText data={content} className="prose" />

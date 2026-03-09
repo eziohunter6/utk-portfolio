@@ -1,36 +1,35 @@
 import Image from "next/image";
 import Section from "@/components/ui/Section";
 import Title from "@/components/ui/Title";
-import { getMediaURL } from "@/lib/utils";
+import { cn, getMediaURL } from "@/lib/utils";
 import type { EcTime } from "@/payload-types";
 
 type Props = NonNullable<EcTime["hero"]> & {
   index: number;
+  isModal?: boolean;
 };
 
-const HeroSection = async ({ title, tags, images, index }: Props) => {
+const HeroSection = async ({ title, tags, images, index, isModal }: Props) => {
   const imageData = await Promise.all(
     images?.map((image) => getMediaURL(image)) ?? [],
   );
 
   return (
-    <Section id="hero">
+    <Section id="hero" className={cn(isModal && "md:py-6")}>
       {tags && (
-        <div className="flex flex-row items-center gap-2 mb-4">
-          <div className="flex flex-row gap-2 flex-wrap">
-            {tags.map((tag) => (
-              <span
-                key={tag.keyword}
-                className="text-xs px-2.5 py-1.5 bg-tag-bg rounded-full"
-              >
-                {tag.keyword}
-              </span>
-            ))}
-          </div>
+        <div className="flex flex-row gap-4 mb-8">
+          {tags.map((tag) => (
+            <span
+              key={tag.keyword}
+              className="text-xs px-2.5 py-1.5 bg-tag-bg rounded-full"
+            >
+              {tag.keyword}
+            </span>
+          ))}
         </div>
       )}
 
-      <Title as="h1" index={index}>
+      <Title as="h1" index={index} isModal={isModal}>
         {title}
       </Title>
 
@@ -40,7 +39,7 @@ const HeroSection = async ({ title, tags, images, index }: Props) => {
         return (
           <div
             key={img.alt}
-            className="mt-8 rounded-2xl relative w-full aspect-29/15"
+            className="mt-8 rounded-2xl relative w-full aspect-29/15 overflow-hidden"
           >
             <Image
               src={img.src}

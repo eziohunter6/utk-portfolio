@@ -18,15 +18,19 @@ export const generateMetadata = async (): Promise<Metadata> => {
   });
 };
 
-export default async function ClearTripPage() {
+type Props = {
+  isModal?: boolean;
+};
+
+export default async function ClearTripPage({ isModal }: Props) {
   const { hero, challenge, problem, impact } = await getClearTripContent();
 
   return (
     <main id="clear-trip-page">
-      <HeroSection {...hero} index={0} />
-      <ProblemSection {...problem} index={1} />
-      <ChallengeSection {...challenge} index={2} />
-      <ImpactSection {...impact} index={3} />
+      <HeroSection {...hero} index={1} isModal={isModal} />
+      <ProblemSection {...problem} index={2} isModal={isModal} />
+      <ChallengeSection {...challenge} index={3} isModal={isModal} />
+      <ImpactSection {...impact} index={4} isModal={isModal} />
     </main>
   );
 }

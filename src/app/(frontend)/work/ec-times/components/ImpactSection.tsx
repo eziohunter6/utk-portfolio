@@ -7,11 +7,20 @@ import type { EcTime } from "@/payload-types";
 
 type Props = NonNullable<EcTime["impact"]> & {
   index: number;
+  isModal?: boolean;
 };
 
-const ImpactSection = ({ title, content, index, redirectLink }: Props) => (
+const ImpactSection = ({
+  title,
+  content,
+  index,
+  redirectLink,
+  isModal,
+}: Props) => (
   <Section id="impact">
-    <Title index={index}>{title}</Title>
+    <Title index={index} isModal={isModal}>
+      {title}
+    </Title>
 
     <LeftWrapper>
       <RichText data={content} className="prose" />
