@@ -96,7 +96,7 @@ export default function Drawer({
         options={{ overscroll: false }}
         className={cn(
           // Base styles
-          "fixed bg-main shadow-2xl overscroll-none overflow-x-hidden @container",
+          "fixed bg-main shadow-2xl overscroll-none overflow-x-hidden @container/drawer",
 
           // Transition styles
           "transition-transform duration-300 ease-in-out",

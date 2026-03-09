@@ -64,6 +64,14 @@ export const Works: CollectionConfig = {
           ],
           defaultValue: "_self",
         },
+        {
+          name: "isModal",
+          type: "checkbox",
+          defaultValue: false,
+          admin: {
+            description: "Whether to open the link in a modal",
+          },
+        },
       ],
     },
     {

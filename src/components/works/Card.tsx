@@ -8,7 +8,7 @@ import { getMediaURL } from "@/lib/utils";
 const WorkCard = async ({
   title,
   image,
-  link: { href, target },
+  link: { href, target, isModal },
   tags,
   description,
 }: TWork) => {
@@ -20,6 +20,7 @@ const WorkCard = async ({
       target={target ?? "_self"}
       rel={target === "_blank" ? "noopener noreferrer" : undefined}
       className="group"
+      scroll={!isModal}
     >
       <figure className="relative overflow-hidden w-full aspect-8/5 rounded-2xl bg-muted">
         {imageData && (
