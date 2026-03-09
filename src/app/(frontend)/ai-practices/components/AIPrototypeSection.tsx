@@ -1,18 +1,28 @@
 import { RichText } from "@payloadcms/richtext-lexical/react";
 import Image from "next/image";
+import Link from "next/link";
 import LeftWrapper from "@/components/ui/LeftWrapper";
 import Section from "@/components/ui/Section";
 import Title from "@/components/ui/Title";
-import { getMediaURL } from "@/lib/utils";
+import { cn, getMediaURL } from "@/lib/utils";
 import type { AiPractice } from "@/payload-types";
 
 type Props = NonNullable<AiPractice["aiPrototyping"]> & {
   index: number;
 };
 
-const AIPrototypeSection = async ({ title, content, images, index }: Props) => {
-  const imageData = await Promise.all(
-    images?.map((image) => getMediaURL(image)) ?? [],
+const AIPrototypeSection = async ({
+  title,
+  content,
+  prototypes,
+  index,
+}: Props) => {
+  const prototypeData = await Promise.all(
+    prototypes?.map(async (prototype) => ({
+      ...(await getMediaURL(prototype.image)),
+      redirectUrl: prototype.redirectUrl,
+      key: prototype.id,
+    })) ?? [],
   );
 
   return (
@@ -25,20 +35,29 @@ const AIPrototypeSection = async ({ title, content, images, index }: Props) => {
 
       {/* Image */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
-        {imageData?.map((img) => {
-          if (!img) return null;
+        {prototypeData?.map((prototype) => {
+          if (!prototype?.src) return null;
 
           return (
-            <div key={img.alt} className="relative w-full aspect-4/3 bg-muted">
+            <Link
+              href={prototype.redirectUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              key={prototype.key}
+              className={cn(
+                "relative w-full aspect-4/3 bg-muted rounded-2xl overflow-hidden group",
+                !prototype.redirectUrl && "cursor-default pointer-events-none",
+              )}
+            >
               <Image
-                src={img.src}
-                alt={img.alt}
+                src={prototype.src}
+                alt={prototype.alt ?? ""}
                 fill
-                className="object-cover"
-                placeholder={img.base64Preview ? "blur" : "empty"}
-                blurDataURL={img.base64Preview}
+                className="object-cover group-hover:scale-105 transition-all duration-300 ease-in-out"
+                placeholder={prototype.base64Preview ? "blur" : "empty"}
+                blurDataURL={prototype.base64Preview}
               />
-            </div>
+            </Link>
           );
         })}
       </div>

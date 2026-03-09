@@ -1,9 +1,9 @@
 import type { GlobalConfig } from "payload";
 import {
   CommonSection,
+  ImageField,
   SectionWithImage,
   SectionWithImages,
-  VideoField,
   VideosField,
 } from "./CommonField";
 
@@ -46,7 +46,25 @@ export const AiPractices: GlobalConfig = {
     {
       type: "group",
       name: "aiPrototyping",
-      fields: SectionWithImages,
+      fields: [
+        ...CommonSection,
+        {
+          name: "prototypes",
+          label: "Prototype Images",
+          type: "array",
+          fields: [
+            ImageField,
+            {
+              name: "redirectUrl",
+              type: "text",
+              required: true,
+              admin: {
+                description: "URL to navigate when image is clicked",
+              },
+            },
+          ],
+        },
+      ],
     },
   ],
 };
