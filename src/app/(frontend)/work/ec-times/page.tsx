@@ -27,10 +27,10 @@ export default async function EcTimesPage({ isModal }: Props) {
 
   return (
     <main id="ec-times-page">
-      <HeroSection {...hero} index={1} isModal={isModal} />
-      <ProblemSection {...problem} index={2} isModal={isModal} />
-      <ChallengeSection {...challenge} index={3} isModal={isModal} />
-      <ImpactSection {...impact} index={4} isModal={isModal} />
+      <HeroSection {...hero} index={0} isModal={isModal} />
+      <ProblemSection {...problem} index={1} isModal={isModal} />
+      <ChallengeSection {...challenge} index={2} isModal={isModal} />
+      <ImpactSection {...impact} index={3} isModal={isModal} />
     </main>
   );
 }

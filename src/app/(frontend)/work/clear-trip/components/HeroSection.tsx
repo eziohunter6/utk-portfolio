@@ -16,8 +16,12 @@ const HeroSection = async ({ title, tags, images, index, isModal }: Props) => {
 
   return (
     <Section id="hero" className={cn(isModal && "md:py-6")}>
+      <Title as="h1" index={index} isModal={isModal}>
+        {title}
+      </Title>
+
       {tags && (
-        <div className="flex flex-row gap-4 mb-8">
+        <div className="flex flex-row gap-4 mb-8 -mt-4">
           {tags.map((tag) => (
             <span
               key={tag.keyword}
@@ -28,10 +32,6 @@ const HeroSection = async ({ title, tags, images, index, isModal }: Props) => {
           ))}
         </div>
       )}
-
-      <Title as="h1" index={index} isModal={isModal}>
-        {title}
-      </Title>
 
       {imageData?.map((img) => {
         if (!img) return null;

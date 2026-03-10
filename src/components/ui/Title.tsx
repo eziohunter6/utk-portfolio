@@ -40,7 +40,7 @@ const Title = ({
       <Tag
         className={cn(
           "w-full md:w-[71%] lg:w-2/3 ml-auto text-right md:text-left text-4xl sm:text-5xl md:text-6xl lg:text-7xl",
-          isModal && "md:text-left ml-0 md:w-full lg:w-full",
+          isModal && "text-left ml-0 md:w-full lg:w-full",
         )}
       >
         {children}
