@@ -43,7 +43,7 @@ const HeroSection = ({ title, subtitle, content, workedAt }: Props) => {
         <div className="relative left-1/2 right-1/2 -mx-[50vw] w-screen md:-mt-[12.5%] md:-mb-[20%] my-8">
           <picture>
             <source media="(max-width: 640px)" srcSet={mobile} />
-            <img {...rest} srcSet={desktop} className="object-cover" />
+            <img {...rest} srcSet={desktop} className="object-cover m-auto" />
           </picture>
         </div>
       </div>
