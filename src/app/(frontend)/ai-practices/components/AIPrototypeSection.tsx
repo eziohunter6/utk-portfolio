@@ -45,7 +45,7 @@ const AIPrototypeSection = async ({
               rel="noopener noreferrer"
               key={prototype.key}
               className={cn(
-                "relative w-full aspect-4/3 bg-muted rounded-2xl overflow-hidden group",
+                "relative w-full aspect-video bg-muted rounded-2xl overflow-hidden group",
                 !prototype.redirectUrl && "cursor-default pointer-events-none",
               )}
             >
@@ -53,7 +53,7 @@ const AIPrototypeSection = async ({
                 src={prototype.src}
                 alt={prototype.alt ?? ""}
                 fill
-                className="object-cover group-hover:scale-105 transition-all duration-300 ease-in-out"
+                className="object-cover group-hover:scale-101 transition-all duration-300 ease-in-out"
                 placeholder={prototype.base64Preview ? "blur" : "empty"}
                 blurDataURL={prototype.base64Preview}
               />
