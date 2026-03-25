@@ -32,7 +32,7 @@ export const Embed = ({
         src={embedUrl}
         width="100%"
         height="100%"
-        className="bg-muted border border-black/10 rounded-2xl"
+        className="bg-muted border border-black/10 rounded-2xl overflow-hidden"
         allowFullScreen
         {...iframeProps}
       />

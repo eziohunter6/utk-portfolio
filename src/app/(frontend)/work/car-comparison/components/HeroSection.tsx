@@ -9,6 +9,25 @@ type Props = NonNullable<CarComparison["hero"]> & {
   index: number;
 };
 
+const Tags = [
+  {
+    title: "Role",
+    value: "Lead Designer",
+  },
+  {
+    title: "Team",
+    value: "1 PM · 2 Eng · 1 Analyst",
+  },
+  {
+    title: "Platfrom",
+    value: "iOS · Android · PWA",
+  },
+  {
+    title: "Intent",
+    value: "4 Weeks · 2025",
+  },
+];
+
 const HeroSection = ({ title, content, index }: Props) => (
   <Section id="hero">
     <Title as="h1" index={index}>
@@ -16,11 +35,13 @@ const HeroSection = ({ title, content, index }: Props) => (
     </Title>
 
     <ContentWrapper className="pt-8 pb-16">
-      <ul className="flex flex-col gap-1 text-base">
-        <li>Used Car Comparison</li>
-        <li>Lead Designer</li>
-        <li>3 Weeks</li>
-        <li>Mobile + Web</li>
+      <ul className="flex flex-row justify-between gap-1">
+        {Tags.map((tag) => (
+          <li key={tag.title} className="border-l border-brand/90 pl-3">
+            <p className="text-xs font-light text-brand/50">{tag.title}</p>
+            <p className="text-sm">{tag.value}</p>
+          </li>
+        ))}
       </ul>
     </ContentWrapper>
 
