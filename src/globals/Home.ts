@@ -49,6 +49,18 @@ export const Home: GlobalConfig = {
             mimeType: { contains: "image" },
           },
         },
+        {
+          name: "darkWorkedAt",
+          type: "upload",
+          relationTo: "media",
+          hasMany: true,
+          label: "Dark Worked At",
+          required: true,
+          defaultValue: [],
+          filterOptions: {
+            mimeType: { contains: "image" },
+          },
+        },
       ],
     },
     {

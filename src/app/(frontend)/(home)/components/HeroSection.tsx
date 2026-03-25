@@ -6,7 +6,13 @@ import type { Home } from "@/payload-types";
 
 type Props = NonNullable<Home["hero"]>;
 
-const HeroSection = ({ title, subtitle, content, workedAt }: Props) => {
+const HeroSection = ({
+  title,
+  subtitle,
+  content,
+  workedAt,
+  darkWorkedAt,
+}: Props) => {
   const {
     props: { srcSet: mobile },
   } = getImageProps({
@@ -52,7 +58,7 @@ const HeroSection = ({ title, subtitle, content, workedAt }: Props) => {
         <RichText data={content} className="prose" />
       </div>
 
-      <WorkedAtSection workedAt={workedAt} />
+      <WorkedAtSection workedAt={workedAt} darkWorkedAt={darkWorkedAt} />
     </Section>
   );
 };

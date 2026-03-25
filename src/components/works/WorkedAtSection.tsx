@@ -1,20 +1,27 @@
+"use client";
+
 import Image from "next/image";
+import { useTheme } from "next-themes";
 import { filterPopulated } from "@/lib/utils";
 import type { Home } from "@/payload-types";
 
 type Props = {
   workedAt: NonNullable<Home["hero"]>["workedAt"];
+  darkWorkedAt: NonNullable<Home["hero"]>["darkWorkedAt"];
 };
 
-const WorkedAtSection = ({ workedAt }: Props) => {
+const WorkedAtSection = ({ workedAt, darkWorkedAt }: Props) => {
+  const { theme } = useTheme();
   const workedAtItems = filterPopulated(workedAt);
+  const darkWorkedAtItems = filterPopulated(darkWorkedAt);
+  const renderedItems = theme === "dark" ? darkWorkedAtItems : workedAtItems;
 
-  if (!workedAtItems.length) {
+  if (!renderedItems.length) {
     return null;
   }
 
   const renderWorkedAtItem = (
-    { alt, url, filename }: (typeof workedAtItems)[number],
+    { alt, url, filename }: (typeof renderedItems)[number],
     index: number,
   ) => {
     if (!url) {
@@ -45,12 +52,12 @@ const WorkedAtSection = ({ workedAt }: Props) => {
 
       <div className="relative py-4 md:hidden overflow-hidden left-1/2 right-1/2 -mx-[50vw] w-screen">
         <div className="flex flex-row items-center animate-marquee">
-          {[...workedAtItems, ...workedAtItems].map(renderWorkedAtItem)}
+          {[...renderedItems, ...renderedItems].map(renderWorkedAtItem)}
         </div>
       </div>
 
       <div className="hidden flex-row justify-center py-4 md:flex">
-        {workedAtItems.map(renderWorkedAtItem)}
+        {renderedItems.map(renderWorkedAtItem)}
       </div>
     </div>
   );
