@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "@/app/globals.css";
 import { Analytics } from "@vercel/analytics/next";
+import { ThemeProvider } from "next-themes";
 import SmoothScroll from "@/components/LenisProvider";
 import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
@@ -56,15 +57,18 @@ export default function FrontendLayout({
     <html
       lang="en"
       className={cn(fonts.variable, "md:scroll-pt-20 scroll-smooth")}
+      suppressHydrationWarning
     >
       <body className="antialiased font-sans scroll-smooth font-medium bg-main text-brand overflow-x-clip">
-        <SmoothScroll>
-          <Header />
-          {children}
-          {modal}
-          <Footer />
-        </SmoothScroll>
-        <Analytics />
+        <ThemeProvider attribute="class" storageKey="theme">
+          <SmoothScroll>
+            <Header />
+            {children}
+            {modal}
+            <Footer />
+          </SmoothScroll>
+          <Analytics />
+        </ThemeProvider>
       </body>
     </html>
   );

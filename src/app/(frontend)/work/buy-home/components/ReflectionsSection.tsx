@@ -1,5 +1,5 @@
 import { RichText } from "@payloadcms/richtext-lexical/react";
-import LeftWrapper from "@/components/ui/LeftWrapper";
+import ContentWrapper from "@/components/ui/ContentWrapper";
 import Section from "@/components/ui/Section";
 import Title from "@/components/ui/Title";
 import type { BuyHome } from "@/payload-types";
@@ -12,9 +12,9 @@ const ReflectionsSection = ({ title, content, index }: Props) => (
   <Section id="reflections">
     <Title index={index}>{title}</Title>
 
-    <LeftWrapper>
+    <ContentWrapper>
       <RichText data={content} className="prose" />
-    </LeftWrapper>
+    </ContentWrapper>
   </Section>
 );
 

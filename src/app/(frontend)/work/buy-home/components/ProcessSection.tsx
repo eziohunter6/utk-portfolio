@@ -1,7 +1,7 @@
 import { RichText } from "@payloadcms/richtext-lexical/react";
 import Image from "next/image";
+import ContentWrapper from "@/components/ui/ContentWrapper";
 import { Embed } from "@/components/ui/Embed";
-import LeftWrapper from "@/components/ui/LeftWrapper";
 import Section from "@/components/ui/Section";
 import Title from "@/components/ui/Title";
 import { getMediaURL } from "@/lib/utils";
@@ -24,9 +24,9 @@ const ProcessSection = async ({
     <Section id="process">
       <Title index={index}>{title}</Title>
 
-      <LeftWrapper>
+      <ContentWrapper>
         <RichText data={content} className="prose" />
-      </LeftWrapper>
+      </ContentWrapper>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-14">
         {/* Image */}

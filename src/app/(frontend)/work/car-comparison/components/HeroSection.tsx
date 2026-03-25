@@ -1,6 +1,6 @@
 import { RichText } from "@payloadcms/richtext-lexical/react";
 import Image from "next/image";
-import LeftWrapper from "@/components/ui/LeftWrapper";
+import ContentWrapper from "@/components/ui/ContentWrapper";
 import Section from "@/components/ui/Section";
 import Title from "@/components/ui/Title";
 import type { CarComparison } from "@/payload-types";
@@ -15,14 +15,14 @@ const HeroSection = ({ title, content, index }: Props) => (
       {title}
     </Title>
 
-    <LeftWrapper className="pt-8 pb-16">
+    <ContentWrapper className="pt-8 pb-16">
       <ul className="flex flex-col gap-1 text-base">
         <li>Used Car Comparison</li>
         <li>Lead Designer</li>
         <li>3 Weeks</li>
         <li>Mobile + Web</li>
       </ul>
-    </LeftWrapper>
+    </ContentWrapper>
 
     {/* Bento Grid */}
     <div className="grid lg:max-h-[600px] grid-cols-1 md:grid-cols-[1.8fr_1fr_1.3fr] md:grid-rows-[1fr_1fr] lg:grid-rows-[0.8fr_1fr] gap-4">
@@ -98,9 +98,9 @@ const HeroSection = ({ title, content, index }: Props) => (
       </div>
     </div>
 
-    <LeftWrapper className="mt-16">
+    <ContentWrapper className="mt-16">
       <RichText data={content} className="prose" />
-    </LeftWrapper>
+    </ContentWrapper>
   </Section>
 );
 

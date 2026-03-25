@@ -1,5 +1,5 @@
 import { RichText } from "@payloadcms/richtext-lexical/react";
-import LeftWrapper from "@/components/ui/LeftWrapper";
+import ContentWrapper from "@/components/ui/ContentWrapper";
 import Section from "@/components/ui/Section";
 import Title from "@/components/ui/Title";
 import type { AiPractice } from "@/payload-types";
@@ -14,9 +14,9 @@ const HeroSection = ({ title, content, index }: Props) => (
       {title}
     </Title>
 
-    <LeftWrapper>
+    <ContentWrapper>
       <RichText data={content} className="prose" />
-    </LeftWrapper>
+    </ContentWrapper>
   </Section>
 );
 

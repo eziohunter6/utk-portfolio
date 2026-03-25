@@ -7,9 +7,8 @@ type EmbedProps = HTMLAttributes<HTMLDivElement> & {
 
 function getEmbedUrl(url: string) {
   if (url.includes("figma.com")) {
-    return `https://www.figma.com/embed?embed_host=share&url=${encodeURIComponent(
-      url,
-    )}`;
+    const params = new URLSearchParams({ embed_host: "share", url });
+    return `https://www.figma.com/embed?${params.toString()}`;
   }
 
   if (url.includes("docs.google.com/spreadsheets")) {

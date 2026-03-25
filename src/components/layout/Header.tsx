@@ -1,4 +1,5 @@
 import Link from "next/link";
+import ThemeSwitcher from "@/components/theme/ThemeSwitcher";
 import { getNavlinks } from "@/lib/services";
 import CollapsibleNav from "./CollapsibleNav";
 
@@ -25,8 +26,13 @@ const Header = async () => {
           ))}
         </nav>
 
-        {/* Mobile Nav */}
-        <CollapsibleNav links={links} />
+        <div className="flex items-center gap-3">
+          {/* Theme Switcher */}
+          <ThemeSwitcher />
+
+          {/* Mobile Nav */}
+          <CollapsibleNav links={links} />
+        </div>
       </div>
     </header>
   );

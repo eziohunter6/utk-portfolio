@@ -1,6 +1,6 @@
 import { RichText } from "@payloadcms/richtext-lexical/react";
 import Image from "next/image";
-import LeftWrapper from "@/components/ui/LeftWrapper";
+import ContentWrapper from "@/components/ui/ContentWrapper";
 import Section from "@/components/ui/Section";
 import Title from "@/components/ui/Title";
 import { getBase64 } from "@/lib/getBase64";
@@ -16,7 +16,7 @@ const InfoSection = async ({ leftContent, rightContent, image }: Props) => {
     <Section id="info">
       <Title index={2}>Info</Title>
 
-      <LeftWrapper className="flex flex-col gap-8">
+      <ContentWrapper className="flex flex-col gap-8">
         {/* Info Content */}
         <div className="flex flex-col md:flex-row gap-8 md:gap-4">
           {/* Content 1 */}
@@ -33,13 +33,13 @@ const InfoSection = async ({ leftContent, rightContent, image }: Props) => {
               fill
               src={imageData.src}
               alt={imageData.alt}
-              className="object-contain"
+              className="object-contain dark:mix-blend-color"
               placeholder={imageData.base64Preview ? "blur" : "empty"}
               blurDataURL={imageData.base64Preview}
             />
           </div>
         )}
-      </LeftWrapper>
+      </ContentWrapper>
     </Section>
   );
 };

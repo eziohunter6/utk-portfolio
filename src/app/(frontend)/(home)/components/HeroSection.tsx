@@ -1,5 +1,5 @@
 import { RichText } from "@payloadcms/richtext-lexical/react";
-import Image, { getImageProps } from "next/image";
+import { getImageProps } from "next/image";
 import Section from "@/components/ui/Section";
 import WorkedAtSection from "@/components/works/WorkedAtSection";
 import type { Home } from "@/payload-types";

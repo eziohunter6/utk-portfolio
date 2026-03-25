@@ -23,9 +23,9 @@ export default async function AiPracticesPage() {
   return (
     <main id="ai-practices">
       <HeroSection {...hero} index={1} />
-      <AIPrototypeSection {...aiPrototyping} index={4} />
+      <AIPrototypeSection {...aiPrototyping} index={2} />
       <AIVideoSection {...aiVideo} index={3} />
-      <AIContentSection {...aiContent} index={2} />
+      <AIContentSection {...aiContent} index={4} />
       <ContactSection index={5} />
     </main>
   );

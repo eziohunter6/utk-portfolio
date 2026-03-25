@@ -1,7 +1,6 @@
 import { RichText } from "@payloadcms/richtext-lexical/react";
-import Image from "next/image";
+import ContentWrapper from "@/components/ui/ContentWrapper";
 import { Embed } from "@/components/ui/Embed";
-import LeftWrapper from "@/components/ui/LeftWrapper";
 import Section from "@/components/ui/Section";
 import Title from "@/components/ui/Title";
 import type { CarComparison } from "@/payload-types";
@@ -14,9 +13,9 @@ const OpportunitySection = ({ title, content, iframe, index }: Props) => (
   <Section id="opportunity">
     <Title index={index}>{title}</Title>
 
-    <LeftWrapper>
+    <ContentWrapper>
       <RichText data={content} className="prose" />
-    </LeftWrapper>
+    </ContentWrapper>
 
     {/* Iframe */}
     <Embed url={iframe} className="mt-8 aspect-9/16 md:aspect-29/15" />

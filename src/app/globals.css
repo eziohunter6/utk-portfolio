@@ -9,6 +9,15 @@
   --ai-gradient: linear-gradient(98.63deg, #e05cff 0%, #ff7967 100%);
 }
 
+.dark {
+  --main: #212121;
+  --brand: #ffffff;
+  --muted: #f4f4f4;
+  --tag-bg: #646464;
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme inline {
   --color-main: var(--main);
   --color-brand: var(--brand);
@@ -90,6 +99,10 @@
 }
 
 @layer components {
+  .prose {
+    @apply max-w-none!;
+  }
+
   .prose h3 {
     @apply text-4xl!;
     @apply mb-8!;

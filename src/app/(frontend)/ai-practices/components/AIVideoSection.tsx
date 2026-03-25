@@ -1,6 +1,6 @@
 import { RichText } from "@payloadcms/richtext-lexical/react";
 import Image from "next/image";
-import LeftWrapper from "@/components/ui/LeftWrapper";
+import ContentWrapper from "@/components/ui/ContentWrapper";
 import Section from "@/components/ui/Section";
 import Title from "@/components/ui/Title";
 import { cn, getMediaURL } from "@/lib/utils";
@@ -25,9 +25,9 @@ const AIVideoSection = async ({
   return (
     <Section id="ai-video">
       <Title index={index}>{title}</Title>
-      <LeftWrapper>
+      <ContentWrapper>
         <RichText data={content} className="prose" />
-      </LeftWrapper>
+      </ContentWrapper>
 
       {/* Videos */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8 items-center">

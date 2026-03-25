@@ -1,7 +1,7 @@
 import { RichText } from "@payloadcms/richtext-lexical/react";
 import Image from "next/image";
 import Link from "next/link";
-import LeftWrapper from "@/components/ui/LeftWrapper";
+import ContentWrapper from "@/components/ui/ContentWrapper";
 import Section from "@/components/ui/Section";
 import Title from "@/components/ui/Title";
 import { getMediaURL } from "@/lib/utils";
@@ -25,7 +25,7 @@ const FloorTestingSection = async ({
     <Section id="floorTesting">
       <Title index={index}>{title}</Title>
 
-      <LeftWrapper>
+      <ContentWrapper>
         <RichText data={content} className="prose" />
 
         {redirectLink?.src ? (
@@ -41,7 +41,7 @@ const FloorTestingSection = async ({
             Variant 2 was selected for experiment rollout.
           </p>
         )}
-      </LeftWrapper>
+      </ContentWrapper>
 
       {/* Image */}
       {imageData && (

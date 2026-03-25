@@ -1,6 +1,6 @@
 import { RichText } from "@payloadcms/richtext-lexical/react";
 import Image from "next/image";
-import LeftWrapper from "@/components/ui/LeftWrapper";
+import ContentWrapper from "@/components/ui/ContentWrapper";
 import Section from "@/components/ui/Section";
 import Title from "@/components/ui/Title";
 import { getMediaURL } from "@/lib/utils";
@@ -24,9 +24,9 @@ const ProblemSection = async ({
     <Section id="problem">
       <Title index={index}>{title}</Title>
 
-      <LeftWrapper className="flex flex-col gap-8">
+      <ContentWrapper className="flex flex-col gap-8">
         <RichText data={content} className="prose" />
-      </LeftWrapper>
+      </ContentWrapper>
 
       <div className="flex flex-col md:flex-row gap-8 mt-8">
         {/* Image */}

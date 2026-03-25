@@ -1,6 +1,6 @@
 import { RichText } from "@payloadcms/richtext-lexical/react";
 import Image from "next/image";
-import LeftWrapper from "@/components/ui/LeftWrapper";
+import ContentWrapper from "@/components/ui/ContentWrapper";
 import Section from "@/components/ui/Section";
 import Title from "@/components/ui/Title";
 import { getMediaURL } from "@/lib/utils";
@@ -22,9 +22,9 @@ const ExplorationTradeoffsSection = async ({
     <Section id="exploration">
       <Title index={index}>{title}</Title>
 
-      <LeftWrapper>
+      <ContentWrapper>
         <RichText data={content} className="prose" />
-      </LeftWrapper>
+      </ContentWrapper>
 
       {/* Image */}
       {imageData && (
