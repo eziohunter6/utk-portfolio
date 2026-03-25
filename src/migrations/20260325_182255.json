@@ -1853,12 +1853,6 @@
           "notNull": true,
           "default": "''"
         },
-        "process_image_id": {
-          "name": "process_image_id",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": false
-        },
         "analysis_title": {
           "name": "analysis_title",
           "type": "varchar",
@@ -1917,6 +1911,12 @@
         },
         "exploration_image_id": {
           "name": "exploration_image_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "exploration_dark_image_id": {
+          "name": "exploration_dark_image_id",
           "type": "integer",
           "primaryKey": false,
           "notNull": false
@@ -1995,11 +1995,11 @@
         }
       },
       "indexes": {
-        "buy_home_process_process_image_idx": {
-          "name": "buy_home_process_process_image_idx",
+        "buy_home_exploration_exploration_image_idx": {
+          "name": "buy_home_exploration_exploration_image_idx",
           "columns": [
             {
-              "expression": "process_image_id",
+              "expression": "exploration_image_id",
               "isExpression": false,
               "asc": true,
               "nulls": "last"
@@ -2010,11 +2010,11 @@
           "method": "btree",
           "with": {}
         },
-        "buy_home_exploration_exploration_image_idx": {
-          "name": "buy_home_exploration_exploration_image_idx",
+        "buy_home_exploration_exploration_dark_image_idx": {
+          "name": "buy_home_exploration_exploration_dark_image_idx",
           "columns": [
             {
-              "expression": "exploration_image_id",
+              "expression": "exploration_dark_image_id",
               "isExpression": false,
               "asc": true,
               "nulls": "last"
@@ -2042,20 +2042,20 @@
         }
       },
       "foreignKeys": {
-        "buy_home_process_image_id_media_id_fk": {
-          "name": "buy_home_process_image_id_media_id_fk",
-          "tableFrom": "buy_home",
-          "tableTo": "media",
-          "columnsFrom": ["process_image_id"],
-          "columnsTo": ["id"],
-          "onDelete": "set null",
-          "onUpdate": "no action"
-        },
         "buy_home_exploration_image_id_media_id_fk": {
           "name": "buy_home_exploration_image_id_media_id_fk",
           "tableFrom": "buy_home",
           "tableTo": "media",
           "columnsFrom": ["exploration_image_id"],
+          "columnsTo": ["id"],
+          "onDelete": "set null",
+          "onUpdate": "no action"
+        },
+        "buy_home_exploration_dark_image_id_media_id_fk": {
+          "name": "buy_home_exploration_dark_image_id_media_id_fk",
+          "tableFrom": "buy_home",
+          "tableTo": "media",
+          "columnsFrom": ["exploration_dark_image_id"],
           "columnsTo": ["id"],
           "onDelete": "set null",
           "onUpdate": "no action"
@@ -2294,6 +2294,12 @@
           "primaryKey": false,
           "notNull": false
         },
+        "problem_dark_image_id": {
+          "name": "problem_dark_image_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
         "problem_video_id": {
           "name": "problem_video_id",
           "type": "integer",
@@ -2351,6 +2357,12 @@
         },
         "floor_testing_image_id": {
           "name": "floor_testing_image_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "floor_testing_dark_image_id": {
+          "name": "floor_testing_dark_image_id",
           "type": "integer",
           "primaryKey": false,
           "notNull": false
@@ -2450,6 +2462,21 @@
           "method": "btree",
           "with": {}
         },
+        "car_comparison_problem_problem_dark_image_idx": {
+          "name": "car_comparison_problem_problem_dark_image_idx",
+          "columns": [
+            {
+              "expression": "problem_dark_image_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
         "car_comparison_problem_problem_video_idx": {
           "name": "car_comparison_problem_problem_video_idx",
           "columns": [
@@ -2470,6 +2497,21 @@
           "columns": [
             {
               "expression": "floor_testing_image_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "car_comparison_floor_testing_floor_testing_dark_image_idx": {
+          "name": "car_comparison_floor_testing_floor_testing_dark_image_idx",
+          "columns": [
+            {
+              "expression": "floor_testing_dark_image_id",
               "isExpression": false,
               "asc": true,
               "nulls": "last"
@@ -2521,6 +2563,15 @@
           "onDelete": "set null",
           "onUpdate": "no action"
         },
+        "car_comparison_problem_dark_image_id_media_id_fk": {
+          "name": "car_comparison_problem_dark_image_id_media_id_fk",
+          "tableFrom": "car_comparison",
+          "tableTo": "media",
+          "columnsFrom": ["problem_dark_image_id"],
+          "columnsTo": ["id"],
+          "onDelete": "set null",
+          "onUpdate": "no action"
+        },
         "car_comparison_problem_video_id_media_id_fk": {
           "name": "car_comparison_problem_video_id_media_id_fk",
           "tableFrom": "car_comparison",
@@ -2535,6 +2586,15 @@
           "tableFrom": "car_comparison",
           "tableTo": "media",
           "columnsFrom": ["floor_testing_image_id"],
+          "columnsTo": ["id"],
+          "onDelete": "set null",
+          "onUpdate": "no action"
+        },
+        "car_comparison_floor_testing_dark_image_id_media_id_fk": {
+          "name": "car_comparison_floor_testing_dark_image_id_media_id_fk",
+          "tableFrom": "car_comparison",
+          "tableTo": "media",
+          "columnsFrom": ["floor_testing_dark_image_id"],
           "columnsTo": ["id"],
           "onDelete": "set null",
           "onUpdate": "no action"
@@ -2745,6 +2805,12 @@
           "primaryKey": false,
           "notNull": false
         },
+        "dark_image_id": {
+          "name": "dark_image_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
         "redirect_url": {
           "name": "redirect_url",
           "type": "varchar",
@@ -2797,6 +2863,21 @@
           "concurrently": false,
           "method": "btree",
           "with": {}
+        },
+        "ai_practices_ai_prototyping_prototypes_dark_image_idx": {
+          "name": "ai_practices_ai_prototyping_prototypes_dark_image_idx",
+          "columns": [
+            {
+              "expression": "dark_image_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
         }
       },
       "foreignKeys": {
@@ -2805,6 +2886,15 @@
           "tableFrom": "ai_practices_ai_prototyping_prototypes",
           "tableTo": "media",
           "columnsFrom": ["image_id"],
+          "columnsTo": ["id"],
+          "onDelete": "set null",
+          "onUpdate": "no action"
+        },
+        "ai_practices_ai_prototyping_prototypes_dark_image_id_media_id_fk": {
+          "name": "ai_practices_ai_prototyping_prototypes_dark_image_id_media_id_fk",
+          "tableFrom": "ai_practices_ai_prototyping_prototypes",
+          "tableTo": "media",
+          "columnsFrom": ["dark_image_id"],
           "columnsTo": ["id"],
           "onDelete": "set null",
           "onUpdate": "no action"
@@ -2877,12 +2967,6 @@
           "notNull": true,
           "default": "'{\"root\":{\"type\":\"root\",\"children\":[{\"type\":\"paragraph\",\"children\":[{\"type\":\"text\",\"detail\":0,\"format\":0,\"mode\":\"normal\",\"style\":\"\",\"text\":\"\",\"version\":1}],\"direction\":null,\"format\":\"\",\"indent\":0,\"textFormat\":0,\"textStyle\":\"\",\"version\":1}],\"direction\":null,\"format\":\"\",\"indent\":0,\"version\":1}}'::jsonb"
         },
-        "ai_video_image_id": {
-          "name": "ai_video_image_id",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": false
-        },
         "ai_video_demo_video_id": {
           "name": "ai_video_demo_video_id",
           "type": "integer",
@@ -2935,21 +3019,6 @@
         }
       },
       "indexes": {
-        "ai_practices_ai_video_ai_video_image_idx": {
-          "name": "ai_practices_ai_video_ai_video_image_idx",
-          "columns": [
-            {
-              "expression": "ai_video_image_id",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            }
-          ],
-          "isUnique": false,
-          "concurrently": false,
-          "method": "btree",
-          "with": {}
-        },
         "ai_practices_ai_video_ai_video_demo_video_idx": {
           "name": "ai_practices_ai_video_ai_video_demo_video_idx",
           "columns": [
@@ -2982,15 +3051,6 @@
         }
       },
       "foreignKeys": {
-        "ai_practices_ai_video_image_id_media_id_fk": {
-          "name": "ai_practices_ai_video_image_id_media_id_fk",
-          "tableFrom": "ai_practices",
-          "tableTo": "media",
-          "columnsFrom": ["ai_video_image_id"],
-          "columnsTo": ["id"],
-          "onDelete": "set null",
-          "onUpdate": "no action"
-        },
         "ai_practices_ai_video_demo_video_id_media_id_fk": {
           "name": "ai_practices_ai_video_demo_video_id_media_id_fk",
           "tableFrom": "ai_practices",
@@ -3826,6 +3886,6 @@
     "tables": {},
     "columns": {}
   },
-  "id": "44cc9eb4-0656-4b10-a2ce-d2e0167b71b5",
+  "id": "b26d1800-41fe-4165-9f5e-6a38a1d0796a",
   "prevId": "00000000-0000-0000-0000-000000000000"
 }

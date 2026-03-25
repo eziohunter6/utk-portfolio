@@ -10,14 +10,7 @@ type Props = NonNullable<AiPractice["aiVideo"]> & {
   index: number;
 };
 
-const AIVideoSection = async ({
-  title,
-  content,
-  videos,
-  image,
-  index,
-}: Props) => {
-  const img = await getMediaURL(image);
+const AIVideoSection = async ({ title, content, videos, index }: Props) => {
   const videoData = await Promise.all(
     videos?.map((video) => getMediaURL(video)) ?? [],
   );
@@ -56,20 +49,6 @@ const AIVideoSection = async ({
           );
         })}
       </div>
-
-      {/* Image */}
-      {img && (
-        <div className="bg-muted rounded-2xl px-8 pt-8 mt-8">
-          <div className="relative w-11/12 aspect-11/5 rounded-2xl overflow-hidden mx-auto">
-            <Image
-              src={img.src}
-              alt={img.alt}
-              fill
-              className="object-contain object-bottom"
-            />
-          </div>
-        </div>
-      )}
     </Section>
   );
 };

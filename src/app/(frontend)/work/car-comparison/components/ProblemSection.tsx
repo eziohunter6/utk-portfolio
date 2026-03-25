@@ -16,9 +16,11 @@ const ProblemSection = async ({
   video,
   index,
   image,
+  darkImage,
 }: Props) => {
   const vid = await getMediaURL(video);
   const img = await getMediaURL(image);
+  const darkImg = await getMediaURL(darkImage);
 
   return (
     <Section id="problem">
@@ -36,9 +38,19 @@ const ProblemSection = async ({
               src={img?.src}
               alt={img?.alt}
               fill
-              className="object-cover object-top"
+              className="object-cover object-top dark:hidden"
               placeholder={img?.base64Preview ? "blur" : "empty"}
               blurDataURL={img?.base64Preview}
+            />
+          )}
+          {darkImg && (
+            <Image
+              src={darkImg?.src}
+              alt={darkImg?.alt}
+              fill
+              className="object-cover object-top hidden dark:block"
+              placeholder={darkImg?.base64Preview ? "blur" : "empty"}
+              blurDataURL={darkImg?.base64Preview}
             />
           )}
         </div>

@@ -15,8 +15,10 @@ const ExplorationTradeoffsSection = async ({
   content,
   index,
   image,
+  darkImage,
 }: Props) => {
   const imageData = await getMediaURL(image);
+  const darkImageData = await getMediaURL(darkImage);
 
   return (
     <Section id="exploration">
@@ -33,9 +35,19 @@ const ExplorationTradeoffsSection = async ({
             src={imageData.src}
             alt={imageData.alt}
             fill
-            className="object-contain"
+            className="object-contain dark:hidden"
             placeholder={imageData.base64Preview ? "blur" : "empty"}
             blurDataURL={imageData.base64Preview}
+          />
+          <Image
+            src={darkImageData?.src ?? imageData?.src}
+            alt={darkImageData?.alt ?? imageData?.alt}
+            fill
+            className="object-contain hidden dark:block"
+            placeholder={darkImageData?.base64Preview ? "blur" : "empty"}
+            blurDataURL={
+              darkImageData?.base64Preview ?? imageData?.base64Preview
+            }
           />
         </div>
       )}

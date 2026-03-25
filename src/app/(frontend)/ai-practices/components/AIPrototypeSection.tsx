@@ -19,7 +19,8 @@ const AIPrototypeSection = async ({
 }: Props) => {
   const prototypeData = await Promise.all(
     prototypes?.map(async (prototype) => ({
-      ...(await getMediaURL(prototype.image)),
+      image: await getMediaURL(prototype.image),
+      darkImage: await getMediaURL(prototype.darkImage),
       redirectUrl: prototype.redirectUrl,
       key: prototype.id,
     })) ?? [],
@@ -36,7 +37,7 @@ const AIPrototypeSection = async ({
       {/* Image */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
         {prototypeData?.map((prototype) => {
-          if (!prototype?.src) return null;
+          if (!prototype?.image) return null;
 
           return (
             <Link
@@ -50,13 +51,25 @@ const AIPrototypeSection = async ({
               )}
             >
               <Image
-                src={prototype.src}
-                alt={prototype.alt ?? ""}
+                src={prototype.image.src}
+                alt={prototype.image.alt ?? ""}
                 fill
                 className="object-cover group-hover:scale-101 transition-all duration-300 ease-in-out"
-                placeholder={prototype.base64Preview ? "blur" : "empty"}
-                blurDataURL={prototype.base64Preview}
+                placeholder={prototype.image.base64Preview ? "blur" : "empty"}
+                blurDataURL={prototype.image.base64Preview}
               />
+              {prototype.darkImage && (
+                <Image
+                  src={prototype.darkImage.src}
+                  alt={prototype.darkImage.alt ?? ""}
+                  fill
+                  className="hidden dark:block object-cover group-hover:scale-101 transition-all duration-300 ease-in-out"
+                  placeholder={
+                    prototype.darkImage.base64Preview ? "blur" : "empty"
+                  }
+                  blurDataURL={prototype.darkImage.base64Preview}
+                />
+              )}
             </Link>
           );
         })}

@@ -139,7 +139,7 @@
   .prose p {
     @apply text-base font-light!;
   }
-  
+
   .prose p strong {
     @apply font-medium!;
   }

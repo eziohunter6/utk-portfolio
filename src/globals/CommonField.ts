@@ -52,7 +52,7 @@ export const ImageField: Field = {
   },
 };
 
-const DarkImageField: Field = {
+export const DarkImageField: Field = {
   name: "darkImage",
   type: "upload",
   relationTo: "media",
@@ -61,7 +61,6 @@ const DarkImageField: Field = {
     description: "Select a dark image file",
   },
 };
-
 
 export const ImagesField: Field = {
   name: "images",
@@ -99,9 +98,17 @@ export const IFrameField: Field = {
 
 export const SectionWithIFrame: Field[] = [...CommonSection, IFrameField];
 
-export const SectionWithImage: Field[] = [...CommonSection, ImageField, DarkImageField];
+export const SectionWithImage: Field[] = [
+  ...CommonSection,
+  ImageField,
+  DarkImageField,
+];
 
-export const SectionWithImages: Field[] = [...CommonSection, ImagesField, DarkImagesField];
+export const SectionWithImages: Field[] = [
+  ...CommonSection,
+  ImagesField,
+  DarkImagesField,
+];
 
 export const MoreWorkSection: Field[] = [
   {

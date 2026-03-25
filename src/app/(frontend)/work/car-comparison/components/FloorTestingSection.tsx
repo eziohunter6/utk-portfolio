@@ -16,9 +16,11 @@ const FloorTestingSection = async ({
   content,
   image,
   index,
+  darkImage,
   redirectImage,
 }: Props) => {
   const imageData = await getMediaURL(image);
+  const darkImageData = await getMediaURL(darkImage);
   const redirectLink = await getMediaURL(redirectImage);
 
   return (
@@ -45,7 +47,7 @@ const FloorTestingSection = async ({
 
       {/* Image */}
       {imageData && (
-        <div className="rounded-2xl mt-8">
+        <div className="rounded-2xl mt-8 dark:hidden">
           <div className="relative w-full aspect-29/15 rounded-lg overflow-hidden">
             <Image
               src={imageData.src}
@@ -54,6 +56,20 @@ const FloorTestingSection = async ({
               className="object-contain"
               placeholder={imageData.base64Preview ? "blur" : "empty"}
               blurDataURL={imageData.base64Preview}
+            />
+          </div>
+        </div>
+      )}
+      {darkImageData && (
+        <div className="rounded-2xl mt-8 hidden dark:block">
+          <div className="relative w-full aspect-29/15 rounded-lg overflow-hidden">
+            <Image
+              src={darkImageData.src}
+              alt={darkImageData.alt}
+              fill
+              className="object-contain"
+              placeholder={darkImageData.base64Preview ? "blur" : "empty"}
+              blurDataURL={darkImageData.base64Preview}
             />
           </div>
         </div>

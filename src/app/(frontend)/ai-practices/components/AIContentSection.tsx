@@ -10,9 +10,18 @@ type Props = NonNullable<AiPractice["aiContent"]> & {
   index: number;
 };
 
-const AIContentSection = async ({ title, content, images, index }: Props) => {
+const AIContentSection = async ({
+  title,
+  content,
+  images,
+  darkImages,
+  index,
+}: Props) => {
   const imageData = await Promise.all(
     images?.map((image) => getMediaURL(image)) ?? [],
+  );
+  const darkImageData = await Promise.all(
+    darkImages?.map((image) => getMediaURL(image)) ?? [],
   );
 
   return (
@@ -31,7 +40,26 @@ const AIContentSection = async ({ title, content, images, index }: Props) => {
           return (
             <div
               key={img.alt}
-              className="relative w-full aspect-4/3 bg-muted rounded-2xl overflow-hidden"
+              className="relative w-full aspect-4/3 bg-muted rounded-2xl overflow-hidden dark:hidden"
+            >
+              <Image
+                src={img.src}
+                alt={img.alt}
+                fill
+                className="object-cover"
+                placeholder={img.base64Preview ? "blur" : "empty"}
+                blurDataURL={img.base64Preview}
+              />
+            </div>
+          );
+        })}
+        {darkImageData?.map((img) => {
+          if (!img) return null;
+
+          return (
+            <div
+              key={img.alt}
+              className="relative w-full aspect-4/3 bg-muted rounded-2xl overflow-hidden hidden dark:block"
             >
               <Image
                 src={img.src}

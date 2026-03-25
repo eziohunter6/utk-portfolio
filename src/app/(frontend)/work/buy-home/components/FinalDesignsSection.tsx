@@ -15,10 +15,15 @@ const FinalDesignsSection = async ({
   content,
   index,
   images,
+  darkImages,
 }: Props) => {
   const imageData = await Promise.all(
     images?.map((image) => getMediaURL(image)) ?? [],
   );
+  const darkImageData = await Promise.all(
+    darkImages?.map((image) => getMediaURL(image)) ?? [],
+  );
+
   return (
     <Section id="final-designs">
       <Title index={index}>{title}</Title>
@@ -33,7 +38,29 @@ const FinalDesignsSection = async ({
         return (
           <div
             key={img.alt}
-            className="mt-8 rounded-2xl relative w-full aspect-29/15"
+            className="mt-8 rounded-2xl relative w-full aspect-29/15 dark:hidden"
+          >
+            <Image
+              src={img.src}
+              alt={img.alt}
+              fill
+              className={cn(
+                "object-cover object-top-left",
+                index === 2 && "object-contain",
+              )}
+              placeholder={img.base64Preview ? "blur" : "empty"}
+              blurDataURL={img.base64Preview}
+            />
+          </div>
+        );
+      })}
+      {darkImageData?.map((img, index) => {
+        if (!img) return null;
+
+        return (
+          <div
+            key={img.alt}
+            className="mt-8 rounded-2xl relative w-full aspect-29/15 hidden dark:block"
           >
             <Image
               src={img.src}

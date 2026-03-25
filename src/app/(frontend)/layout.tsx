@@ -60,7 +60,7 @@ export default function FrontendLayout({
       suppressHydrationWarning
     >
       <body className="antialiased font-sans scroll-smooth font-medium bg-main text-brand overflow-x-clip">
-        <ThemeProvider attribute="class" storageKey="theme">
+        <ThemeProvider attribute="class" storageKey="theme" defaultTheme="dark">
           <SmoothScroll>
             <Header />
             {children}

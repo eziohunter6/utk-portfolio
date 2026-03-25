@@ -68,6 +68,7 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"image_id" integer NOT NULL,
   	"link_href" varchar NOT NULL,
   	"link_target" "enum_works_link_target" DEFAULT '_self',
+  	"link_is_modal" boolean DEFAULT false,
   	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
   	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL
   );
@@ -180,7 +181,6 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"process_title" varchar DEFAULT '' NOT NULL,
   	"process_content" jsonb DEFAULT '{"root":{"type":"root","children":[{"type":"paragraph","children":[{"type":"text","detail":0,"format":0,"mode":"normal","style":"","text":"","version":1}],"direction":null,"format":"","indent":0,"textFormat":0,"textStyle":"","version":1}],"direction":null,"format":"","indent":0,"version":1}}'::jsonb NOT NULL,
   	"process_iframe" varchar DEFAULT '' NOT NULL,
-  	"process_image_id" integer,
   	"analysis_title" varchar DEFAULT '' NOT NULL,
   	"analysis_content" jsonb DEFAULT '{"root":{"type":"root","children":[{"type":"paragraph","children":[{"type":"text","detail":0,"format":0,"mode":"normal","style":"","text":"","version":1}],"direction":null,"format":"","indent":0,"textFormat":0,"textStyle":"","version":1}],"direction":null,"format":"","indent":0,"version":1}}'::jsonb NOT NULL,
   	"analysis_iframe" varchar DEFAULT '' NOT NULL,
@@ -190,6 +190,7 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"exploration_title" varchar DEFAULT '' NOT NULL,
   	"exploration_content" jsonb DEFAULT '{"root":{"type":"root","children":[{"type":"paragraph","children":[{"type":"text","detail":0,"format":0,"mode":"normal","style":"","text":"","version":1}],"direction":null,"format":"","indent":0,"textFormat":0,"textStyle":"","version":1}],"direction":null,"format":"","indent":0,"version":1}}'::jsonb NOT NULL,
   	"exploration_image_id" integer,
+  	"exploration_dark_image_id" integer,
   	"final_designs_title" varchar DEFAULT '' NOT NULL,
   	"final_designs_content" jsonb DEFAULT '{"root":{"type":"root","children":[{"type":"paragraph","children":[{"type":"text","detail":0,"format":0,"mode":"normal","style":"","text":"","version":1}],"direction":null,"format":"","indent":0,"textFormat":0,"textStyle":"","version":1}],"direction":null,"format":"","indent":0,"version":1}}'::jsonb NOT NULL,
   	"outcome_title" varchar DEFAULT '' NOT NULL,
@@ -222,6 +223,7 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"problem_title" varchar DEFAULT '' NOT NULL,
   	"problem_content" jsonb DEFAULT '{"root":{"type":"root","children":[{"type":"paragraph","children":[{"type":"text","detail":0,"format":0,"mode":"normal","style":"","text":"","version":1}],"direction":null,"format":"","indent":0,"textFormat":0,"textStyle":"","version":1}],"direction":null,"format":"","indent":0,"version":1}}'::jsonb NOT NULL,
   	"problem_image_id" integer,
+  	"problem_dark_image_id" integer,
   	"problem_video_id" integer,
   	"hypothesis_title" varchar DEFAULT '' NOT NULL,
   	"hypothesis_content" jsonb DEFAULT '{"root":{"type":"root","children":[{"type":"paragraph","children":[{"type":"text","detail":0,"format":0,"mode":"normal","style":"","text":"","version":1}],"direction":null,"format":"","indent":0,"textFormat":0,"textStyle":"","version":1}],"direction":null,"format":"","indent":0,"version":1}}'::jsonb NOT NULL,
@@ -231,6 +233,7 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"floor_testing_title" varchar DEFAULT '' NOT NULL,
   	"floor_testing_content" jsonb DEFAULT '{"root":{"type":"root","children":[{"type":"paragraph","children":[{"type":"text","detail":0,"format":0,"mode":"normal","style":"","text":"","version":1}],"direction":null,"format":"","indent":0,"textFormat":0,"textStyle":"","version":1}],"direction":null,"format":"","indent":0,"version":1}}'::jsonb NOT NULL,
   	"floor_testing_image_id" integer,
+  	"floor_testing_dark_image_id" integer,
   	"floor_testing_redirect_image_id" integer,
   	"final_designs_title" varchar DEFAULT '' NOT NULL,
   	"final_designs_content" jsonb DEFAULT '{"root":{"type":"root","children":[{"type":"paragraph","children":[{"type":"text","detail":0,"format":0,"mode":"normal","style":"","text":"","version":1}],"direction":null,"format":"","indent":0,"textFormat":0,"textStyle":"","version":1}],"direction":null,"format":"","indent":0,"version":1}}'::jsonb NOT NULL,
@@ -254,6 +257,15 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"works_id" integer
   );
   
+  CREATE TABLE "ai_practices_ai_prototyping_prototypes" (
+  	"_order" integer NOT NULL,
+  	"_parent_id" integer NOT NULL,
+  	"id" varchar PRIMARY KEY NOT NULL,
+  	"image_id" integer,
+  	"dark_image_id" integer,
+  	"redirect_url" varchar NOT NULL
+  );
+  
   CREATE TABLE "ai_practices" (
   	"id" serial PRIMARY KEY NOT NULL,
   	"hero_title" varchar DEFAULT '' NOT NULL,
@@ -262,7 +274,6 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"ai_content_content" jsonb DEFAULT '{"root":{"type":"root","children":[{"type":"paragraph","children":[{"type":"text","detail":0,"format":0,"mode":"normal","style":"","text":"","version":1}],"direction":null,"format":"","indent":0,"textFormat":0,"textStyle":"","version":1}],"direction":null,"format":"","indent":0,"version":1}}'::jsonb NOT NULL,
   	"ai_video_title" varchar DEFAULT '' NOT NULL,
   	"ai_video_content" jsonb DEFAULT '{"root":{"type":"root","children":[{"type":"paragraph","children":[{"type":"text","detail":0,"format":0,"mode":"normal","style":"","text":"","version":1}],"direction":null,"format":"","indent":0,"textFormat":0,"textStyle":"","version":1}],"direction":null,"format":"","indent":0,"version":1}}'::jsonb NOT NULL,
-  	"ai_video_image_id" integer,
   	"ai_video_demo_video_id" integer,
   	"ai_prototyping_title" varchar DEFAULT '' NOT NULL,
   	"ai_prototyping_content" jsonb DEFAULT '{"root":{"type":"root","children":[{"type":"paragraph","children":[{"type":"text","detail":0,"format":0,"mode":"normal","style":"","text":"","version":1}],"direction":null,"format":"","indent":0,"textFormat":0,"textStyle":"","version":1}],"direction":null,"format":"","indent":0,"version":1}}'::jsonb NOT NULL,
@@ -362,21 +373,25 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   ALTER TABLE "home_rels" ADD CONSTRAINT "home_rels_parent_fk" FOREIGN KEY ("parent_id") REFERENCES "public"."home"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "home_rels" ADD CONSTRAINT "home_rels_media_fk" FOREIGN KEY ("media_id") REFERENCES "public"."media"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "home_rels" ADD CONSTRAINT "home_rels_works_fk" FOREIGN KEY ("works_id") REFERENCES "public"."works"("id") ON DELETE cascade ON UPDATE no action;
-  ALTER TABLE "buy_home" ADD CONSTRAINT "buy_home_process_image_id_media_id_fk" FOREIGN KEY ("process_image_id") REFERENCES "public"."media"("id") ON DELETE set null ON UPDATE no action;
   ALTER TABLE "buy_home" ADD CONSTRAINT "buy_home_exploration_image_id_media_id_fk" FOREIGN KEY ("exploration_image_id") REFERENCES "public"."media"("id") ON DELETE set null ON UPDATE no action;
+  ALTER TABLE "buy_home" ADD CONSTRAINT "buy_home_exploration_dark_image_id_media_id_fk" FOREIGN KEY ("exploration_dark_image_id") REFERENCES "public"."media"("id") ON DELETE set null ON UPDATE no action;
   ALTER TABLE "buy_home" ADD CONSTRAINT "buy_home_meta_image_id_media_id_fk" FOREIGN KEY ("meta_image_id") REFERENCES "public"."media"("id") ON DELETE set null ON UPDATE no action;
   ALTER TABLE "buy_home_rels" ADD CONSTRAINT "buy_home_rels_parent_fk" FOREIGN KEY ("parent_id") REFERENCES "public"."buy_home"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "buy_home_rels" ADD CONSTRAINT "buy_home_rels_media_fk" FOREIGN KEY ("media_id") REFERENCES "public"."media"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "buy_home_rels" ADD CONSTRAINT "buy_home_rels_works_fk" FOREIGN KEY ("works_id") REFERENCES "public"."works"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "car_comparison" ADD CONSTRAINT "car_comparison_problem_image_id_media_id_fk" FOREIGN KEY ("problem_image_id") REFERENCES "public"."media"("id") ON DELETE set null ON UPDATE no action;
+  ALTER TABLE "car_comparison" ADD CONSTRAINT "car_comparison_problem_dark_image_id_media_id_fk" FOREIGN KEY ("problem_dark_image_id") REFERENCES "public"."media"("id") ON DELETE set null ON UPDATE no action;
   ALTER TABLE "car_comparison" ADD CONSTRAINT "car_comparison_problem_video_id_media_id_fk" FOREIGN KEY ("problem_video_id") REFERENCES "public"."media"("id") ON DELETE set null ON UPDATE no action;
   ALTER TABLE "car_comparison" ADD CONSTRAINT "car_comparison_floor_testing_image_id_media_id_fk" FOREIGN KEY ("floor_testing_image_id") REFERENCES "public"."media"("id") ON DELETE set null ON UPDATE no action;
+  ALTER TABLE "car_comparison" ADD CONSTRAINT "car_comparison_floor_testing_dark_image_id_media_id_fk" FOREIGN KEY ("floor_testing_dark_image_id") REFERENCES "public"."media"("id") ON DELETE set null ON UPDATE no action;
   ALTER TABLE "car_comparison" ADD CONSTRAINT "car_comparison_floor_testing_redirect_image_id_media_id_fk" FOREIGN KEY ("floor_testing_redirect_image_id") REFERENCES "public"."media"("id") ON DELETE set null ON UPDATE no action;
   ALTER TABLE "car_comparison" ADD CONSTRAINT "car_comparison_meta_image_id_media_id_fk" FOREIGN KEY ("meta_image_id") REFERENCES "public"."media"("id") ON DELETE set null ON UPDATE no action;
   ALTER TABLE "car_comparison_rels" ADD CONSTRAINT "car_comparison_rels_parent_fk" FOREIGN KEY ("parent_id") REFERENCES "public"."car_comparison"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "car_comparison_rels" ADD CONSTRAINT "car_comparison_rels_media_fk" FOREIGN KEY ("media_id") REFERENCES "public"."media"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "car_comparison_rels" ADD CONSTRAINT "car_comparison_rels_works_fk" FOREIGN KEY ("works_id") REFERENCES "public"."works"("id") ON DELETE cascade ON UPDATE no action;
-  ALTER TABLE "ai_practices" ADD CONSTRAINT "ai_practices_ai_video_image_id_media_id_fk" FOREIGN KEY ("ai_video_image_id") REFERENCES "public"."media"("id") ON DELETE set null ON UPDATE no action;
+  ALTER TABLE "ai_practices_ai_prototyping_prototypes" ADD CONSTRAINT "ai_practices_ai_prototyping_prototypes_image_id_media_id_fk" FOREIGN KEY ("image_id") REFERENCES "public"."media"("id") ON DELETE set null ON UPDATE no action;
+  ALTER TABLE "ai_practices_ai_prototyping_prototypes" ADD CONSTRAINT "ai_practices_ai_prototyping_prototypes_dark_image_id_media_id_fk" FOREIGN KEY ("dark_image_id") REFERENCES "public"."media"("id") ON DELETE set null ON UPDATE no action;
+  ALTER TABLE "ai_practices_ai_prototyping_prototypes" ADD CONSTRAINT "ai_practices_ai_prototyping_prototypes_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."ai_practices"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "ai_practices" ADD CONSTRAINT "ai_practices_ai_video_demo_video_id_media_id_fk" FOREIGN KEY ("ai_video_demo_video_id") REFERENCES "public"."media"("id") ON DELETE set null ON UPDATE no action;
   ALTER TABLE "ai_practices" ADD CONSTRAINT "ai_practices_meta_image_id_media_id_fk" FOREIGN KEY ("meta_image_id") REFERENCES "public"."media"("id") ON DELETE set null ON UPDATE no action;
   ALTER TABLE "ai_practices_rels" ADD CONSTRAINT "ai_practices_rels_parent_fk" FOREIGN KEY ("parent_id") REFERENCES "public"."ai_practices"("id") ON DELETE cascade ON UPDATE no action;
@@ -435,8 +450,8 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "home_rels_path_idx" ON "home_rels" USING btree ("path");
   CREATE INDEX "home_rels_media_id_idx" ON "home_rels" USING btree ("media_id");
   CREATE INDEX "home_rels_works_id_idx" ON "home_rels" USING btree ("works_id");
-  CREATE INDEX "buy_home_process_process_image_idx" ON "buy_home" USING btree ("process_image_id");
   CREATE INDEX "buy_home_exploration_exploration_image_idx" ON "buy_home" USING btree ("exploration_image_id");
+  CREATE INDEX "buy_home_exploration_exploration_dark_image_idx" ON "buy_home" USING btree ("exploration_dark_image_id");
   CREATE INDEX "buy_home_meta_meta_image_idx" ON "buy_home" USING btree ("meta_image_id");
   CREATE INDEX "buy_home_rels_order_idx" ON "buy_home_rels" USING btree ("order");
   CREATE INDEX "buy_home_rels_parent_idx" ON "buy_home_rels" USING btree ("parent_id");
@@ -444,8 +459,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "buy_home_rels_media_id_idx" ON "buy_home_rels" USING btree ("media_id");
   CREATE INDEX "buy_home_rels_works_id_idx" ON "buy_home_rels" USING btree ("works_id");
   CREATE INDEX "car_comparison_problem_problem_image_idx" ON "car_comparison" USING btree ("problem_image_id");
+  CREATE INDEX "car_comparison_problem_problem_dark_image_idx" ON "car_comparison" USING btree ("problem_dark_image_id");
   CREATE INDEX "car_comparison_problem_problem_video_idx" ON "car_comparison" USING btree ("problem_video_id");
   CREATE INDEX "car_comparison_floor_testing_floor_testing_image_idx" ON "car_comparison" USING btree ("floor_testing_image_id");
+  CREATE INDEX "car_comparison_floor_testing_floor_testing_dark_image_idx" ON "car_comparison" USING btree ("floor_testing_dark_image_id");
   CREATE INDEX "car_comparison_floor_testing_floor_testing_redirect_imag_idx" ON "car_comparison" USING btree ("floor_testing_redirect_image_id");
   CREATE INDEX "car_comparison_meta_meta_image_idx" ON "car_comparison" USING btree ("meta_image_id");
   CREATE INDEX "car_comparison_rels_order_idx" ON "car_comparison_rels" USING btree ("order");
@@ -453,7 +470,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "car_comparison_rels_path_idx" ON "car_comparison_rels" USING btree ("path");
   CREATE INDEX "car_comparison_rels_media_id_idx" ON "car_comparison_rels" USING btree ("media_id");
   CREATE INDEX "car_comparison_rels_works_id_idx" ON "car_comparison_rels" USING btree ("works_id");
-  CREATE INDEX "ai_practices_ai_video_ai_video_image_idx" ON "ai_practices" USING btree ("ai_video_image_id");
+  CREATE INDEX "ai_practices_ai_prototyping_prototypes_order_idx" ON "ai_practices_ai_prototyping_prototypes" USING btree ("_order");
+  CREATE INDEX "ai_practices_ai_prototyping_prototypes_parent_id_idx" ON "ai_practices_ai_prototyping_prototypes" USING btree ("_parent_id");
+  CREATE INDEX "ai_practices_ai_prototyping_prototypes_image_idx" ON "ai_practices_ai_prototyping_prototypes" USING btree ("image_id");
+  CREATE INDEX "ai_practices_ai_prototyping_prototypes_dark_image_idx" ON "ai_practices_ai_prototyping_prototypes" USING btree ("dark_image_id");
   CREATE INDEX "ai_practices_ai_video_ai_video_demo_video_idx" ON "ai_practices" USING btree ("ai_video_demo_video_id");
   CREATE INDEX "ai_practices_meta_meta_image_idx" ON "ai_practices" USING btree ("meta_image_id");
   CREATE INDEX "ai_practices_rels_order_idx" ON "ai_practices_rels" USING btree ("order");
@@ -503,6 +523,7 @@ export async function down({
   DROP TABLE "buy_home_rels" CASCADE;
   DROP TABLE "car_comparison" CASCADE;
   DROP TABLE "car_comparison_rels" CASCADE;
+  DROP TABLE "ai_practices_ai_prototyping_prototypes" CASCADE;
   DROP TABLE "ai_practices" CASCADE;
   DROP TABLE "ai_practices_rels" CASCADE;
   DROP TABLE "clear_trip_hero_tags" CASCADE;

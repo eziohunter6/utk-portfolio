@@ -1,8 +1,8 @@
 import type { GlobalConfig } from "payload";
 import {
   CommonSection,
+  DarkImageField,
   ImageField,
-  SectionWithImage,
   SectionWithImages,
   VideosField,
 } from "./CommonField";
@@ -30,7 +30,7 @@ export const AiPractices: GlobalConfig = {
       type: "group",
       name: "aiVideo",
       fields: [
-        ...SectionWithImage,
+        ...CommonSection,
         VideosField,
         {
           name: "demoVideo",
@@ -54,6 +54,7 @@ export const AiPractices: GlobalConfig = {
           type: "array",
           fields: [
             ImageField,
+            DarkImageField,
             {
               name: "redirectUrl",
               type: "text",
