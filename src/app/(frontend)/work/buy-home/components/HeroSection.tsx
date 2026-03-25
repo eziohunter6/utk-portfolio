@@ -112,14 +112,16 @@ const HeroSection = ({ title, content, index }: Props) => (
           <h4 className="font-semibold mb-2">State adaptive components.</h4>
 
           <ul className="text-[0.55em] flex flex-row justify-end flex-wrap gap-2">
-            <li className="bg-[#E8E8E8] rounded-full px-2 py-1">Informative</li>
-            <li className="bg-[#E8E8E8] rounded-full px-2 py-1">
+            <li className="bg-[#E8E8E8] dark:bg-[#646464] rounded-full px-2 py-1">
+              Informative
+            </li>
+            <li className="bg-[#E8E8E8] dark:bg-[#646464] rounded-full px-2 py-1">
               128+ Use cases
             </li>
-            <li className="bg-[#E8E8E8] rounded-full px-2 py-1">
+            <li className="bg-[#E8E8E8] dark:bg-[#646464] rounded-full px-2 py-1">
               Modular Action
             </li>
-            <li className="bg-[#E8E8E8] rounded-full px-2 py-1">
+            <li className="bg-[#E8E8E8] dark:bg-[#646464] rounded-full px-2 py-1">
               Configurable
             </li>
           </ul>

@@ -38,7 +38,7 @@ const HeroSection = ({
   return (
     <Section id="hero">
       <div className="flex flex-col justify-center pt-30 md:pt-20">
-        <h1 className="text-6xl md:text-8xl lg:text-[10rem]/45 font-semibold border-b-2 border-current pb-4 mb-4">
+        <h1 className="text-6xl md:text-8xl lg:text-[10rem]/45 font-semibold border-b-2 border-current dark:border-current/20 pb-4 mb-4">
           {title}
         </h1>
 

@@ -12,7 +12,7 @@
 .dark {
   --main: #212121;
   --brand: #ffffff;
-  --muted: #f4f4f4;
+  --muted: #2f2f2f;
   --tag-bg: #646464;
 }
 
@@ -104,22 +104,44 @@
   }
 
   .prose h3 {
-    @apply text-4xl!;
+    @apply text-4xl! font-normal!;
     @apply mb-8!;
+  }
+
+  .prose h3 strong {
+    @apply font-semibold!;
   }
 
   .prose h4 {
-    @apply text-4xl!;
-    @apply font-medium!;
-    @apply mb-8!;
+    @apply mb-8! text-4xl! font-normal!;
+  }
+
+  .prose h4 strong {
+    @apply font-semibold!;
   }
 
   .prose h5 {
-    @apply text-2xl;
+    @apply text-2xl! font-normal!;
+  }
+
+  .prose h5 strong {
+    @apply font-semibold!;
   }
 
   .prose h6 {
-    @apply text-xl mt-8;
+    @apply text-sm mt-4 font-normal! text-brand/40;
+  }
+
+  .prose h6 strong {
+    @apply font-semibold! text-inherit!;
+  }
+
+  .prose p {
+    @apply text-base font-light!;
+  }
+  
+  .prose p strong {
+    @apply font-medium!;
   }
 
   .prose ul,
@@ -144,6 +166,10 @@
     li {
       @apply list-disc list-inside text-lg!;
     }
+  }
+
+  .prose blockquote {
+    @apply border-l-2! bg-muted py-4;
   }
 }
 

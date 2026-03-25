@@ -31,13 +31,13 @@ const CollapsibleNav = ({ links }: { links: TNavLink[] }) => {
       aria-modal="true"
       aria-label="Mobile navigation"
       className={cn(
-        "md:hidden fixed inset-x-0 top-20 bottom-0 z-20 bg-brand text-white shadow-xs transition-opacity duration-300 ease-in-out",
+        "md:hidden fixed inset-x-0 top-20 bottom-0 z-20 bg-brand text-main dark:text-brand dark:bg-main shadow-xs transition-opacity duration-300 ease-in-out",
         isOpen ? "opacity-100" : "opacity-0 pointer-events-none",
       )}
     >
       <nav
         aria-label="Mobile navigation"
-        className="h-2/4 flex flex-col gap-4 p-10 px-6 justify-between text-4xl"
+        className="h-2/4 flex flex-col gap-4 p-10 px-6 justify-between text-4xl font-light"
       >
         {links.map(({ href, title, id }) => (
           <Link

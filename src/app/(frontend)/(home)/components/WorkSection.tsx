@@ -19,7 +19,7 @@ const WorkSection = (props: Props) => {
       {/* Extended Cases */}
       {extendedCases.length > 0 && (
         <>
-          <h3 className="text-2xl border-b-2 border-current mb-12">
+          <h3 className="text-2xl border-b-2 border-current dark:border-current/10 mb-12">
             Extended Cases
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
@@ -33,7 +33,7 @@ const WorkSection = (props: Props) => {
       {/* Mini Cases */}
       {miniCases.length > 0 && (
         <>
-          <h3 className="text-2xl border-b-2 border-current mb-8 mt-16">
+          <h3 className="text-2xl border-b-2 border-current dark:border-current/10 mb-8 mt-16">
             Mini Cases
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-x-12 md:gap-y-16">

@@ -61,7 +61,7 @@ const WorkCard = async ({
         <ArrowUpRightIcon className="size-6 shrink-0 origin-bottom-left group-hover:scale-120 transition-all duration-300 ease-in-out" />
       </hgroup>
 
-      <hr className="border-current my-6" />
+      <hr className="border-current dark:border-current/10 my-6" />
 
       {description && (
         <RichText data={description} className="prose prose-xl leading-7" />

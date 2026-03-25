@@ -47,7 +47,7 @@ const WorkedAtSection = ({ workedAt, darkWorkedAt }: Props) => {
   };
 
   return (
-    <div className="border-b-2 border-current">
+    <div className="border-b-2 border-current dark:border-current/10">
       <h3 className="text-center text-sm font-semibold">WORKED AT</h3>
 
       <div className="relative py-4 md:hidden overflow-hidden left-1/2 right-1/2 -mx-[50vw] w-screen">
