@@ -52,6 +52,17 @@ export const ImageField: Field = {
   },
 };
 
+const DarkImageField: Field = {
+  name: "darkImage",
+  type: "upload",
+  relationTo: "media",
+  filterOptions: { mimeType: { contains: "image" } },
+  admin: {
+    description: "Select a dark image file",
+  },
+};
+
+
 export const ImagesField: Field = {
   name: "images",
   type: "upload",
@@ -60,6 +71,18 @@ export const ImagesField: Field = {
   filterOptions: { mimeType: { contains: "image" } },
   admin: {
     description: "Select and order image files",
+  },
+  defaultValue: [],
+};
+
+export const DarkImagesField: Field = {
+  name: "darkImages",
+  type: "upload",
+  hasMany: true,
+  relationTo: "media",
+  filterOptions: { mimeType: { contains: "image" } },
+  admin: {
+    description: "Select and order dark image files",
   },
   defaultValue: [],
 };
@@ -76,9 +99,9 @@ export const IFrameField: Field = {
 
 export const SectionWithIFrame: Field[] = [...CommonSection, IFrameField];
 
-export const SectionWithImage: Field[] = [...CommonSection, ImageField];
+export const SectionWithImage: Field[] = [...CommonSection, ImageField, DarkImageField];
 
-export const SectionWithImages: Field[] = [...CommonSection, ImagesField];
+export const SectionWithImages: Field[] = [...CommonSection, ImagesField, DarkImagesField];
 
 export const MoreWorkSection: Field[] = [
   {
