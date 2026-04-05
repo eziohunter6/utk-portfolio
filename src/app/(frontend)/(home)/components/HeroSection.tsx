@@ -3,6 +3,7 @@ import { getImageProps } from "next/image";
 import Section from "@/components/ui/Section";
 import WorkedAtSection from "@/components/works/WorkedAtSection";
 import type { Home } from "@/payload-types";
+import Hands from "./Hands";
 
 type Props = NonNullable<Home["hero"]>;
 
@@ -38,25 +39,20 @@ const HeroSection = ({
   return (
     <Section id="hero">
       <div className="flex flex-col justify-center pt-30 md:pt-20">
-        <h1 className="text-6xl md:text-8xl lg:text-[10rem]/45 font-semibold border-b-2 border-current dark:border-current/20 pb-4 mb-4">
+        <h1 className="text-center text-6xl md:text-8xl lg:text-[10rem]/45 font-semibold pb-4">
           {title}
         </h1>
 
-        <h2 className="text-3xl sm:text-[3.5rem] md:text-[3.5rem] lg:text-[4rem] text-right whitespace-nowrap">
+        <h2 className="text-center text-3xl sm:text-[3.5rem] md:text-[3.5rem] lg:text-[4rem] whitespace-nowrap border-b-2 border-current dark:border-current/20 pb-6">
           {subtitle}
         </h2>
 
-        <div className="relative left-1/2 right-1/2 -mx-[50vw] w-screen md:-mt-[12.5%] md:-mb-[20%] my-8">
-          <picture>
-            <source media="(max-width: 640px)" srcSet={mobile} />
-            <img {...rest} srcSet={desktop} className="object-cover m-auto" />
-          </picture>
-        </div>
+        <h3 className="text-center text-[#707070] px-30 pt-6">
+          I help founders, tech companies, and fast-moving teams turn ideas into real products. My hands-on, practical approach builds momentum by keeping teams focused, communication clear, and projects moving forward.
+        </h3>
+        <Hands />
       </div>
 
-      <div className="w-full md:w-3/4 lg:w-3/5 mb-16">
-        <RichText data={content} className="prose" />
-      </div>
 
       <WorkedAtSection workedAt={workedAt} darkWorkedAt={darkWorkedAt} />
     </Section>
